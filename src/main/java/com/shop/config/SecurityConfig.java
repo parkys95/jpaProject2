@@ -28,8 +28,10 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
-                        .permitAll()
+                                .loginPage("/members/login")
+                                .defaultSuccessUrl("/index")
+                                .usernameParameter("email")
+                                .failureUrl("/members/login/error")
                 )
                 .rememberMe(Customizer.withDefaults());
 

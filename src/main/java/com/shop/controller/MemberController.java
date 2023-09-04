@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.validation.BindingResult;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @RequestMapping("/members")
 @Controller

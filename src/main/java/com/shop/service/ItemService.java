@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 import com.shop.dto.ItemImgDto;
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 
 import com.shop.dto.ItemSearchDto;

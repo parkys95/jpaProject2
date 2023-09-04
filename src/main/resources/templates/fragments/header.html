@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- css -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" media="all" />
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css" media="all" />
+    <!--// css -->
+    <!-- font -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //font -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</head>
+
+
+<th:block th:fragment="header">
+    <div class="header-top-w3layouts">
+        <div class="container">
+            <div class="col-md-6 logo-w3">
+                <a href="/index"><img src="/images/logo2.png" alt=" " /><h1>IMAGE Farm</h1></a>
+            </div>
+            <!--            <div class="col-md-6 phone-w3l">-->
+            <!--                <ul>-->
+            <!--                    <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>-->
+            <!--                    <li>+18045403380</li>-->
+            <!--                    <li><a href="login.html">Login</a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="clearfix"></div>-->
+
+        </div>
+    </div>
+
+    <div class="header-bottom-w3ls">
+        <div class="container">
+            <div class="col-md-7 navigation-agileits">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
+                            <li class="active"><a href="/index" class="hyper"><span>Home</span></a></li>
+                            <li class="dropdown ">
+                                <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Menu</span></a>
+                                <ul class="dropdown-menu multi" style="min-width: 300px">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+
+                                                <li><a href="women.html"><i class="fa fa-angle-right" aria-hidden="true"></i>아이콘</a></li>
+                                                <li><a href="men.html"><i class="fa fa-angle-right" aria-hidden="true"></i>일러스트</a></li>
+                                                <li><a href="kids.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>컬러</a></li>
+                                                <li><a href="party.html"><i class="fa fa-angle-right" aria-hidden="true"></i>사진</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <!-- <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="casuals.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Casuals</a></li>
+                                                <li><a href="night.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Night Wear</a></li>
+                                                <li><a href="formals.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Formals</a></li>
+                                                <li><a href="inner.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Inner Wear</a></li>
+
+                                            </ul>
+                                        </div> -->
+                                        <!-- <div class="col-sm-4 w3l">
+                                            <a href="women.html"><img src="images/menu1.jpg" class="img-responsive" alt=""></a>
+                                        </div> -->
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <!-- <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span> Personal Care <b class="caret"></b></span></a>
+                                    <ul class="dropdown-menu multi multi1">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="jewellery.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Jewellery </a></li>
+                                                    <li><a href="watches.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Watches</a></li>
+                                                    <li><a href="cosmetics.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Cosmetics</a></li>
+                                                    <li><a href="deos.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Deo & Perfumes</a></li>
+
+                                                </ul>
+
+                                            </div>
+                                            <div class="col-sm-4">
+
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="haircare.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>Hair Care </a></li>
+                                                    <li><a href="shoes.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Shoes</a></li>
+                                                    <li><a href="handbags.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Handbags</a></li>
+                                                    <li><a href="skincare.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Skin care</a></li>
+
+                                                </ul>
+
+                                            </div>
+                                            <div class="col-sm-4 w3l">
+                                                <a href="jewellery.html"><img src="images/menu2.jpg" class="img-responsive" alt=""></a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                            </li> -->
+                            <!--                            <li><a href="about.html" class="hyper"><span>About</span></a></li>-->
+                            <!-- <li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li> -->
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $(".dropdown").hover(
+                        function() {
+                            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+                            $(this).toggleClass('open');
+                        },
+                        function() {
+                            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+                            $(this).toggleClass('open');
+                        }
+                    );
+                });
+            </script>
+            <!--            <div class="col-md-4 search-agileinfo">-->
+            <!--            <form action="#" method="post">-->
+            <!--                <input type="search" name="Search" placeholder="Search for a Product..." required="">-->
+            <!--                <button type="submit" class="btn btn-default search" aria-label="Left Align">-->
+            <!--                    <i class="fa fa-search" aria-hidden="true"> </i>-->
+            <!--                </button>-->
+            <!--            </form>-->
+            <!--        </div>-->
+            <!--        <div class="col-md-1 cart-wthree">-->
+            <!--            <div class="cart">-->
+            <!--                <form action="#" method="post" class="last">-->
+            <!--                    <input type="hidden" name="cmd" value="_cart" />-->
+            <!--                    <input type="hidden" name="display" value="1" />-->
+            <!--                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>-->
+            <!--                </form>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</th:block>
+</html>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+
+<!--<div th:fragment="header">-->
+<!--    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse"-->
+<!--                data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"-->
+<!--                aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <a class="navbar-brand" href="/">Shop</a>-->
+
+<!--        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">-->
+<!--            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">-->
+<!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">-->
+<!--                    <a class="nav-link" href="/admin/item/new">상품 등록</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">-->
+<!--                    <a class="nav-link" href="/admin/items">상품 관리</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                    <a class="nav-link" href="/cart">장바구니</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                    <a class="nav-link" href="/orders">구매이력</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="isAnonymous()">-->
+<!--                    <a class="nav-link" href="/members/login">로그인</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                    <a class="nav-link" href="/members/logout">로그아웃</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">-->
+<!--                <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</div>-->
+
+<!--</html>-->

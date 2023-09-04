@@ -230,11 +230,11 @@ button.w3view-cart:focus{
 	background-size:cover;
 	min-height:480px;
 }
-.my-banner4{
-	background:url(../images/jewelbg.jpg) no-repeat 0px 0px;
-	background-size:cover;
-	min-height:480px;
-}
+/*.my-banner4{*/
+/*	background:url(../images/jewelbg.jpg) no-repeat 0px 0px;*/
+/*	background-size:cover;*/
+/*	min-height:480px;*/
+/*}*/
 .banner-agile h2{
 	font-size:35px;
 	text-align:left;
@@ -1269,10 +1269,10 @@ p.sbmincart-empty-text {
 }
 /*-- //about --*/
 /*-- products --*/
-.products {
-    background: url(../images/a.jpg)no-repeat center 0px;
-    background-size: cover;
-}
+/*.products {*/
+/*    background: url(../images/a.jpg)no-repeat center 0px;*/
+/*    background-size: cover;*/
+/*}*/
 .products .title h3 {
     text-align: left;
 }
@@ -2642,7 +2642,7 @@ p.w3-agile{
 		height: 24px;
 	}
 	#PPsbmincart {
-		left:25%:
+		left:25%;
 		top: 25%;
 	}
 
@@ -3231,3 +3231,42 @@ p.w3-agile{
 	 
 }
 /*-- //responsive--*/
+/* ++ 추가 css -ys ++*/
+.gallery {
+
+
+
+    justify-content: center;
+    align-content: center;
+
+}
+.row {
+    content: none !important;
+    display: grid;
+    margin: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center;
+    align-content: center;
+
+}
+.gallery >.row:before{
+    content:none;
+}
+.gallery img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+/*@media (max-width: 1500px) {*/
+/*    .row {*/
+/*        margin: 10px;*/
+/*        justify-content: center;*/
+/*        align-content: center;*/
+/*    }*/
+/*    .gallery img {*/
+/*        width: 150px;*/
+/*        height: 150px;*/
+/*        object-fit: cover;*/
+/*    }*/
+
+/*}*/

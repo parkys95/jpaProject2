@@ -2,7 +2,7 @@ package com.shop.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name="item_img")

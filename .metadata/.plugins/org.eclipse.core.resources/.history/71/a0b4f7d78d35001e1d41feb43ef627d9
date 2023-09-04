@@ -1,0 +1,37 @@
+package com.busanit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import com.busanit.domain.register_VO;
+
+@Controller
+public class register_controller {
+	private Object register;
+
+	@GetMapping("/register")
+	public String register() {
+		return "register";
+	}
+	
+	@GetMapping("/register_result")	//Form의 메소드가 post면 PostMapping
+	public String register_result(@ModelAttribute("r")register_VO register ) {
+		return "register_result";
+	}
+	
+	//db넣기
+	@GetMapping("/register")
+	public String register(Object service) {
+		((register_controller) service).register(register);
+		return "redirect:/registForm";
+	}
+	
+	@GetMapping("loginForm")
+	public String loginForm() {
+		return "loginForm";
+	}
+	
+}
+
+

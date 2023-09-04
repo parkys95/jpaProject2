@@ -1,0 +1,25 @@
+package com.busanit.service;
+
+import java.util.List;
+
+import com.busanit.domain.JoinVO;
+
+public interface JoinService {
+	//Login - 로그인
+	public JoinVO get(String id, String passwd);
+	
+	//Create - 등록
+	public void register(JoinVO join);
+	
+	//Read - 전체조회
+	public List<JoinVO> getList();
+	
+	//Read - 조회
+	public JoinVO get(String id);
+	
+	//Update - 수정
+	public boolean modify(JoinVO join);
+	
+	//Delete - 삭제
+	public boolean remove(String id);
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.busanit.mapper.JoinMapper">
+	
+	<select id = "getlogin" resultType="com.busanit.domain.JoinVO">
+		SELECT * FROM member WHERE id = #{id} AND passed = #{passwd}
+	</select>
+
+
+	<select id = "getList" resultType="com.busanit.domain.JoinVO">
+		SELECT * FROM member
+	</select>
+	
+	<select id = "read" resultType="com.busanit.domain.JoinVO">
+		SELECT * FROM member WHERE id = #{id}   <!-- 파라미터 값 가져옴 -->
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO member(id, passwd, name, addr)
+			VALUES(#{id}, #{passwd}, #{name}, #{addr}) 
+	</insert>
+	
+	<update id = "update">
+		UPDATE member SET
+			passwd = #{passwd},
+			name = #{name},
+			addr = #{addr}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 데이터 정상 삭제되면 1이상의 값을 return 하고 
+		해당 번호의 게시글이 없으면 0이 출력  -->
+	
+	<delete id = "delete">
+		DELETE FROM member WHERE ID = #{id}
+	</delete>
+	
+</mapper>

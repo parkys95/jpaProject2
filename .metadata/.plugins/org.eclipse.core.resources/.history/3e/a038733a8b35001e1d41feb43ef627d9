@@ -1,0 +1,8 @@
+package com.busanit.service;
+
+import com.busanit.domain.register_VO;
+
+public interface register_service {
+	public void register(register_VO register);
+	
+}

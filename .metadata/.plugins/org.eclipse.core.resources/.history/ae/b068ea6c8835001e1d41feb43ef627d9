@@ -1,0 +1,22 @@
+package com.busanit.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.busanit.domain.register_VO;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor	//모든 매개변수 생성자 설정
+public class register_serviclmp implements register_service{
+	
+	private final registermapper mapper;
+
+	@Override
+	public void register(register_VO register) {
+		mapper.insert(register);
+		
+	}
+	
+}

@@ -1,0 +1,14 @@
+package com.busanit.domain;
+
+import lombok.Data;
+
+@Data
+public class register_VO {
+	private String USERID;
+	private String USERPW;
+	private String USERNAME;
+	private String GRADE;
+	private String EMAIL;
+	private String PHONE;
+	
+}

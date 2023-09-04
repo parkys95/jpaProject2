@@ -1,0 +1,5 @@
+package com.busanit.service;
+
+public interface register_service {
+
+}

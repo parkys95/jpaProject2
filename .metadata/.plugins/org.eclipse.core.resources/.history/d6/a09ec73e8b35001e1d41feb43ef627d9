@@ -1,7 +1,0 @@
-package com.busanit.service;
-
-import com.busanit.domain.register_VO;
-
-public interface registermapper {
-	public void inser(register_VO register);
-}

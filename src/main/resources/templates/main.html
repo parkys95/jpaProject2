@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout2}">
-
+      layout:decorate="~{layouts/layout1}">
 
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
@@ -15,9 +14,6 @@
         }
         .banner{
             height: 300px;
-            position: absolute; top:0; left: 0;
-            width: 100%;
-            height: 100%;
         }
         .card-text{
             text-overflow: ellipsis;
@@ -30,10 +26,15 @@
         .center{
             text-align:center;
         }
+        .banner{
+            position: absolute; top:0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </th:block>
 
-<div layout:fragment="content2">
+<div layout:fragment="content">
 
     <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
         <div class="carousel-inner">

@@ -16,7 +16,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 

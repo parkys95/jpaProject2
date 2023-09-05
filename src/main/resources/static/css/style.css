@@ -126,17 +126,15 @@ img {
     background-color:#00e58b;
 }
 .search-agileinfo input[type="search"] {
-    width: 87%;
+    width: 100%;
     padding:10px;
     font-size: 1em;
     color: #999;
     outline: none;
     border: 1px solid #cccccc;
-    background: none;
-    -webkit-appearance: none;
+    background-color: #712cf9;
     transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
+
 }
 .navbar {
     margin-bottom:0;
@@ -230,11 +228,11 @@ button.w3view-cart:focus{
 	background-size:cover;
 	min-height:480px;
 }
-.my-banner4{
-	background:url(../images/jewelbg.jpg) no-repeat 0px 0px;
-	background-size:cover;
-	min-height:480px;
-}
+/*.my-banner4{*/
+/*	background:url(../images/jewelbg.jpg) no-repeat 0px 0px;*/
+/*	background-size:cover;*/
+/*	min-height:480px;*/
+/*}*/
 .banner-agile h2{
 	font-size:35px;
 	text-align:left;
@@ -1269,10 +1267,10 @@ p.sbmincart-empty-text {
 }
 /*-- //about --*/
 /*-- products --*/
-.products {
-    background: url(../images/a.jpg)no-repeat center 0px;
-    background-size: cover;
-}
+/*.products {*/
+/*    background: url(../images/a.jpg)no-repeat center 0px;*/
+/*    background-size: cover;*/
+/*}*/
 .products .title h3 {
     text-align: left;
 }
@@ -1539,9 +1537,9 @@ a.pa_italic:focus {
 }
 .single-top-right h3 {
     text-transform: capitalize;
-    font-size: 2em;
+    font-size: 4em;
     color: #00e58b;
-    margin-bottom: .3em;
+    margin-bottom: -34px;
     text-align: left;
 }
 .single-top-right ul li {
@@ -2049,11 +2047,11 @@ p.w3-agile{
 		font-size:13px;
 	}
 	.search-agileinfo {
-		width: 30%;
-		float: left;
+
 	}
 	.search-agileinfo input[type="search"] {
-		width: 87%;
+
+
 		font-size: 13px;
 	}
 	button.search {
@@ -2324,7 +2322,7 @@ p.w3-agile{
 		text-align:center;
 	}
 	.search-agileinfo {
-		width: 60%;
+
 		float: left;
 	}
 	.cart-wthree {
@@ -2602,7 +2600,7 @@ p.w3-agile{
 		width: 12%;
 	}
 	.search-agileinfo input[type="search"] {
-		width: 98%;
+
 	}
 	button.search {
 		right: -29px;
@@ -2642,7 +2640,7 @@ p.w3-agile{
 		height: 24px;
 	}
 	#PPsbmincart {
-		left:25%:
+		left:25%;
 		top: 25%;
 	}
 
@@ -3046,8 +3044,8 @@ p.w3-agile{
 		left: 172px;
 	}
 	.search-agileinfo {
-		width: 70%;
-		float: left;
+
+
 	}
 	.cart-wthree {
 		width: 30%;
@@ -3231,3 +3229,49 @@ p.w3-agile{
 	 
 }
 /*-- //responsive--*/
+/* ++ 추가 css -ys ++*/
+,gall{
+     margin: 10px;
+ }
+.gallery {
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+
+}
+.row {
+    position: relative;
+    content: none !important;
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+    overflow:hidden;
+
+
+}
+.gallery >.row:before{
+    content:none;
+}
+.row img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+
+
+
+
+}
+/*@media (max-width: 1500px) {*/
+/*    .row {*/
+/*        margin: 10px;*/
+/*        justify-content: center;*/
+/*        align-content: center;*/
+/*    }*/
+/*    .gallery img {*/
+/*        width: 150px;*/
+/*        height: 150px;*/
+/*        object-fit: cover;*/
+/*    }*/
+
+/*}*/

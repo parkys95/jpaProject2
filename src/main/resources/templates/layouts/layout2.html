@@ -10,7 +10,8 @@
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
 
-
+    <th:block layout:fragment="script"></th:block>
+    <th:block layout:fragment="css"></th:block>
 
 
     <!-- JS, Popper.js, and jQuery -->
@@ -23,13 +24,13 @@
 
 
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
-    <th:block th:replace="~{fragments/header::header}"></th:block>
+<th:block th:replace="~{fragments/header::header}"></th:block>
 
-    <th:block layout:fragment="content" class="content"></th:block>
+<th:block layout:fragment="content"></th:block>
 
-    <th:block th:replace="~{fragments/footer::footer}"></th:block>
+<th:block th:replace="~{fragments/footer::footer}"></th:block>
 
 </body>
 </html>

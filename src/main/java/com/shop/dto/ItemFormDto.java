@@ -1,13 +1,14 @@
 package com.shop.dto;
 
+import com.shop.constant.ItemCategory;
 import com.shop.constant.ItemSellStatus;
 import com.shop.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class ItemFormDto {
 
     private Long id;
+
 
     @NotBlank(message = "상품명은 필수 입력 값입니다.")
     private String itemNm;
@@ -29,6 +31,8 @@ public class ItemFormDto {
     private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
+
+    private ItemCategory category;
 
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
 

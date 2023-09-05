@@ -33,9 +33,16 @@ public class SecurityConfig {
 
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
+<<<<<<< HEAD
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**").permitAll()
+=======
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**", "/sendEmail/**").permitAll()
+>>>>>>> main
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
+                .and()
+                .csrf().ignoringAntMatchers("/mail/**")
+                       .ignoringAntMatchers("/members/findId")
         ;
 
         http.exceptionHandling()

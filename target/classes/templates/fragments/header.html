@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 
     <title>Fashion Club an Ecommerce Online Shopping Category Flat Bootstrap responsive Website Template | Home ::
@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--                        </button>-->
 
 
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+                        <ul class="navbar-nav ml-auto">
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                 <a class="nav-link" href="/admin/item/new">상품 등록</a>
                             </li>

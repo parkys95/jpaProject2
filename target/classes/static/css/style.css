@@ -3232,30 +3232,37 @@ p.w3-agile{
 }
 /*-- //responsive--*/
 /* ++ 추가 css -ys ++*/
+,gall{
+     margin: 10px;
+ }
 .gallery {
-
-
-
     justify-content: center;
     align-content: center;
-
+    margin: 20px;
 }
 .row {
     content: none !important;
     display: grid;
-    margin: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: center;
-    align-content: center;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+   /* 가로 너비를 자동으로 조정하여 비율을 유지합니다. */
+    height: 100%;
 
 }
 .gallery >.row:before{
     content:none;
 }
-.gallery img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
+.row img{
+    /* 가로 너비를 자동으로 조정하여 비율을 유지합니다. */
+    height: 100% ;
+
+
+    object-fit: none ;
+
+
+
+
 }
 /*@media (max-width: 1500px) {*/
 /*    .row {*/

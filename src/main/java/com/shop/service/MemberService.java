@@ -54,10 +54,10 @@ public class MemberService implements UserDetailsService {
     public boolean checkPassword(Member member, String checkPassword) {
         Member findMember = memberRepository.findByEmail(member.getEmail());
         if (findMember == null) {
-            throw new IllegalStateException("없는 회원입니다.");
+            throw new IllegalStateException("존재하지 않는 회원입니다.");
         }
-        String realPassword = member.getPassword();
-        boolean matches = passwordEncoder.matches(checkPassword, realPassword);
+        String realPassword = member.getPassword(); // 실제 회원의 암호를 가져옵니다.
+        boolean matches = passwordEncoder.matches(checkPassword, realPassword); // 입력한 비밀번호와 암호화된 비밀번호를 비교합니다.
         System.out.println(matches);
         return matches;
     }

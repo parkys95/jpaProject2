@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MailService {
-    private JavaMailSender mailSender;
 
-    private MemberRepository memberRepository;
+    private final JavaMailSender mailSender;
+    private final MemberRepository memberRepository;
 
     // 임시 비밀번호 생성
     public static String getTempPassword(){
@@ -37,9 +37,9 @@ public class MailService {
         String str = getTempPassword();
         MailDto dto = new MailDto();
         dto.setAddress(memberEmail);
-        dto.setTitle("댕댕월드 임시비밀번호 안내 이메일 입니다.");
-        dto.setMessage("안녕하세요. 댕댕월드 임시비밀번호 안내 관련 이메일 입니다." + " 회원님의 임시 비밀번호는 "
-                + str + " 입니다." + "로그인 후에 비밀번호를 변경해주세요!");
+        dto.setTitle("ImageForm 임시비밀번호 안내 이메일 입니다.");
+        dto.setMessage("안녕하세요. ImageForm 임시비밀번호 안내 관련 이메일 입니다." + " 회원님의 임시 비밀번호는 "
+                + str + " 입니다." + " 로그인 후에 비밀번호를 변경해주세요!");
         updatePassword(str, memberEmail);
         return dto;
     }
@@ -51,8 +51,8 @@ public class MailService {
         message.setTo(mailDto.getAddress());
         message.setSubject(mailDto.getTitle());
         message.setText(mailDto.getMessage());
-        message.setFrom("wisejohn950330@gmail.com");
-        message.setReplyTo("wisejohn950330@gmail.com");
+        message.setFrom("vqs210@gmail.com");
+        message.setReplyTo("vqs210@gmail.com");
         System.out.println("message"+message);
         mailSender.send(message);
     }
@@ -63,8 +63,8 @@ public class MailService {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String encodePw = encoder.encode(str); // 패스워드 암호화
             Member member = memberRepository.findByEmail(email);
-            //member.updatePassword(encodePw);
-            //memberRepository.save(member);
+            member.updatePassword(encodePw);
+            memberRepository.save(member);
             return true;
         } catch (Exception e) {
             return false;

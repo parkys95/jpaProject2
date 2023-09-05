@@ -2,6 +2,8 @@ package com.shop.entity;
 
 import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
+import com.shop.repository.MemberRepository;
+import com.shop.service.MailService;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +16,6 @@ import javax.persistence.*;
 @Getter @Setter
 @ToString
 public class Member extends BaseEntity {
-
     @Id
     @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,5 +49,15 @@ public class Member extends BaseEntity {
 
         return member;
     }
+
+    public void updatePassword(String encodedPassword) {
+        try {
+            setPassword(encodedPassword); // 새로운 암호로 업데이트
+        } catch (Exception e) {
+            // 예외 처리
+            e.printStackTrace(); // 혹은 로깅
+        }
+    }
+
 
 }

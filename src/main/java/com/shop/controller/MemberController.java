@@ -24,9 +24,8 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class MemberController {
 
-    @Autowired
-    private MemberRepository memberRepository;
-    private MailService mailService;
+    private final MemberRepository memberRepository;
+    private final MailService mailService;
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
@@ -74,6 +73,13 @@ public class MemberController {
         return "member/myPage";
     }
 
+    /** 회원 수정하기 전 비밀번호 확인 **/
+    @GetMapping("/checkPwd")
+    public String checkPwdView(){
+        return "member/passwordCheck";
+    }
+    
+    // 회원 이메일로 메일로 임시 비밀번호를 보내는 콘트롤러
     // 회원 비밀번호 찾기
     @GetMapping(value = "/findMember")
     public String findMember(Model model) {
@@ -82,23 +88,23 @@ public class MemberController {
 
     // 비밀번호 찾기시, 임시 비밀번호 담긴 이메일 보내기
     @Transactional
-    @GetMapping("/sendEmail")
+    @PostMapping("/sendEmail")
     public String sendEmail(@RequestParam("memberEmail") String memberEmail) {
         MailDto dto = mailService.createMailAndChangePassword(memberEmail);
         mailService.mailSend(dto);
 
-        return "/member/login";
+        return "redirect:/members/login";
     }
 
-    @RequestMapping(value = "/findId", method = RequestMethod.POST)
-    @ResponseBody
-    public String findId(@RequestParam("memberEmail") String memberEmail) {
-        String email = String.valueOf(memberRepository.findByEmail(memberEmail));
-        System.out.println("회원 이메일 = " + email);
-        if(email == null) {
-            return null;
-        } else {
-            return email;
-        }
-    }
+//    @RequestMapping(value = "/findId", method = RequestMethod.POST)
+//    @ResponseBody
+//    public String findId(@RequestParam("memberEmail") String memberEmail) {
+//        String email = String.valueOf(memberRepository.findByEmail(memberEmail));
+//        System.out.println("회원 이메일 = " + email);
+//        if(email == null) {
+//            return null;
+//        } else {
+//            return email;
+//        }
+//    }
 }

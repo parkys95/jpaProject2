@@ -38,8 +38,7 @@
 </th:block>
 
 <div id="container" layout:fragment="content">
-    <body>
-    <form role="form" class="text-start" method="post" name="sendEmail" th:action="@{/members/sendEmail}">
+    <form role="form" class="text-start" method="post" name="sendEmail" action="/members/sendEmail">
         <br></br>
         <h1 class="title">비밀번호 찾기</h1>
         <div class="login-form">
@@ -55,7 +54,6 @@
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </div>
     </form>
-    </body>
 </div>
 
 </html>

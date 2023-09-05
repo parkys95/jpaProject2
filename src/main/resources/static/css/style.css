@@ -226,11 +226,7 @@ button.w3view-cart:focus{
 	min-height:480px;
 }
 .my-banner3{
-<<<<<<< HEAD
-	background:url(../images/menbanner.jpg) no-repeat 0px 0px;
-=======
 	background:url(img/menbanner.jpg) no-repeat 0px 0px;
->>>>>>> main
 	background-size:cover;
 	min-height:480px;
 }

@@ -13,15 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-<<<<<<< HEAD
-import javax.validation.Valid;
-=======
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
->>>>>>> main
 
 @RequestMapping("/members")
 @Controller

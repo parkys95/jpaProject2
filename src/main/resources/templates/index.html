@@ -8,31 +8,40 @@
 
 <div layout:fragment="content">
 
-	<div class="banner-bootom-w3-agileits">
+	<div class="banner-bootom-w3-agileits" id="banner">
 
-		<div class="container">
-
-			<h3>IMAGE <span>FARM</span></h3>
+		<div class="banner-name">
+			<h1>IMAGE FARM</h1>
 			<p>다양한  고해상도 이미지를 만나보세요! </p>
 			<a href="about.html">Read More</a>
 		</div>
 	</div>
+	<br>
 
-<div>
-	<div class="col-md-4 search-agileinfo" >
+<!--<div style="background-color: grey">-->
+<!--	<div class="col-md-4 search" >-->
+<!--		<form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">-->
+<!--			<input type="search" name="searchQuery" placeholder="Search for a Product..." required="">-->
+<!--			<button type="submit" class="btn btn-default search" aria-label="Left Align">-->
+<!--				<i class="fa fa-search" aria-hidden="true"> </i>-->
+<!--			</button>-->
+<!--		</form>-->
+<!--	</div>-->
+<!--	<input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">-->
+<!--	<div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">-->
+<!--		<p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>-->
+<!--	</div>-->
+<!--</div>-->
+<!--		<div class="searchbox"  th:style="'background-image:url(' + @{../images/a1.jpg} + ')'">-->
+	<div class="searchbox" >
 		<form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
-			<input type="search" name="searchQuery" placeholder="Search for a Product..." required="">
-			<button type="submit" class="btn btn-default search" aria-label="Left Align">
-				<i class="fa fa-search" aria-hidden="true"> </i>
-			</button>
+			<div class="search-mode">
+				<input type="text" placeholder="찾고 싶은 이미지를 검색해보세요!" class="hover">
+					<button type="submit" id="search2" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" ></button>
+			</div>
 		</form>
 	</div>
-	<input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
-	<div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
-		<p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
-	</div>
-</div>
-<br>
+
 	<div class="banner-bootom-w3-agileits" >
 
 		<div class="gallery">
@@ -74,7 +83,7 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp5">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/ip2.jpg" alt="" />
+										<img src="/img/ip2.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -95,7 +104,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp6">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/shp8.jpg" alt="" />
+										<img src="/img/shp8.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -116,7 +125,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp7">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/cap1.jpg" alt="" />
+										<img src="/img/cap1.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -137,7 +146,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/wap3.jpg" alt="" />
+										<img src="/img/wap3.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -168,7 +177,7 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/wp8.jpg" alt="" />
+										<img src="/img/wp8.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -189,7 +198,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/wp5.jpg" alt="" />
+										<img src="/img/wp5.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -210,7 +219,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/wp4.jpg" alt="" />
+										<img src="/img/wp4.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -231,7 +240,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/wp3.jpg" alt="" />
+										<img src="/img/wp3.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -262,7 +271,7 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/hp9.jpg" alt="" />
+										<img src="/img/hp9.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -283,7 +292,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/hp8.jpg" alt="" />
+										<img src="/img/hp8.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -304,7 +313,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/hp7.jpg" alt="" />
+										<img src="/img/hp7.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -325,7 +334,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/hp3.jpg" alt="" />
+										<img src="/img/hp3.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -350,7 +359,7 @@
 						<div class="tab-1 resp-tab-content">
 							<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
 								<a href="single.html"><div class="product-img">
-									<img src="/images/tp13.jpg" alt="" />
+									<img src="/img/tp13.jpg" alt="" />
 									<div class="p-mask">
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
@@ -371,7 +380,7 @@
 							</div>
 							<div class="col-md-3 top-product-grids tp2">
 								<a href="single.html"><div class="product-img">
-									<img src="/images/tp14.jpg" alt="" />
+									<img src="/img/tp14.jpg" alt="" />
 									<div class="p-mask">
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
@@ -392,7 +401,7 @@
 							</div>
 							<div class="col-md-3 top-product-grids tp3">
 								<a href="single.html"><div class="product-img">
-									<img src="/images/tp15.jpg" alt="" />
+									<img src="/img/tp15.jpg" alt="" />
 									<div class="p-mask">
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
@@ -413,7 +422,7 @@
 							</div>
 							<div class="col-md-3 top-product-grids tp4">
 								<a href="single.html"><div class="product-img">
-									<img src="/images/tp16.jpg" alt="" />
+									<img src="/img/tp16.jpg" alt="" />
 									<div class="p-mask">
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
@@ -436,7 +445,7 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/cp5.jpg" alt="" />
+										<img src="/img/cp5.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -457,7 +466,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/cp4.jpg" alt="" />
+										<img src="/img/cp4.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -478,7 +487,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/cp7.jpg" alt="" />
+										<img src="/img/cp7.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -499,7 +508,7 @@
 								</div>
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
-										<img src="/images/cp8.jpg" alt="" />
+										<img src="/img/cp8.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart" />
@@ -579,21 +588,21 @@
 						<div class="wmuSliderWrapper">
 							<article style="position: absolute; width: 100%; opacity: 0;">
 								<div class="banner-wrap">
-									<img src="/images/c1.png" alt=" " class="img-responsive" />
+									<img src="/img/c1.png" alt=" " class="img-responsive" />
 									<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
 									<h4># 남아연</h4>
 								</div>
 							</article>
 							<article style="position: absolute; width: 100%; opacity: 0;">
 								<div class="banner-wrap">
-									<img src="/images/c2.png" alt=" " class="img-responsive" />
+									<img src="/img/c2.png" alt=" " class="img-responsive" />
 									<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
 									<h4># 박용성</h4>
 								</div>
 							</article>
 							<article style="position: absolute; width: 100%; opacity: 0;">
 								<div class="banner-wrap">
-									<img src="/images/c3.png" alt=" " class="img-responsive" />
+									<img src="/img/c3.png" alt=" " class="img-responsive" />
 									<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed, sagittis id nisl. Pellentesque celerisque  eget ullamcorper vehicula. </p>
 									<h4># 이승재</h4>
 								</div>
@@ -618,19 +627,19 @@
 			<div class="sliderfig">
 				<ul id="flexiselDemo1">
 					<li>
-						<img src="/images/4.png" alt=" " class="img-responsive" />
+						<img src="/img/4.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/images/5.png" alt=" " class="img-responsive" />
+						<img src="/img/5.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/images/6.png" alt=" " class="img-responsive" />
+						<img src="/img/6.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/images/7.png" alt=" " class="img-responsive" />
+						<img src="/img/7.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/images/46.jpg" alt=" " class="img-responsive" />
+						<img src="/img/46.jpg" alt=" " class="img-responsive" />
 					</li>
 				</ul>
 			</div>

@@ -22,7 +22,7 @@ public class IndexController {
     @GetMapping(value = "/index")
     public String index(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 30);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 40);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);

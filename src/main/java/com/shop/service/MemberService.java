@@ -3,6 +3,7 @@ package com.shop.service;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 @Transactional
@@ -17,6 +19,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
+    private PasswordEncoder passwordEncoder;
 
     public Member saveMember(Member member){
         validateDuplicateMember(member);
@@ -46,4 +49,16 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
+    /** 비밀번호 일치 확인 **/
+    @ResponseBody
+    public boolean checkPassword(Member member, String checkPassword) {
+        Member findMember = memberRepository.findByEmail(member.getEmail());
+        if (findMember == null) {
+            throw new IllegalStateException("없는 회원입니다.");
+        }
+        String realPassword = member.getPassword();
+        boolean matches = passwordEncoder.matches(checkPassword, realPassword);
+        System.out.println(matches);
+        return matches;
+    }
 }

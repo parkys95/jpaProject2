@@ -1,25 +1,32 @@
 package com.shop.controller;
 
+import com.shop.dto.MailDto;
 import com.shop.dto.MemberFormDto;
+import com.shop.entity.Member;
+import com.shop.repository.MemberRepository;
+import com.shop.service.MailService;
 import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.shop.entity.Member;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RequestMapping("/members")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
+    @Autowired
+    private MemberRepository memberRepository;
+    private MailService mailService;
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
@@ -58,4 +65,40 @@ public class MemberController {
         return "/member/login";
     }
 
+    @GetMapping("/myPage")
+    public String memberInfo(Principal principal, ModelMap modelMap){
+        String loginId = principal.getName();
+        Member member = memberRepository.findByEmail(loginId);
+        modelMap.addAttribute("member", member);
+
+        return "member/myPage";
+    }
+
+    // 회원 비밀번호 찾기
+    @GetMapping(value = "/findMember")
+    public String findMember(Model model) {
+        return "/member/findMember";
+    }
+
+    // 비밀번호 찾기시, 임시 비밀번호 담긴 이메일 보내기
+    @Transactional
+    @GetMapping("/sendEmail")
+    public String sendEmail(@RequestParam("memberEmail") String memberEmail) {
+        MailDto dto = mailService.createMailAndChangePassword(memberEmail);
+        mailService.mailSend(dto);
+
+        return "/member/login";
+    }
+
+    @RequestMapping(value = "/findId", method = RequestMethod.POST)
+    @ResponseBody
+    public String findId(@RequestParam("memberEmail") String memberEmail) {
+        String email = String.valueOf(memberRepository.findByEmail(memberEmail));
+        System.out.println("회원 이메일 = " + email);
+        if(email == null) {
+            return null;
+        } else {
+            return email;
+        }
+    }
 }

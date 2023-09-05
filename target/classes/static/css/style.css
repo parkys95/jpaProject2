@@ -211,22 +211,22 @@ button.w3view-cart:focus{
 
 /*--banner--*/
 .banner-agile{
-	background:url(../images/banner2.jpg) no-repeat 0px 0px;
+	background:url(img/banner2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:580px;
 }
 .sub-banner{
-	background:url(../images/banner2.jpg) no-repeat 0px 0px;
+	background:url(img/banner2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:280px;
 }
 .my-banner2{
-	background:url(../images/clothsbanner.jpg) no-repeat 0px 0px;
+	background:url(img/clothsbanner.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:480px;
 }
 .my-banner3{
-	background:url(../images/menbanner.jpg) no-repeat 0px 0px;
+	background:url(img/menbanner.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:480px;
 }
@@ -285,7 +285,7 @@ button.w3view-cart:focus{
 	width:100%;
 }
 .bb-left-agileits-w3layouts-inner{
-	background:url(../images/bb1.jpg) no-repeat 0px 0px;
+	background:url(img/bb1.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:500px;
 	-moz-transition: all 1s;
@@ -302,7 +302,7 @@ button.w3view-cart:focus{
     transform: scale3d(1.1, 1.1, 1);
 }
 .bb-middle-top{
-	background:url(../images/bb2.jpg) no-repeat 0px 0px;
+	background:url(img/bb2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:235px;
 	-moz-transition: all 1s;
@@ -319,7 +319,7 @@ button.w3view-cart:focus{
     transform: scale3d(1.1, 1.1, 1);
 }
 .bb-middle-bottom{
-	background:url(../images/bb4.jpg) no-repeat 0px 0px;
+	background:url(img/bb4.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:235px;
 	margin-top:30px;
@@ -337,7 +337,7 @@ button.w3view-cart:focus{
     transform: scale3d(1.1, 1.1, 1);
 }
 .bb-right-top{
-	background:url(../images/bb3.jpg) no-repeat 0px 0px;
+	background:url(img/bb3.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:235px;
 	-moz-transition: all 1s;
@@ -354,7 +354,7 @@ button.w3view-cart:focus{
     transform: scale3d(1.1, 1.1, 1);
 }
 .bb-right-bottom{
-	background:url(../images/bb5.jpg) no-repeat 0px 0px;
+	background:url(img/bb5.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	min-height:235px;
 	margin-top:30px;
@@ -1259,12 +1259,12 @@ p.sbmincart-empty-text {
 }
 .nbs-flexisel-nav-left {
     left: 0;
-    background: url(../images/img-sprite.png) no-repeat 5px center;
+    background: url(img/img-sprite.png) no-repeat 5px center;
     background-color:#00e58b;
 }
 .nbs-flexisel-nav-right { 
 	right: 0%;
-    background: url(../images/img-sprite.png) no-repeat -20px center;
+    background: url(img/img-sprite.png) no-repeat -20px center;
     background-color: #00e58b;
 }
 /*-- //about --*/
@@ -1355,7 +1355,7 @@ p.sbmincart-empty-text {
 }
 /*-- //team --*/
 .about-bottom{
-	background:url(../images/abtbtm.jpg) no-repeat 0px 0px;
+	background:url(img/abtbtm.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	padding:100px 0;
 	background-attachment:fixed;
@@ -2080,17 +2080,17 @@ p.w3-agile{
 		float: left;
 	}
 	.bb-left-agileits-w3layouts-inner {
-		background: url(../images/bb1.jpg) no-repeat -142px 0px;
+		background: url(img/bb1.jpg) no-repeat -142px 0px;
 		background-size: cover;
 		min-height: 450px;
 	}
 	.bb-middle-top {
-		background: url(../images/bb2.jpg) no-repeat -81px 0px;
+		background: url(img/bb2.jpg) no-repeat -81px 0px;
 		background-size: cover;
 		min-height: 210px;
 	}
 	.bb-middle-bottom {
-		background: url(../images/bb4.jpg) no-repeat -99px 0px;
+		background: url(img/bb4.jpg) no-repeat -99px 0px;
 		background-size: cover;
 		min-height: 210px;
 	}
@@ -2098,7 +2098,7 @@ p.w3-agile{
 		min-height: 210px;
 	}
 	.bb-right-bottom {
-		background: url(../images/bb5.jpg) no-repeat -56px 0px;
+		background: url(img/bb5.jpg) no-repeat -56px 0px;
 		background-size: cover;
 		min-height: 210px;
 	}
@@ -2266,7 +2266,7 @@ p.w3-agile{
 		left:187px;
 	}
 	.about-bottom {
-		background: url(../images/abtbtm.jpg) no-repeat 0px 0px;
+		background: url(img/abtbtm.jpg) no-repeat 0px 0px;
 		background-size: cover;
 	}
 	.main-agileits {
@@ -2394,7 +2394,7 @@ p.w3-agile{
 		right: -1px;
 	}
 	.about-bottom {
-		background: url(../images/abtbtm.jpg) no-repeat 0px 0px;
+		background: url(img/abtbtm.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		padding:60px 0;
 	}
@@ -2662,7 +2662,7 @@ p.w3-agile{
 		margin-bottom:30px;
 	}
 	.bb-left-agileits-w3layouts-inner {
-		background: url(../images/bb1.jpg) no-repeat 0px 0px;
+		background: url(img/bb1.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 300px;
 	}
@@ -2676,12 +2676,12 @@ p.w3-agile{
 		float: left;
 	}
 	.bb-middle-top {
-		background: url(../images/bb2.jpg) no-repeat 0px 0px;
+		background: url(img/bb2.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 200px;
 	}
 	.bb-middle-bottom {
-		background: url(../images/bb4.jpg) no-repeat 0px 0px;
+		background: url(img/bb4.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 200px;
 	}
@@ -2689,7 +2689,7 @@ p.w3-agile{
 		min-height: 200px;
 	}
 	.bb-right-bottom {
-		background: url(../images/bb5.jpg) no-repeat 0px 0px;
+		background: url(img/bb5.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 200px;
 	}
@@ -3153,7 +3153,7 @@ p.w3-agile{
 		width: 81%;
 	}
 	.banner-agile {
-		background: url(../images/banner2.jpg) no-repeat -50px 0px;
+		background: url(img/banner2.jpg) no-repeat -50px 0px;
 		background-size: cover;
 	}
 

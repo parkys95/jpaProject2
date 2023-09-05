@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Fashion Club an Ecommerce Online Shopping Category Flat Bootstrap responsive Website Template | Home ::
         w3layouts</title>
@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-top-w3layouts">
         <div class="container">
             <div class="col-md-6 logo-w3">
-                <a href="/index"><img src="/images/logo2.png" alt=" "/>
+                <a href="/index"><img src="/img/logo2.png" alt=" "/>
                     <h1>IMAGE Farm</h1></a>
             </div>
             <div style="float: right; margin-top: 1%">
@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--                            <span class="navbar-toggler-icon"></span>-->
 <!--                        </button>-->
 
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 navbar-right">
                             <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                 <a class="nav-link" href="/admin/item/new">상품 등록</a>
                             </li>
@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/cart">장바구니</a></li>
                                     <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/orders">구매이력</a></li>
-                                    <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="#">내 정보</a></li>
+                                    <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/members/myPage">내 정보</a></li>
                                 </ul>
                             </li>
 

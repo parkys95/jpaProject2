@@ -3365,7 +3365,8 @@ button{
     opacity: 88%;
 }
 .menu:hover{
-    background-color: rgba(0, 229, 139, 0.36);
+    background: linear-gradient( to right, rgb(141, 196, 66), rgb(0, 229, 139));
+    /*background-color: rgba(0, 229, 139, 0.36);*/
     border-radius: 40px;
     color: white !important;
     font-weight: 600 !important;
@@ -3408,4 +3409,12 @@ button{
 .jang{
     margin-right: 20px;
 
+}
+.tab{
+    border-radius: 40px;
+    border: solid 2px ;
+
+}
+.tab span{
+    font-weight: bold;
 }

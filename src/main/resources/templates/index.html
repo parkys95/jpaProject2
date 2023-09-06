@@ -86,13 +86,11 @@
 		<div class="gallery">
 			<div class="row" >
 				<th:block th:each="item, status: ${items.getContent()}">
-					<div >
 						<div >
-							<a th:href="'/item/' +${item.id}" >
+							<a th:href="'/item/' +${item.id}" class="overscale">
 								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" 	>
 							</a>
 						</div>
-					</div>
 				</th:block>
 			</div>
 		</div>

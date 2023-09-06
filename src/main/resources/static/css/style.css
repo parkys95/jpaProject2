@@ -3231,19 +3231,30 @@ p.w3-agile{
     grid-template-columns: repeat(auto-fit, minmax(12%, 1fr));
 
     grid-gap: 5px;
-    overflow:hidden;
+
 
 
 }
 .gallery >.row:before{
     content:none;
+    overflow: hidden;
+}
+.overscale{
+    overflow: hidden;
+}
+.overscale:hover img{
+    transform: scale(1.2);
+
 }
 .row img{
     width:100%;
     border-radius: 15px;
-    height:150px;
+    height: auto;
+    min-height: 150px;
+    max-height: 150px;
     object-fit:cover;
     background-color: white;
+
 }
 /*서치 부분 ys*/
 .search-mode {

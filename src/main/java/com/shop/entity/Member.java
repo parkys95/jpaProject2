@@ -60,4 +60,16 @@ public class Member extends BaseEntity {
     }
 
 
+    /**
+     * 회원수정 메소드
+     */
+//    public void updateUsername(String name) {
+//        this.name = name;
+//    }
+//
+//    public void updateAddress(String address) {
+//        this.address = address;
+//    }
+
+
 }

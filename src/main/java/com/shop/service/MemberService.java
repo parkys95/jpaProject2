@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import com.shop.dto.MemberUpdateFormDto;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,22 +14,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    public Member saveMember(Member member){
+    public Member saveMember(Member member) {
         validateDuplicateMember(member);
         return memberRepository.save(member);
     }
 
-    private void validateDuplicateMember(Member member){
+    private void validateDuplicateMember(Member member) {
         Member findMember = memberRepository.findByEmail(member.getEmail());
-        if(findMember != null){
+        if (findMember != null) {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
@@ -38,7 +41,7 @@ public class MemberService implements UserDetailsService {
 
         Member member = memberRepository.findByEmail(email);
 
-        if(member == null){
+        if (member == null) {
             throw new UsernameNotFoundException(email);
         }
 
@@ -49,7 +52,9 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    /** 비밀번호 일치 확인 **/
+    /**
+     * 비밀번호 일치 확인
+     **/
     @ResponseBody
     public boolean checkPassword(Member member, String checkPassword) {
         Member findMember = memberRepository.findByEmail(member.getEmail());
@@ -61,4 +66,21 @@ public class MemberService implements UserDetailsService {
         System.out.println(matches);
         return matches;
     }
+
+    @Transactional
+    public void updateMember(@Valid MemberUpdateFormDto memberUpdateFormDto) {
+
+        Member member = new Member();
+        // MemberFormDto에서 필요한 정보를 가져와서 existingMember에 설정합니다.
+        member.setId(memberUpdateFormDto.getId());
+        member.setEmail(memberUpdateFormDto.getEmail());
+        member.setPassword(passwordEncoder.encode(memberUpdateFormDto.getPassword()));
+        member.setName(memberUpdateFormDto.getName());
+        member.setAddress(memberUpdateFormDto.getAddress());
+        member.setRole(memberUpdateFormDto.getRole());
+
+        // 회원 정보를 저장합니다.
+        memberRepository.save(member);
+    }
+
 }

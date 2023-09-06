@@ -58,7 +58,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						   class="fieldError">Incorrect Data</p>
 						<div class="clearfix"></div>
 					</div>
-
+					<p th:if="${memberErrorMsg}" class="error" th:text="${memberErrorMsg}"></p>
 					<input type="submit" value="회원가입">
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 				</form>

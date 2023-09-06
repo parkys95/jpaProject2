@@ -2,12 +2,12 @@ package com.shop.controller;
 
 import com.shop.dto.MailDto;
 import com.shop.dto.MemberFormDto;
+import com.shop.dto.MemberUpdateFormDto;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
 import com.shop.service.MailService;
 import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +39,7 @@ public class MemberController {
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
 
         if(bindingResult.hasErrors()){
+            model.addAttribute("memberErrorMsg", "사용할 수 없는 이메일 입니다.");
             return "member/register";
         }
 
@@ -64,21 +65,8 @@ public class MemberController {
         return "/member/login";
     }
 
-    @GetMapping("/myPage")
-    public String memberInfo(Principal principal, ModelMap modelMap){
-        String loginId = principal.getName();
-        Member member = memberRepository.findByEmail(loginId);
-        modelMap.addAttribute("member", member);
 
-        return "member/myPage";
-    }
 
-    /** 회원 수정하기 전 비밀번호 확인 **/
-    @GetMapping("/checkPwd")
-    public String checkPwdView(){
-        return "member/passwordCheck";
-    }
-    
     // 회원 이메일로 메일로 임시 비밀번호를 보내는 콘트롤러
     // 회원 비밀번호 찾기
     @GetMapping(value = "/findMember")
@@ -96,15 +84,34 @@ public class MemberController {
         return "redirect:/members/login";
     }
 
-//    @RequestMapping(value = "/findId", method = RequestMethod.POST)
-//    @ResponseBody
-//    public String findId(@RequestParam("memberEmail") String memberEmail) {
-//        String email = String.valueOf(memberRepository.findByEmail(memberEmail));
-//        System.out.println("회원 이메일 = " + email);
-//        if(email == null) {
-//            return null;
-//        } else {
-//            return email;
-//        }
-//    }
+    @RequestMapping(value = "/findId", method = RequestMethod.POST)
+    @ResponseBody
+    public String findId(@RequestParam("memberEmail") String memberEmail) {
+        String email = String.valueOf(memberRepository.findByEmail(memberEmail));
+        System.out.println("회원 이메일 = " + email);
+        if(email == null) {
+            return null;
+        } else {
+            return email;
+        }
+    }
+
+    @GetMapping("/myPage")
+    public String memberInfo(Principal principal, ModelMap modelMap){
+        String loginId = principal.getName();
+        Member member = memberRepository.findByEmail(loginId);
+        modelMap.addAttribute("member", member);
+
+        return "member/myPage";
+    }
+
+    // 회원 정보 변경 (POST)
+    @PostMapping(value = "/update")
+    public String updateMember(@Valid MemberUpdateFormDto memberUpdateFormDto, Model model) {
+        model.addAttribute("member", memberUpdateFormDto);
+        memberService.updateMember(memberUpdateFormDto);
+        return "redirect:/members/myPage";
+    }
+
+
 }

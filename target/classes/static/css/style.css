@@ -1745,6 +1745,9 @@ p.single-price-text {
     -moz-box-shadow: 0px 0px 15px 0px #D6D6D6;
     -webkit-box-shadow: 0px 0px 15px 0px #D6D6D6;
     padding: 3em;
+    position: absolute;
+    top: 25%;
+    left: 33.33%;
 }
 .key {
     background: #fff;

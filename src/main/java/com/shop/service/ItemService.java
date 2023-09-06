@@ -1,6 +1,6 @@
 package com.shop.service;
 
-import com.shop.dto.ItemFormDto;
+import com.shop.dto.*;
 import com.shop.entity.Item;
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
@@ -12,15 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+
 import com.shop.dto.ItemImgDto;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 
-import com.shop.dto.ItemSearchDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import com.shop.dto.MainItemDto;
 
 @Service
 @Transactional
@@ -32,6 +31,7 @@ public class ItemService {
     private final ItemImgService itemImgService;
 
     private final ItemImgRepository itemImgRepository;
+
 
     public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
 
@@ -93,8 +93,12 @@ public class ItemService {
     }
 
     @Transactional(readOnly = true)
-    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
-        return itemRepository.getMainItemPage(itemSearchDto, pageable);
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable, String category){
+        return itemRepository.getMainItemPage(itemSearchDto, pageable, category);
     }
 
+
+    public List<ItemDto> findByCategory(String category){
+        return  itemRepository.findByCategory(category);
+    }
 }

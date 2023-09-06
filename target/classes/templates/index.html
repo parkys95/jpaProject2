@@ -8,6 +8,7 @@
 
 <div layout:fragment="content">
 
+
 <!--	<div class="banner-bootom-w3-agileits" id="banner">-->
 
 
@@ -81,16 +82,17 @@
 		</form>
 	</div>
 
+
 	<div class="banner-bootom-w3-agileits" >
 
 		<div class="gallery">
 			<div class="row" >
 				<th:block th:each="item, status: ${items.getContent()}">
-						<div >
+
 							<a th:href="'/item/' +${item.id}" class="overscale">
 								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" 	>
 							</a>
-						</div>
+
 				</th:block>
 			</div>
 		</div>
@@ -101,6 +103,7 @@
 
 	<div class="top-products">
 		<div class="container">
+
 			<h3><img src="/banner/BEST IMAGE.svg" alt=" " style="width: auto"></h3>
 			<div class="sap_tabs">
 				<div id="horizontalTab">
@@ -108,6 +111,7 @@
 						<li class="resp-tab-item tab" ><span>PICTURE</span></li>
 						<li class="resp-tab-item tab" ><span>ILLUSTRATION</span></li>
 						<li class="resp-tab-item tab" ><span>ICON</span></li>
+
 					</ul>
 					<div class="clearfix"> </div>
 					<div class="resp-tabs-container">
@@ -120,13 +124,16 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp5">
 									<a href="single.html"><div class="product-img">
+
 										<img src="/img/ip2.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
+
 												<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
 											</form>
 										</div>
 									</div></a>
+
 									<h4>Inner wear</h4>
 									<h5>$50.00</h5>
 								</div>
@@ -145,19 +152,23 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp4">
 									<a href="single.html"><div class="product-img">
+
 										<img src="/img/wp8.jpg" alt="" />
 										<div class="p-mask">
 											<form action="#" method="post">
+
 
 												<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
 											</form>
 										</div>
 									</div></a>
 
+
 									<h4>Casual wear</h4>
 									<h5>$250.00</h5>
 								</div>
 							<div class="clearfix"></div>
+
 							</div>
 						</div>
 						<div class="tab-1 resp-tab-content">
@@ -169,8 +180,10 @@
 							<div class="top-products-set2">
 								<div class="col-md-3 top-product-grids tp1 animated wow slideInUp" data-wow-delay=".5s">
 									<a href="single.html"><div class="product-img">
+
 										<img src="/img/hp9.jpg" alt="" />
 										<div class="p-mask">
+
 
 												<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
 											</form>
@@ -186,8 +199,10 @@
 								</div>
 
 
+
 								<div class="clearfix"></div>
 							</div>
+
 
 								<div class="clearfix"></div>
 							</div>
@@ -218,8 +233,10 @@
 						<i class="fa fa-user " aria-hidden="true"></i>
 					</div>
 					<div class="col-md-10 ftext">
+
 						<h4>1.저작권에서 자유롭다.</h4>
 						<p>저작권 걱정 없이 사용 가능한 이미지만 모았습니다.</p>
+
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -228,8 +245,11 @@
 						<i class="fa fa-bus" aria-hidden="true"></i>
 					</div>
 					<div class="col-md-10 ftext">
+
 						<h4>2.다양한 고화질 이미지.</h4>
 						<p>어디서든 사용가능하며 멋진 표현의 이미지들입니다.</p>
+
+
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -238,8 +258,10 @@
 						<i class="fa fa-money" aria-hidden="true"></i>
 					</div>
 					<div class="col-md-10 ftext">
+
 						<h4>3.합리적인 가격</h4>
 						<p>부담없이 구매해서 사용해보세요.</p>
+
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -250,21 +272,29 @@
 						<div class="wmuSliderWrapper">
 							<article style="position: absolute; width: 100%; opacity: 0;">
 								<div class="banner-wrap">
+
 									<img src="/img/c1.png" alt=" " class="img-responsive" />
+
 									<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
 									<h4># 남아연</h4>
 								</div>
 							</article>
 							<article style="position: absolute; width: 100%; opacity: 0;">
 								<div class="banner-wrap">
+
 									<img src="/img/c2.png" alt=" " class="img-responsive" />
+
+									<img src="/images/c2.png" alt=" " class="img-responsive" />
+
 									<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
 									<h4># 박용성</h4>
 								</div>
 							</article>
 							<article style="position: absolute; width: 100%; opacity: 0;">
 								<div class="banner-wrap">
+
 									<img src="/img/c3.png" alt=" " class="img-responsive" />
+
 									<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed, sagittis id nisl. Pellentesque celerisque  eget ullamcorper vehicula. </p>
 									<h4># 이승재</h4>
 								</div>
@@ -289,6 +319,7 @@
 			<div class="sliderfig">
 				<ul id="flexiselDemo1">
 					<li>
+
 						<img src="/img/4.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
@@ -302,6 +333,7 @@
 					</li>
 					<li>
 						<img src="/img/46.jpg" alt=" " class="img-responsive" />
+
 					</li>
 				</ul>
 			</div>

@@ -1,9 +1,9 @@
 package com.shop.repository;
 
-import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.shop.constant.ItemCategory;
 import com.shop.constant.ItemSellStatus;
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.MainItemDto;
@@ -17,6 +17,9 @@ import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityManager;
+
+import javax.validation.constraints.Null;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -90,10 +93,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
     }
 
+    QItem item = QItem.item;
+    QItemImg itemImg = QItemImg.itemImg;
     @Override
-    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-        QItem item = QItem.item;
-        QItemImg itemImg = QItemImg.itemImg;
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable, String menuCategory) {
+
+
 
         List<MainItemDto> content = queryFactory
                 .select(
@@ -107,11 +112,17 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 .from(itemImg)
                 .join(itemImg.item, item)
                 .where(itemImg.repimgYn.eq("Y"))
-                .where(itemNmLike(itemSearchDto.getSearchQuery()))
+                .where(
+                        itemNmLike(itemSearchDto.getSearchQuery()),
+                        eqCategory(menuCategory)
+                        )
+//                .where(item.category.eq(itemCategory))
                 .orderBy(item.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+
+
 
         long total = queryFactory
                 .select(Wildcard.count)
@@ -123,6 +134,25 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 ;
 
         return new PageImpl<>(content, pageable, total);
+    }
+
+    private BooleanExpression eqCategory(String menuCategory){
+        ItemCategory itemCategory = ItemCategory.ICON;
+        switch(menuCategory) {
+            case "ICON" :
+                itemCategory = ItemCategory.ICON;
+                break;
+            case "PHOTO" :
+                itemCategory = ItemCategory.PHOTO;
+                break;
+            case "ILLUST" :
+                itemCategory = ItemCategory.ILLUST;
+                break;
+        }
+        if(StringUtils.isEmpty(menuCategory)){
+            return null;
+        }
+        return item.category.eq(itemCategory);
     }
 
 }

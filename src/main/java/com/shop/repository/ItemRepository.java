@@ -1,5 +1,7 @@
 package com.shop.repository;
 
+import com.shop.constant.ItemCategory;
+import com.shop.dto.ItemDto;
 import com.shop.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -21,6 +23,8 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
 
     List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
 
+    List<ItemDto> findByCategory(String category);
+
     @Query("select i from Item i where i.itemDetail like " +
             "%:itemDetail% order by i.price desc")
     List<Item> findByItemDetail(@Param("itemDetail") String itemDetail);
@@ -28,5 +32,8 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
     @Query(value="select * from item i where i.item_detail like " +
             "%:itemDetail% order by i.price desc", nativeQuery = true)
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
+
+
+
 
 }

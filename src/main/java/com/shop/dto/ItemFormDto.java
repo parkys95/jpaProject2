@@ -1,5 +1,6 @@
 package com.shop.dto;
 
+import com.shop.constant.ItemCategory;
 import com.shop.constant.ItemSellStatus;
 import com.shop.entity.Item;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class ItemFormDto {
 
     private Long id;
 
+
     @NotBlank(message = "상품명은 필수 입력 값입니다.")
     private String itemNm;
 
@@ -29,6 +31,8 @@ public class ItemFormDto {
     private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
+
+    private ItemCategory category;
 
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
 

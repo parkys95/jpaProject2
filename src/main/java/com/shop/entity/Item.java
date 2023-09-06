@@ -1,6 +1,8 @@
 package com.shop.entity;
 
+import com.shop.constant.ItemCategory;
 import com.shop.constant.ItemSellStatus;
+import jdk.jfr.Category;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,6 +25,9 @@ public class Item extends BaseEntity {
 
     @Column(nullable = false, length = 50)
     private String itemNm; //상품명
+
+    @Enumerated(EnumType.STRING)
+    private ItemCategory category;    //카테고리
 
     @Column(name="price", nullable = false)
     private int price; //가격

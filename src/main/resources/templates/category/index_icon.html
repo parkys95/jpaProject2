@@ -7,31 +7,31 @@
 
 
 <div layout:fragment="content">
-	<script th:inline="javascript">
+<!--	<script th:inline="javascript">-->
 
-		$.ajax({
-			url: '/removeFile',
-			type: "POST",
-			data: {fileName: fileName},
-			dataType: "text",
-			beforeSend : function(xhr)
-			{   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-				xhr.setRequestHeader(header, token);
-			},
-			success: function(result){
-				console.log(result);
-				console.log(typeof result);
-				if (result === "true") {
-					console.log("result true==== : " + result);
-					targetDiv.remove();
-				}
-			},
-			error: function(jqXHR, textStatus, errorThrown){
-				console.log(textStatus);
-			}
-		});
+<!--		$.ajax({-->
+<!--			url: '/removeFile',-->
+<!--			type: "POST",-->
+<!--			data: {fileName: fileName},-->
+<!--			dataType: "text",-->
+<!--			beforeSend : function(xhr)-->
+<!--			{   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/-->
+<!--				xhr.setRequestHeader(header, token);-->
+<!--			},-->
+<!--			success: function(result){-->
+<!--				console.log(result);-->
+<!--				console.log(typeof result);-->
+<!--				if (result === "true") {-->
+<!--					console.log("result true==== : " + result);-->
+<!--					targetDiv.remove();-->
+<!--				}-->
+<!--			},-->
+<!--			error: function(jqXHR, textStatus, errorThrown){-->
+<!--				console.log(textStatus);-->
+<!--			}-->
+<!--		});-->
 
-	</script>
+<!--	</script>-->
 
 <!--	<div class="banner-bootom-w3-agileits">-->
 
@@ -58,7 +58,7 @@
 <!--	</div>-->
 </div>
 <br>
-	<div class="banner-bootom-w3-agileits" >
+	<div class="banner-bootom-w3-agileits2" >
 
 		<div id = "resultContainer" class="gallery">
 			<div  class="row" >

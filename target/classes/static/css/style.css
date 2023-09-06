@@ -75,7 +75,7 @@ img {
 }
 .logo-w3 img,.footer img {
     width: 7%;
-    position: absolute;
+
     top: 0;
     left: -28px;
 }

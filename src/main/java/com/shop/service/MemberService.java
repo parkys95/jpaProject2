@@ -83,4 +83,17 @@ public class MemberService implements UserDetailsService {
         memberRepository.save(member);
     }
 
+    @Transactional
+    public void deleteMember(String loginId) {
+        // loginId를 사용하여 회원을 조회합니다.
+        Member member = memberRepository.findByEmail(loginId);
+
+        if (member == null) {
+            throw new UsernameNotFoundException("회원을 찾을 수 없습니다.");
+        }
+
+        // 회원을 삭제합니다.
+        memberRepository.delete(member);
+    }
+
 }

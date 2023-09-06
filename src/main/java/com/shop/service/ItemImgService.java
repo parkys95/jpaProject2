@@ -3,6 +3,7 @@ package com.shop.service;
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import javax.persistence.EntityNotFoundException;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Log4j2
 public class ItemImgService {
 
     @Value("${itemImgLocation}")
@@ -33,7 +35,7 @@ public class ItemImgService {
                     itemImgFile.getBytes());
             imgUrl = "/images/item/" + imgName;
         }
-
+        log.info("itemImg.getId()==="+itemImg.getId());
         //상품 이미지 정보 저장
         itemImg.updateItemImg(oriImgName, imgName, imgUrl);
         itemImgRepository.save(itemImg);

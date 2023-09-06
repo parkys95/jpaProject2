@@ -15,8 +15,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    MemberService memberService;
+//    @Autowired
+//    MemberService memberService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -34,10 +34,13 @@ public class SecurityConfig {
         http.authorizeRequests()
 
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**").permitAll()
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**", "/sendEmail/**").permitAll()
 
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
+                .and()
+                .csrf().ignoringAntMatchers("/mail/**")
+                       .ignoringAntMatchers("/members/findId")
         ;
 
         http.exceptionHandling()

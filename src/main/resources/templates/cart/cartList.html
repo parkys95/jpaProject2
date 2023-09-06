@@ -50,6 +50,19 @@
             getOrderTotalPrice();
         }
 
+        function updateOrderTotalPrice() {
+            var orderTotalPrice = 0;
+            $("input[name=cartChkBox]:checked").each(function() {
+                var cartItemId = $(this).val();
+                var price = $("#price_" + cartItemId).data("price");
+                var count = $("#count_" + cartItemId).val();
+                orderTotalPrice += price * count;
+            });
+
+            $("#orderTotalPrice").html(orderTotalPrice + '원');
+        }
+
+
         function updateCartItemCount(cartItemId, count){
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
@@ -197,6 +210,7 @@
     <h2 class="mb-4">
         장바구니 목록
     </h2>
+    <br>
 
     <div>
 
@@ -206,7 +220,6 @@
                 <col width="70%"/>
                 <col width="15%"/>
             </colgroup>
-            <thead>
             <tr class="text-center">
                 <td>
                     <input type="checkbox" id="checkall" onclick="checkAll()"> 전체선택
@@ -214,11 +227,10 @@
                 <td>상품정보</td>
                 <td>상품금액</td>
             </tr>
-            </thead>
             <tbody>
-            <tr th:each="cartItem : ${cartItems}">
+            <tr th:each="cartItem : ${cartItems}" style="box-sizing: border-box; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
                 <td class="text-center align-middle">
-                    <input type="checkbox" name="cartChkBox" th:value="${cartItem.cartItemId}">
+                    <input type="checkbox" name="cartChkBox" th:value="${cartItem.cartItemId}" onchange="updateOrderTotalPrice()">
                 </td>
                 <td class="d-flex">
                     <div class="repImgDiv align-self-center">
@@ -251,11 +263,11 @@
             </tbody>
         </table>
 
-        <h2 class="text-center">
+        <h3 class="text-right">
             총 주문 금액 : <span id="orderTotalPrice" class="text-danger">0원</span>
-        </h2>
+        </h3>
 
-        <div class="text-center mt-3">
+        <div class="text-right mt-3">
             <button type="button" class="btn btn-primary btn-lg" onclick="orders()">주문하기</button>
         </div>
 

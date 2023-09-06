@@ -3218,8 +3218,9 @@ p.w3-agile{
 .gallery {
     justify-content: center;
     align-content: center;
-    margin: 20px;
 
+    background-color: black;
+    padding: 20px;
 }
 .row {
     position: relative;
@@ -3242,6 +3243,7 @@ p.w3-agile{
     border-radius: 15px;
     height:150px;
     object-fit:cover;
+    background-color: white;
 }
 /*서치 부분 ys*/
 .search-mode {
@@ -3282,7 +3284,7 @@ button{
 #search2 img {
     position: absolute;
     width: 47px;
-    top: 8px;
+    top: 9px;
     right: 40px;
     margin: 0;
     filter: invert(61%) sepia(92%) saturate(489%) hue-rotate(102deg) brightness(94%) contrast(101%)
@@ -3291,6 +3293,8 @@ button{
 .searchbox{
     height: 120px;
     width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-size: cover;
     background: url("../img/searchbox2.jpg")  center ;
     background-color: black;
@@ -3301,15 +3305,17 @@ button{
 }
 
 .hover:hover{
-    transition:transform 0.5s easy-in-out;
-    transition:opacity 200ms linear 100ms, left 200ms 200ms;
+
+
     border: 8px solid #00e58b;
+    transition-timimg-function: ease;
+    transition: 0.1s;
 }
 
 /* 마우스 한번클릭후 */
 .hover:visited{
-    transition:transform 0.5s easy-in-out;
-    transition:opacity 200ms linear 100ms, left 200ms 200ms;
+    transition-timimg-function: ease;
+    transition: 0.1s;
     border: 8px solid #00e58b;
 }
 #banner0{
@@ -3346,4 +3352,60 @@ button{
     font-weight: 600;
     color: white;
     opacity: 85%;
+}
+#header{
+    background-color: #151521;
+    height: 60px;
+}
+.menu{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    opacity: 88%;
+}
+.menu:hover{
+    background-color: rgba(0, 229, 139, 0.36);
+    border-radius: 40px;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: larger;
+    transition-timimg-function: ease;
+    transition: 0.5s;
+}
+#menubar{
+    position: absolute;
+    text-align:center;
+    right: 50%;
+    top: 4px;
+}
+.logo{
+    top: 1px;
+}
+
+.loginhead{
+    width: 80px;
+    text-align: center;
+    font-family: 'inter Sans', sans-serif;
+
+}
+.loginbox{
+    background-color: white;
+    opacity: 80%;
+    padding: 5px;
+    border-radius: 40px;
+    font-weight: 400;
+    color: white;
+    right: 10px;
+}
+.loginbox:hover{
+    background-color: rgba(0, 229, 139, 0.72);
+    color: white !important;
+    font-weight: bold !important;
+    transition-timimg-function: ease;
+    transition: 0.5s;
+}
+.jang{
+    margin-right: 20px;
+
 }

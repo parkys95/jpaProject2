@@ -47,10 +47,21 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             email = getGoogleEmail(paramMap);
         } else if(clientName.equals("naver")) {
             email = getNaverEmail(paramMap);
+        } else if(clientName.equals("kakao")) {
+            email = getKakaoEmail(paramMap);
         }
         log.info("email: " + email);
 
         return generateDTO(email, paramMap);
+    }
+
+    private String getGoogleEmail(Map<String, Object> paramMap) {
+        log.info("Google-------------------");
+
+        String email = (String) paramMap.get("email");
+        log.info("email : " + email);
+
+        return email;
     }
 
     private String getNaverEmail(Map<String, Object> paramMap) {
@@ -63,8 +74,8 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         return email;
     }
 
-    private String getGoogleEmail(Map<String, Object> paramMap) {
-        log.info("Google-------------------");
+    private String getKakaoEmail(Map<String, Object> paramMap) {
+        log.info("kakao-------------------");
 
         String email = (String) paramMap.get("email");
         log.info("email : " + email);

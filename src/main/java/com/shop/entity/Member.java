@@ -2,19 +2,21 @@ package com.shop.entity;
 
 import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.shop.repository.MemberRepository;
+import com.shop.service.MailService;
+import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="member")
 @Getter @Setter
 @ToString
 public class Member extends BaseEntity {
-
     @Id
     @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,10 +45,32 @@ public class Member extends BaseEntity {
         member.setAddress(memberFormDto.getAddress());
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
-        member.setRole(Role.ADMIN);
+        member.setRole(Role.USER);
         member.setSocial(false);    // false - 일반 회원 / true - social 로그인 회원
 
         return member;
     }
+
+    public void updatePassword(String encodedPassword) {
+        try {
+            setPassword(encodedPassword); // 새로운 암호로 업데이트
+        } catch (Exception e) {
+            // 예외 처리
+            e.printStackTrace(); // 혹은 로깅
+        }
+    }
+
+
+    /**
+     * 회원수정 메소드
+     */
+//    public void updateUsername(String name) {
+//        this.name = name;
+//    }
+//
+//    public void updateAddress(String address) {
+//        this.address = address;
+//    }
+
 
 }

@@ -10,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.Optional;
 
@@ -23,8 +25,10 @@ public class IndexController {
     @GetMapping(value = "/index")
     public String index(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 30);
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 45);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable,"");
+
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
@@ -32,6 +36,7 @@ public class IndexController {
 
         return "index";
     }
+
 
     @GetMapping(value = "/icon/{category}")
     public String icon(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model, @PathVariable("category") String catrgory){
@@ -71,6 +76,7 @@ public class IndexController {
 
         return "/category/index_photo";
     }
+
 
 
 

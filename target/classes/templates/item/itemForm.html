@@ -115,7 +115,13 @@
             <input type="number" th:field="*{price}" class="form-control" placeholder="상품의 가격을 입력해주세요">
         </div>
         <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError">Incorrect data</p>
-
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">해쉬태그</span>
+            </div>
+            <input type="text" th:field="*{hashtag}" class="form-control" placeholder="상품의 해쉬태그를 입력해주세요">
+        </div>
+<p th:if="${#fields.hasErrors('hashtag')}" th:errors="*{hashtag}" class="fieldError">Incorrect data</p>
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">재고</span>

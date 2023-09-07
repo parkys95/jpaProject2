@@ -14,7 +14,7 @@ public class ItemDto {
 
     private ItemCategory category;
 
-
+    private String hashtag;
 
     private String itemNm;
 

@@ -23,6 +23,7 @@
 
         List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
 
+
         List<ItemDto> findByCategory(String category);
 
         @Query("select i from Item i where i.itemDetail like " +

@@ -28,8 +28,8 @@ public class Item extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ItemCategory category;    //카테고리
-
-
+    @Column(name="hashtag")
+    private String hashtag;
 
     @Column(name="price", nullable = false)
     private int price; //가격
@@ -44,13 +44,14 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //상품 판매 상태
 
+
     public void updateItem(ItemFormDto itemFormDto){
         this.itemNm = itemFormDto.getItemNm();
         this.price = itemFormDto.getPrice();
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
-
+        this.hashtag = itemFormDto.getHashtag();
     }
 
     public void removeStock(int stockNumber){

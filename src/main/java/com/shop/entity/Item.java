@@ -29,6 +29,9 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemCategory category;    //카테고리
 
+    @Column(name="hashtag")
+    private String hashtag;
+
     @Column(name="price", nullable = false)
     private int price; //가격
 

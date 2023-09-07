@@ -11,9 +11,9 @@
 
 <!--	<div class="banner-bootom-w3-agileits" id="banner">-->
 
-
+<div class="boody">
 <!--	</div>-->
-	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+	<div id="carouselExampleControls" class="carousel slide boody" data-ride="carousel" >
 		<div class="carousel-inner">
 			<div class="carousel-item active" id="banner0">
 				<div class="banner-name">
@@ -57,22 +57,6 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-
-<!--<div style="background-color: grey">-->
-<!--	<div class="col-md-4 search" >-->
-<!--		<form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">-->
-<!--			<input type="search" name="searchQuery" placeholder="Search for a Product..." required="">-->
-<!--			<button type="submit" class="btn btn-default search" aria-label="Left Align">-->
-<!--				<i class="fa fa-search" aria-hidden="true"> </i>-->
-<!--			</button>-->
-<!--		</form>-->
-<!--	</div>-->
-<!--	<input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">-->
-<!--	<div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">-->
-<!--		<p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>-->
-<!--	</div>-->
-<!--</div>-->
-<!--		<div class="searchbox"  th:style="'background-image:url(' + @{../images/a1.jpg} + ')'">-->
 	<div class="searchbox" >
 		<form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
 			<div class="search-mode">
@@ -206,6 +190,10 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
 		<div class="grey" style="background-color: lightgrey">
 			<div class="fandt" style="background-color: grey">
 				<div class="meritbox">
@@ -236,62 +224,62 @@
 						</div>
 					</div>
 					<div class="col-md-6 testimonials">
-						<div class="test-inner">
-							<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
-								<div >
-									<article >
-										<div class="banner-wrap">
-											<a href="/illust/ILLUST"><img src="banner/banner.jpg" class="img-responsive" alt=""></a>
-											<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem
-												sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
-											<h4># 남아연</h4>
-										</div>
-									</article>
-									<article style="position: absolute; width: 100%; opacity: 0;">
-										<div class="banner-wrap">
-											<a href="/icon/ICON"><img src="banner/banner.jpg" class="img-responsive" alt=""></a>
-											<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan
-												risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
-											<h4># 박용성</h4>
-										</div>
-									</article>
-									<article style="position: absolute; width: 100%; opacity: 0;">
-										<div class="banner-wrap">
-											<a href="/photo/PHOTO"><img src="banner/banner.jpg" class="img-responsive" alt=""></a>
-											<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed,
-												sagittis id nisl. Pellentesque celerisque eget ullamcorper vehicula. </p>
-											<h4># 이승재</h4>
-										</div>
-									</article>
-								</div>
+						<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
+							<div class="greyimg">
+								<article>
+									<div class="banner-wrap">
+										<a href="/illust/ILLUST"><img src="banner/banner.jpg" class="img-responsive" alt=""
+																	  style="height: 240px !important;"></a>
+										<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem
+											sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
+										<h4># 남아연</h4>
+									</div>
+								</article>
+								<article style="position: absolute; width: 100%; opacity: 0;">
+									<div class="banner-wrap">
+										<a href="/icon/ICON"><img src="banner/banner.jpg" class="img-responsive" alt=""
+																  style="height: 240px !important;"></a>
+										<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan
+											risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
+										<h4># 박용성</h4>
+									</div>
+								</article>
+								<article style="position: absolute; width: 100%; opacity: 0;">
+									<div class="banner-wrap">
+										<a href="/photo/PHOTO"><img src="banner/banner.jpg" class="img-responsive" alt=""
+																	style="height: 240px !important;"></a>
+										<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed,
+											sagittis id nisl. Pellentesque celerisque eget ullamcorper vehicula. </p>
+										<h4># 이승재</h4>
+									</div>
+								</article>
 							</div>
 						</div>
+
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				<script src="/js/jquery.wmuSlider.js"></script>
-				<script>
-					$('.example1').wmuSlider();
-				</script>
+				<div class="slide">
+					<script src="/js/jquery.wmuSlider.js"></script>
+					<script>
+						$('.example1').wmuSlider();
+					</script>
+				</div>
 			</div>
 		</div>
-	</div>
-	<script src="/js/easyResponsiveTabs.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#horizontalTab').easyResponsiveTabs({
-				type: 'default', //Types: default, vertical, accordion
-				width: 'auto', //auto or any width like 600px
-				fit: true   // 100% fit in a container
+		<script src="/js/easyResponsiveTabs.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#horizontalTab').easyResponsiveTabs({
+					type: 'default', //Types: default, vertical, accordion
+					width: 'auto', //auto or any width like 600px
+					fit: true   // 100% fit in a container
+				});
 			});
-		});
-	</script>
-
-
-
-
-
+		</script>
+	</div>
 </div>
+
 
 <!-- cart-js -->
 <script src="/js/minicart.js"></script>
@@ -311,7 +299,7 @@
 		}
 	});
 </script>
-</div>
-<!-- //cart-js -->
 
+ //cart-js
+</div>
 </html>

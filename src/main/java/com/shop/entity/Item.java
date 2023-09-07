@@ -11,6 +11,8 @@ import javax.persistence.*;
 import com.shop.dto.ItemFormDto;
 import com.shop.exception.OutOfStockException;
 
+import java.util.List;
+
 @Entity
 @Table(name="item")
 @Getter
@@ -51,6 +53,14 @@ public class Item extends BaseEntity {
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+//        String str = "";
+//        for (int i = 0;i<itemFormDto.getHashtagList().size();i++){
+//            if(i == itemFormDto.getHashtagList().size()-1){
+//                str += itemFormDto.getHashtagList().get(i);
+//            }else if (i < itemFormDto.getHashtagList().size()){
+//                str += itemFormDto.getHashtagList().get(i) + ",";
+//            }
+//        }
         this.hashtag = itemFormDto.getHashtag();
     }
 

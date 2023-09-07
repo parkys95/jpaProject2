@@ -31,7 +31,78 @@
                 $(this).siblings(".custom-file-label").html(fileName);
             });
         }
+        $(function() {
+            $("#uploadBtn").on("click", function() {
+                upload();
+            });
+        });
 
+        function upload() {
+            let form = $("#uploadForm")[0];
+            let formData = new FormData(form);
+
+            //추가된 해시태그를 모두 FormData 객체에 저장하기
+            let hashtagList = document.getElementsByClassName("hashtag-value");
+            for(let i = 0; i < hashtagList.length; i++) {
+                formData.append("hashtagList[" + i + "]", hashtagList[i].innerText);
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: `/api/upload`,
+                data: formData,
+                contentType: false, //false 로 선언 시 content-type 헤더가 multipart/form-data로 전송되게 함
+                processData: false  //false로 선언 시 formData를 string으로 변환하지 않음
+            }).done(resp => {
+                console.log(resp);
+
+                location.href=`http://localhost:8080/user/${resp.data}`
+            }).fail(error => {
+                console.log(error);
+            });
+        }
+
+        // 해시 태그 추가, 삭제 로직
+        function addHashtag() {
+            let hashtag = $("#hashtagData").val();
+            let item;
+            if(hashtag.length > 0){
+                item = getHashtagItem(hashtag);
+                $("#hashList").append(item);
+                $("#addHashtag").val("");
+
+                //해시태그 리스트 저장
+                // let form = $("#uploadForm")[0];
+                // let formData = new FormData(form);
+                //추가된 해시태그를 모두 FormData 객체에 저장하기
+                let hashtagList = document.getElementsByClassName("hashtag-value");
+                let hashtagData = "";
+
+                for(let i = 0; i < hashtagList.length; i++) {
+                    if(i === hashtagList.length - 1) {
+                        hashtagData += hashtagList[i].innerText;
+                    } else if(i < hashtagList.length) {
+                        hashtagData += hashtagList[i].innerText + ",";
+                    }
+                }
+                $("#hashtag").val(hashtagData);
+            }
+        }
+
+        function removeHashtag(hashtag) {
+            document.getElementById(hashtag).remove();
+        }
+
+        function getHashtagItem(hashtag) {
+            let item =
+                `<div class="hashtag" id="${hashtag}">
+			<span class="hashtag-value">#${hashtag}</span>
+			<button type="button" onclick="removeHashtag('${hashtag}')">×</button>
+		        </div>`
+
+            return item;
+        }
     </script>
 
 </th:block>
@@ -68,14 +139,12 @@
 
 <div layout:fragment="content">
 
-    <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
-
+    <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}" id="uploadForm">
+        <input type="hidden"  th:field="*{hashtag}">
         <p class="h2">
             상품 등록
         </p>
-
         <input type="hidden" th:field="*{id}">
-
         <div class="form-group">
             <select th:field="*{itemSellStatus}" class="custom-select">
                 <option value="SELL">판매중</option>
@@ -92,7 +161,7 @@
         <p th:if="${#fields.hasErrors('itemNm')}" th:errors="*{itemNm}" class="fieldError">Incorrect data</p>
 
         <div class="input-group">
-            <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">
+<!--            <form role="form" method="post" enctype="multipart/form-data" th:object="${itemFormDto}">-->
 
                 <div class="input-group-prepend">
                     <span class="input-group-text">카테고리</span>
@@ -104,7 +173,7 @@
                         <option value="PHOTO">사진</option>
                     </select>
                 </div>
-            </form>
+<!--            </form>-->
         </div>
 
 
@@ -119,9 +188,15 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">해쉬태그</span>
             </div>
-            <input type="text" th:field="*{hashtag}" class="form-control" placeholder="상품의 해쉬태그를 입력해주세요">
+            <input type="text"  class="form-control" placeholder="상품의 해쉬태그를 입력해주세요" id="hashtagData" name="hashtagData">
+            <button type="button" class="cta blue" onclick="addHashtag()">추가</button>
+
+            <div class="hashList" id="hashList">
+            </div>
+
         </div>
-<p th:if="${#fields.hasErrors('hashtag')}" th:errors="*{hashtag}" class="fieldError">Incorrect data</p>
+
+
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">재고</span>
@@ -166,7 +241,7 @@
         </div>
 
         <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
-            <button th:formaction="@{/admin/item/new}" type="submit" class="btn btn-primary">저장</button>
+            <button th:formaction="@{'/admin/item/new'}" type="submit" class="btn btn-primary" >저장</button>
         </div>
         <div th:unless="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
             <button th:formaction="@{'/admin/item/' + ${itemFormDto.id} }" type="submit" class="btn btn-primary">수정</button>

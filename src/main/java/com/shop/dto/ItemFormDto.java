@@ -32,6 +32,8 @@ public class ItemFormDto {
 
     private String hashtag;
 
+    private List<String>  hashtagList = new ArrayList<>();
+
     private ItemSellStatus itemSellStatus;
 
     private ItemCategory category;
@@ -49,5 +51,7 @@ public class ItemFormDto {
     public static ItemFormDto of(Item item){
         return modelMapper.map(item,ItemFormDto.class);
     }
+
+
 
 }

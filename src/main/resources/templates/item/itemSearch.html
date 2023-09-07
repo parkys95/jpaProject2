@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}" >
+<div layout:fragment="content">
+
+    <div class="boody">
+        <div class="searchbox" >
+
+            <form class="form-inline my-2 my-lg-0" th:action="@{/search}" method="get">
+                <div class="search-mode">
+                    <label>
+                        <input type="text" placeholder="찾고 싶은 이미지를 검색해보세요!" class="hover">
+                    </label>
+                    <button type="submit" id="search2" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"  alt=""></button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="banner-bootom-w3-agileits" >
+
+            <div class="gallery">
+                <div class="row" >
+                    <th:block th:each="item, status: ${items.getContent()}">
+
+                        <a th:href="'/item/' +${item.id}" class="overscale">
+                            <figure>
+                                <img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >
+
+                                <figcaption th:text="${item.itemNm}" ></figcaption>
+                            </figure>
+                        </a>
+
+
+                    </th:block>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

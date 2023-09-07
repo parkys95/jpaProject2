@@ -274,7 +274,7 @@ button.w3view-cart:focus{
 
 
 /*--banner bottom--*/
-.top-products,.fandt,.top-brands,.newsletter,.footer,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
+.top-products,.top-brands,.newsletter,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
 	padding:50px 0;
     margin-top: -5rem;
 }
@@ -3260,9 +3260,28 @@ p.w3-agile{
 .overscale{
     overflow: hidden;
     border-radius: 20px;
-
-    border-radius: 20px;
     height: 150px;
+}
+
+figure figcaption{
+
+        width: 10%; height: 150px;
+        background-color: rgba(0,0,0,0.7);
+
+        position: absolute; /* 이미지와 겹치게 처리 */
+
+
+        color: #fff; text-align: center;
+        line-height: 200px;
+
+        opacity: 0; /* 처음엔 안보이고 */
+
+        transition: 0.3s;
+
+}
+.gallery a:hover figcaption, .gallery a:focus figcaption{
+    /* 마우스를 올리면 보이게 처리 */
+    opacity: 1;
 }
 .overscale:hover img{
     transform: scale(1.2);
@@ -3411,6 +3430,7 @@ button{
     transition-timimg-function: ease;
     transition: 0.5s;
 }
+
 #menubar{
     position: absolute;
     text-align:center;
@@ -3455,5 +3475,54 @@ button{
 .tab span{
     font-weight: bold;
 }
+.top-products{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.meritbox{
+    height: 300px;
+}
+.merit h2 {
+    font-family: 'inter Sans', sans-serif;
+    text-align: left;
+    font-weight: 600;
+    font-size: 50px;
+    color: white;
+}
+.fandt{
+    padding: 20px;
+}
+.meritmar{
+    margin-top: 30px;
+}
+.ftext h4{
+    color: #1e1e1e;
+}
+.ftext p{
+    color: #c0c0c0;
+}
+.testimonials{
+    height: 300px;
+}
+footer{
+    position: absolute;
+    padding: 0 !important;
+    bottom: 0;
+}
+.footer{
+    position: absolute;
+    padding: 0;
+    bottom: 0;
+}
+.footerbox{
+    width: 100%;
+    height: 100px;
+    background-color: #151521;
+    bottom: 0;
+}
+.grey{
+    margin-bottom: 100px;
+}
+.greyimg{
 
-
+}

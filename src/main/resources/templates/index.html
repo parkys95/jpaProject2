@@ -90,8 +90,13 @@
 				<th:block th:each="item, status: ${items.getContent()}">
 
 							<a th:href="'/item/' +${item.id}" class="overscale">
-								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" 	>
+								<figure>
+								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >
+
+								<figcaption th:text="${item.itemNm}" ></figcaption>
+								</figure>
 							</a>
+
 
 				</th:block>
 			</div>
@@ -201,6 +206,75 @@
 				</div>
 			</div>
 		</div>
+		<div class="grey" style="background-color: lightgrey">
+			<div class="fandt" style="background-color: grey">
+				<div class="meritbox">
+					<div class="col-md-6 features merit">
+						<h2>IMAGE FARM의 장점</h2>
+						<div class="meritmar">
+							<div class="support">
+								<div class="col-md-10 ftext">
+									<h4>1.저작권에서 자유롭다.</h4>
+									<p>저작권 걱정 없이 사용 가능한 이미지만 모았습니다.</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="shipping">
+								<div class="col-md-10 ftext">
+									<h4>2.다양한 고화질 이미지.</h4>
+									<p>어디서든 사용가능하며 멋진 표현의 이미지들입니다.</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="money-back">
+								<div class="col-md-10 ftext">
+									<h4>3.합리적인 가격</h4>
+									<p>부담없이 구매해서 사용해보세요.</p>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 testimonials">
+						<div class="test-inner">
+							<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
+								<div >
+									<article >
+										<div class="banner-wrap">
+											<a href="/illust/ILLUST"><img src="banner/banner.jpg" class="img-responsive" alt=""></a>
+											<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem
+												sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
+											<h4># 남아연</h4>
+										</div>
+									</article>
+									<article style="position: absolute; width: 100%; opacity: 0;">
+										<div class="banner-wrap">
+											<a href="/icon/ICON"><img src="banner/banner.jpg" class="img-responsive" alt=""></a>
+											<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan
+												risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
+											<h4># 박용성</h4>
+										</div>
+									</article>
+									<article style="position: absolute; width: 100%; opacity: 0;">
+										<div class="banner-wrap">
+											<a href="/photo/PHOTO"><img src="banner/banner.jpg" class="img-responsive" alt=""></a>
+											<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed,
+												sagittis id nisl. Pellentesque celerisque eget ullamcorper vehicula. </p>
+											<h4># 이승재</h4>
+										</div>
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<script src="/js/jquery.wmuSlider.js"></script>
+				<script>
+					$('.example1').wmuSlider();
+				</script>
+			</div>
+		</div>
 	</div>
 	<script src="/js/easyResponsiveTabs.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -214,148 +288,9 @@
 	</script>
 
 
-	<div class="fandt" style="background-color: grey">
-		<div class="container">
-			<div class="col-md-6 features">
-				<h3>Our Services</h3>
-				<div class="support">
-					<div class="col-md-2 ficon hvr-rectangle-out">
-						<i class="fa fa-user " aria-hidden="true"></i>
-					</div>
-					<div class="col-md-10 ftext">
-
-						<h4>1.저작권에서 자유롭다.</h4>
-						<p>저작권 걱정 없이 사용 가능한 이미지만 모았습니다.</p>
-
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="shipping">
-					<div class="col-md-2 ficon hvr-rectangle-out">
-						<i class="fa fa-bus" aria-hidden="true"></i>
-					</div>
-					<div class="col-md-10 ftext">
-
-						<h4>2.다양한 고화질 이미지.</h4>
-						<p>어디서든 사용가능하며 멋진 표현의 이미지들입니다.</p>
 
 
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="money-back">
-					<div class="col-md-2 ficon hvr-rectangle-out">
-						<i class="fa fa-money" aria-hidden="true"></i>
-					</div>
-					<div class="col-md-10 ftext">
 
-						<h4>3.합리적인 가격</h4>
-						<p>부담없이 구매해서 사용해보세요.</p>
-
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="col-md-6 testimonials">
-				<div class="test-inner">
-					<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
-						<div class="wmuSliderWrapper">
-							<article style="position: absolute; width: 100%; opacity: 0;">
-								<div class="banner-wrap">
-									<img src="/img/c1.png" alt=" " class="img-responsive" />
-
-									<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
-									<h4># 남아연</h4>
-								</div>
-							</article>
-							<article style="position: absolute; width: 100%; opacity: 0;">
-								<div class="banner-wrap">
-									<img src="/img/c2.png" alt=" " class="img-responsive" />
-
-									<img src="/images/c2.png" alt=" " class="img-responsive" />
-
-
-									<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
-									<h4># 박용성</h4>
-								</div>
-							</article>
-							<article style="position: absolute; width: 100%; opacity: 0;">
-								<div class="banner-wrap">
-
-									<img src="/img/c3.png" alt=" " class="img-responsive" />
-									<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed, sagittis id nisl. Pellentesque celerisque  eget ullamcorper vehicula. </p>
-									<h4># 이승재</h4>
-								</div>
-							</article>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<script src="/js/jquery.wmuSlider.js"></script>
-		<script>
-			$('.example1').wmuSlider();
-		</script>
-	</div>
-
-
-	<!-- top-brands -->
-	<div class="top-brands">
-		<div class="container">
-			<h3>Top Brands</h3>
-			<div class="sliderfig">
-				<ul id="flexiselDemo1">
-					<li>
-
-						<img src="/img/4.png" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="/img/5.png" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="/img/6.png" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="/img/7.png" alt=" " class="img-responsive" />
-					</li>
-					<li>
-						<img src="/img/46.jpg" alt=" " class="img-responsive" />
-
-					</li>
-				</ul>
-			</div>
-			<script type="text/javascript">
-				$(window).load(function() {
-					$("#flexiselDemo1").flexisel({
-						visibleItems: 4,
-						animationSpeed: 1000,
-						autoPlay: false,
-						autoPlaySpeed: 3000,
-						pauseOnHover: true,
-						enableResponsiveBreakpoints: true,
-						responsiveBreakpoints: {
-							portrait: {
-								changePoint:480,
-								visibleItems: 1
-							},
-							landscape: {
-								changePoint:640,
-								visibleItems:2
-							},
-							tablet: {
-								changePoint:768,
-								visibleItems: 3
-							}
-						}
-					});
-
-				});
-			</script>
-			<script type="text/javascript" src="/js/jquery.flexisel.js"></script>
-		</div>
-	</div>
-	<!-- //top-brands -->
 </div>
 
 <!-- cart-js -->

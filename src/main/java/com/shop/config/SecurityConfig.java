@@ -1,5 +1,7 @@
 package com.shop.config;
 
+import com.shop.handler.CustomFormLoginSuccessHandler;
+import com.shop.handler.CustomSocialLoginSuccessHandler;
 import com.shop.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -31,11 +34,22 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/index")
         ;
 
-        http.authorizeRequests()
+        http.oauth2Login()
+                .loginPage("/members/login")
+                .defaultSuccessUrl("/index")
+//                .successHandler(authenticationSuccessHandler())
+                .failureUrl("/members/login/error")
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
+                .logoutSuccessUrl("/index")
+        ;
 
+        http.authorizeRequests()
 
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**" ).permitAll()
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**", "/sendEmail/**","/photo/**","/icon/**","/illust/**").permitAll()
+
 
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
@@ -49,6 +63,16 @@ public class SecurityConfig {
         ;
 
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationFormLoginSuccessHandler() {
+        return new CustomFormLoginSuccessHandler();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new CustomSocialLoginSuccessHandler(passwordEncoder());
     }
 
     @Bean

@@ -26,6 +26,9 @@
 
         List<ItemDto> findByCategory(String category);
 
+        List<Item> findByHashtag(String hashtag);
+
+
         @Query("select i from Item i where i.itemDetail like " +
                 "%:itemDetail% order by i.price desc")
         List<Item> findByItemDetail(@Param("itemDetail") String itemDetail);

@@ -63,6 +63,7 @@
         }
 
     </style>
+
 </th:block>
 
 <div layout:fragment="content">
@@ -103,7 +104,8 @@
                         <option value="PHOTO">사진</option>
                     </select>
                 </div>
-          </div>
+            </form>
+        </div>
 
 
         <div class="input-group">
@@ -122,6 +124,14 @@
         </div>
         <p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}" class="fieldError">Incorrect data</p>
 
+<!--        <div class="input-group">-->
+<!--                <div class="input-group-prepend">-->
+<!--                    <span class="input-group-text">해쉬태그</span>-->
+<!--                </div>-->
+<!--                <input type="text" th:field="*{hashtag}" class="form-control" placeholder="상품의 해쉬태그를 입력해주세요">-->
+
+<!--        </div>-->
+<!--        <p th:if="${#fields.hasErrors('hashtag')}" th:errors="*{hashtag}" class="fieldError">Incorrect data</p>-->
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">상품 상세 내용</span>

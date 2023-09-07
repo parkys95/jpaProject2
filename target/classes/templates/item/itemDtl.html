@@ -52,7 +52,7 @@
                 cache   : false,
                 success  : function(result, status){
                     alert("주문이 완료 되었습니다.");
-                    location.href='/';
+                    location.href='/index';
                 },
                 error : function(jqXHR, status, error){
 
@@ -92,7 +92,7 @@
                 cache   : false,
                 success  : function(result, status){
                     alert("상품을 장바구니에 담았습니다.");
-                    location.href='/';
+                    location.href='/index';
                 },
                 error : function(jqXHR, status, error){
 
@@ -192,14 +192,15 @@
                             </div>
                             <p class="single-price-text" th:text="${item.itemDetail}"></p>
                             <form action="#" method="post">
+                                <input type="hidden" name="count" id="count" class="form-control" value="1" min="1">
                                 <input type="hidden" name="cmd" value="_cart" />
                                 <input type="hidden" name="add" value="1" />
                                 <input type="hidden" name="w3ls1_item" value="Handbag" />
                                 <input type="hidden" name="amount" value="540.00" />
-                                <button type="submit" class="w3ls-cart" ><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                                <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                             </form>
                             <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
-                            <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> 다운로드 하기</button>
+                            <button class="w3ls-cart w3ls-cart-like" onclick="order()"><i class="fa fa-heart-o" aria-hidden="true"></i> 다운로드 하기</button>
                         </div>
                         <div class="clearfix"> </div>
                     </div>

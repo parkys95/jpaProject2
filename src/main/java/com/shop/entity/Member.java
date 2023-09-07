@@ -4,14 +4,15 @@ import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
 import com.shop.repository.MemberRepository;
 import com.shop.service.MailService;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="member")
 @Getter @Setter
 @ToString

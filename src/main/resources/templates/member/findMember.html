@@ -37,7 +37,11 @@
     </script>
 </th:block>
 
+<<<<<<< HEAD
 <div layout:fragment="content" class="login" id="logins">
+=======
+<div id="logins" layout:fragment="content">
+>>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
 
     <div class="main-agileits">
             <div class="form-w3agile">
@@ -47,11 +51,17 @@
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                         <input type="email" id="email" name="memberEmail" class="form-control"
                                placeholder="회원가입시 입력했던 이메일을 입력하세요." required>
+<<<<<<< HEAD
                             <br>
                         <p>입력한 이메일로 임시 비밀번호가 전송됩니다!</p>
                     <div class="clearfix"></div>
                 </div>
                     <br><br>
+=======
+                        <p>입력한 이메일로 임시 비밀번호가 전송됩니다!</p>
+                    <div class="clearfix"></div>
+                </div>
+>>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
                     <input type="submit" value="비밀번호 발송">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 </form>

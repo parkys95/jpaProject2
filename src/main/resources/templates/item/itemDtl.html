@@ -200,7 +200,16 @@
                                 <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                             </form>
                             <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+<<<<<<< HEAD
                             <button class="w3ls-cart w3ls-cart-like" onclick="order()"><i class="fa fa-heart-o" aria-hidden="true"></i> 다운로드 하기</button>
+=======
+                            <button class="w3ls-cart w3ls-cart-like" onclick="order()">
+                                <a th:href="@{'/download/' + ${item.itemImgDtoList[0].id}}" download="image.jpg">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                다운로드 하기
+                                </a>
+                            </button>
+>>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
                         </div>
                         <div class="clearfix"> </div>
                     </div>

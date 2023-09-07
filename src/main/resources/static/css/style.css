@@ -1749,7 +1749,11 @@ p.single-price-text {
     padding: 3em;
     position: absolute;
     top: 25%;
+<<<<<<< HEAD
     left: 38%;
+=======
+    left: 33.33%;
+>>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
 }
 .key {
     background: #fff;

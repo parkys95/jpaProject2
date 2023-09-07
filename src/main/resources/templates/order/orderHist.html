@@ -135,9 +135,15 @@
                     <span th:text="${orderItem.itemNm}" class="fs24 font-weight-bold"></span>
                     <div class="fs18 font-weight-light">
                         <span th:text="${orderItem.orderPrice} +'원'"></span>
+<<<<<<< HEAD
 <!--                        <span th:text="${orderItem.count} +'개'"></span>-->
 <!--                        <br>-->
 <!--                        <span th:text="${orderItem.count}*${orderItem.orderPrice} + '원'"></span>-->
+=======
+                        <span th:text="${orderItem.count} +'개'"></span>
+                        <br>
+                        <span th:text="${orderItem.count}*${orderItem.orderPrice} + '원'"></span>
+>>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
                     </div>
                 </div>
             </div>
@@ -154,8 +160,8 @@
                 </a>
             </li>
 
-            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
-                <a th:href="@{'/orders/' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq 'page-1'}?'active':''">
+                <a th:href="@{'/orders/' + ${'page-1'}}" th:inline="text" class="page-link">[[${page}]]</a>
             </li>
 
             <li class="page-item" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">

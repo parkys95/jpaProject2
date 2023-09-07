@@ -2,11 +2,17 @@ package com.shop.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
+
 import javax.persistence.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 @Entity
 @Table(name="item_img")
 @Getter @Setter
+@Log4j2
 public class ItemImg extends BaseEntity{
 
     @Id
@@ -32,4 +38,17 @@ public class ItemImg extends BaseEntity{
         this.imgUrl = imgUrl;
     }
 
+
+    public byte[] getFileData(String imgName) {
+
+//        File imageFile = new File("file:///C:/shop/item/"  + imgName);
+        File imageFile = new File("C:/shop/item/"  + imgName);
+
+        try{
+            return Files.readAllBytes((imageFile.toPath()));
+        }catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

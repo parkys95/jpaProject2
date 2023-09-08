@@ -41,15 +41,18 @@ public class ItemService {
 
         //이미지 등록
         for(int i=0;i<itemImgFileList.size();i++){
-            ItemImg itemImg = new ItemImg();
-            itemImg.setItem(item);
+            if(itemImgFileList.get(i).getOriginalFilename() != null && !itemImgFileList.get(i).getOriginalFilename().isEmpty()){
+                ItemImg itemImg = new ItemImg();
+                itemImg.setItem(item);
 
-            if(i == 0)
-                itemImg.setRepimgYn("Y");
-            else
-                itemImg.setRepimgYn("N");
+                if(i == 0)
+                    itemImg.setRepimgYn("Y");
+                else
+                    itemImg.setRepimgYn("N");
 
-            itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
+                itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
+            }
+
         }
 
         return item.getId();
@@ -95,6 +98,11 @@ public class ItemService {
     @Transactional(readOnly = true)
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable, String category){
         return itemRepository.getMainItemPage(itemSearchDto, pageable, category);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPageOr(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getMainItemPageOr(itemSearchDto, pageable);
     }
 
 

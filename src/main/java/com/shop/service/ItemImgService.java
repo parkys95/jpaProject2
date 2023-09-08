@@ -24,7 +24,7 @@ public class ItemImgService {
 
     private final FileService fileService;
 
-    public void saveItemImg(ItemImg itemImg, MultipartFile itemImgFile) throws Exception{
+    public void saveItemImg(ItemImg itemImg, MultipartFile itemImgFile)  throws Exception{
         String oriImgName = itemImgFile.getOriginalFilename();
         String imgName = "";
         String imgUrl = "";

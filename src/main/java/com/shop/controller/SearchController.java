@@ -25,7 +25,13 @@ public class SearchController {
     public String search(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 30);
-        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable, "");
+        Page<MainItemDto> items;
+        if(itemSearchDto.getSearchBy()==null || itemSearchDto.getSearchBy().isEmpty()){
+            items = itemService.getMainItemPageOr(itemSearchDto, pageable);
+        }else{
+            items = itemService.getMainItemPage(itemSearchDto, pageable, "");
+        }
+
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);

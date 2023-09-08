@@ -123,7 +123,7 @@ public class MemberController {
         return "member/delete"; // 회원 탈퇴 페이지로 리턴
     }
        // 회원 탈퇴 처리 (POST)
-    
+
     @PostMapping("/delete")
     public String deleteMember(Model model) {
         // 현재 인증된 사용자 정보를 가져옵니다.

@@ -1,5 +1,7 @@
 package com.shop.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -109,6 +111,22 @@ public class ItemController {
 
         return "item/itemMng";
     }
+
+//    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+//    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String loggedInUsername = authentication.getName();
+//
+//        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+//        Page<Item> items = itemService.getItemsCreatedByUser(loggedInUsername, itemSearchDto, pageable);
+//
+//        model.addAttribute("items", items);
+//        model.addAttribute("itemSearchDto", itemSearchDto);
+//        model.addAttribute("maxPage", 5);
+//
+//        return "item/itemMng";
+//    }
+
 
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){

@@ -78,14 +78,10 @@ public class MemberService implements UserDetailsService {
         member.setName(memberUpdateFormDto.getName());
         member.setAddress(memberUpdateFormDto.getAddress());
         member.setRole(memberUpdateFormDto.getRole());
-
-
-
+        member.setSocial(memberUpdateFormDto.isSocial());
         // 회원 정보를 저장합니다.
         memberRepository.save(member);
     }
-
-
     @Transactional
     public void deleteMember(String loginId) {
         // loginId를 사용하여 회원을 조회합니다.
@@ -98,7 +94,5 @@ public class MemberService implements UserDetailsService {
         // 회원을 삭제합니다.
         memberRepository.delete(member);
     }
-
-
 
 }

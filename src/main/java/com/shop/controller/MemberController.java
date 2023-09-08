@@ -8,18 +8,14 @@ import com.shop.repository.MemberRepository;
 import com.shop.service.MailService;
 import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
-
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;

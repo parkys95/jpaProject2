@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 
-    <title>Fashion Club an Ecommerce Online Shopping Category Flat Bootstrap responsive Website Template | Home ::
-        w3layouts</title>
+    <title>ImageForm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -44,25 +42,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <img src="/banner/IMAGE FARM (1).svg" alt=" " style="width: 200px"/></a>
         </div>
         <div>
-
-
             <nav class="navbar navbar-expand-lg" >
 
                 <div class="container-fluid" id="menubar">
                     <a class="navbar-brand menu" href="/photo/PHOTO">PICTURE</a>
                     <a class="navbar-brand menu" href="/illust/ILLUST">ILLUSTRATION</a>
                     <a class="navbar-brand menu" href="/icon/ICON">ICON</a>
-
                 </div>
                 <ul class="navbar-nav ml-auto jang">
+                    <li class="loginhead" sec:authorize="hasAnyAuthority('ROLE_SUPERVISOR')">
+                        <a class="nav-link" href="/supervisor">관리자</a>
+                    </li>
                     <li class="loginhead" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                         <a class="nav-link" href="/admin/item/new">상품 등록</a>
                     </li>
                     <li class="loginhead" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                         <a class="nav-link" href="/admin/items">상품 관리</a>
                     </li>
-
-
                     <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,8 +73,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/members/myPage">내 정보</a></li>
                         </ul>
                     </li>
-
-
                 </ul>
                 <script>
                     $(document).ready(function () {
@@ -95,7 +89,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     });
                 </script>
                 <div>
-                    <div class="loginbutton" >
+
+                    <div class="loginbutton">
+
                         <div class=" loginhead loginbox" sec:authorize="isAnonymous()" style="margin-top: 10px">
                             <a href="/members/login">로그인</a>
                         </div>
@@ -105,16 +101,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </div>
 
-
                 <div class="header-bottom-w3ls">
-
-
-
                 </div>
-
-
             </nav>
-
         </div>
     </div>
 </th:block>

@@ -4,7 +4,6 @@ import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
 import com.shop.repository.MemberRepository;
 import com.shop.service.MailService;
-
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

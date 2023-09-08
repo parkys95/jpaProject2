@@ -25,9 +25,6 @@ public class MemberUpdateFormDto {
     private String address;
 
     private Role role;
-<<<<<<< HEAD
 
     private boolean social;
-=======
->>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
 }

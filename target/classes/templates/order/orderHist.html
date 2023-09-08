@@ -116,13 +116,13 @@
     <div th:each="order : ${orders.getContent()}">
 
         <div class="d-flex mb-3 align-self-center">
-            <h4 th:text="${order.orderDate} + ' 주문'"></h4>
+            <h3 th:text="${order.orderDate} + ' 주문'"></h3>
             <div class="ml-3">
                 <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <button type="button" class="btn btn-outline-secondary" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
+                    <button type="button" class="btn btn-danger" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
                 </th:block>
                 <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <h4>(취소 완료)</h4>
+                    <h3>(취소 완료)</h3>
                 </th:block>
             </div>
         </div>
@@ -142,7 +142,7 @@
                 </div>
             </div>
         </div>
-
+        <br>
     </div>
 
     <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >

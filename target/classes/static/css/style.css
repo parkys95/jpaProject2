@@ -3362,16 +3362,17 @@ button{
     background: url("../banner/banner.jpg")   ;
     background-position: 40% 35%;
     height: 550px;
+    background-size: cover;
 }
 #banner1{
     background: url("../banner/banner1.jpg")   ;
-
     height: 550px;
+    background-size: cover;
 }
 #banner2{
     background: url("../banner/banner2.jpeg")   ;
-
     height: 550px;
+    background-size: cover;
 }
 .banner-name{
     position: relative;

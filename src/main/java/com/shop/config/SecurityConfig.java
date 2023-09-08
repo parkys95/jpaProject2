@@ -48,14 +48,14 @@ public class SecurityConfig {
         http.authorizeRequests()
 
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
-<<<<<<< HEAD
+
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**").permitAll()
-=======
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**", "/sendEmail/**", "/category/**","/download/**").permitAll()
->>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
+                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**", "/download/**",
+                        "/supervisor/**").permitAll()
+
 
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
+                .mvcMatchers("/supervisor/**").hasRole("SUPERVISOR")
                 .anyRequest().authenticated()
                 .and()
                 .csrf().ignoringAntMatchers("/mail/**")

@@ -101,4 +101,8 @@ public class ItemService {
     public List<ItemDto> findByCategory(String category){
         return  itemRepository.findByCategory(category);
     }
+
+//    public Page<Item> getItemsCreatedByUser(String loggedInUsername, ItemSearchDto itemSearchDto, Pageable pageable) {
+//        return itemRepository.findByCreatedByAndOtherCriteria(loggedInUsername, itemSearchDto, pageable);
+//    }
 }

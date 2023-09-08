@@ -2,7 +2,10 @@
 
     import com.shop.constant.ItemCategory;
     import com.shop.dto.ItemDto;
+    import com.shop.dto.ItemSearchDto;
     import com.shop.entity.Item;
+    import org.springframework.data.domain.Page;
+    import org.springframework.data.domain.Pageable;
     import org.springframework.data.jpa.repository.JpaRepository;
 
     import java.util.List;
@@ -34,6 +37,5 @@
         List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 
 
-
-
+//        Page<Item> findByCreatedByAndOtherCriteria(String loggedInUsername, ItemSearchDto itemSearchDto, Pageable pageable);
     }

@@ -116,13 +116,13 @@
     <div th:each="order : ${orders.getContent()}">
 
         <div class="d-flex mb-3 align-self-center">
-            <h4 th:text="${order.orderDate} + ' 주문'"></h4>
+            <h3 th:text="${order.orderDate} + ' 주문'"></h3>
             <div class="ml-3">
                 <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <button type="button" class="btn btn-outline-secondary" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
+                    <button type="button" class="btn btn-danger" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
                 </th:block>
                 <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <h4>(취소 완료)</h4>
+                    <h3>(취소 완료)</h3>
                 </th:block>
             </div>
         </div>
@@ -135,20 +135,14 @@
                     <span th:text="${orderItem.itemNm}" class="fs24 font-weight-bold"></span>
                     <div class="fs18 font-weight-light">
                         <span th:text="${orderItem.orderPrice} +'원'"></span>
-<<<<<<< HEAD
 <!--                        <span th:text="${orderItem.count} +'개'"></span>-->
 <!--                        <br>-->
 <!--                        <span th:text="${orderItem.count}*${orderItem.orderPrice} + '원'"></span>-->
-=======
-                        <span th:text="${orderItem.count} +'개'"></span>
-                        <br>
-                        <span th:text="${orderItem.count}*${orderItem.orderPrice} + '원'"></span>
->>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
                     </div>
                 </div>
             </div>
         </div>
-
+        <br>
     </div>
 
     <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})" >
@@ -160,8 +154,8 @@
                 </a>
             </li>
 
-            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq 'page-1'}?'active':''">
-                <a th:href="@{'/orders/' + ${'page-1'}}" th:inline="text" class="page-link">[[${page}]]</a>
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
+                <a th:href="@{'/orders/' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
             </li>
 
             <li class="page-item" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">

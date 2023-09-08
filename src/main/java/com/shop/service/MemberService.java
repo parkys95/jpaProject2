@@ -78,11 +78,7 @@ public class MemberService implements UserDetailsService {
         member.setName(memberUpdateFormDto.getName());
         member.setAddress(memberUpdateFormDto.getAddress());
         member.setRole(memberUpdateFormDto.getRole());
-<<<<<<< HEAD
         member.setSocial(memberUpdateFormDto.isSocial());
-=======
-
->>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
         // 회원 정보를 저장합니다.
         memberRepository.save(member);
     }

@@ -9,6 +9,7 @@
 body {
 	padding: 0;
 	margin: 0;
+
 	background: #FFF;
 	font-family: 'open Sans', sans-serif;
 }
@@ -224,7 +225,6 @@ button.w3view-cart:focus{
 	min-height:480px;
 }
 .my-banner3{
-
 	background:url(img/menbanner.jpg) no-repeat 0px 0px;
 
 
@@ -274,7 +274,7 @@ button.w3view-cart:focus{
 
 
 /*--banner bottom--*/
-.top-products,.fandt,.top-brands,.newsletter,.footer,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
+.top-products,.top-brands,.newsletter,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
 	padding:50px 0;
     /*margin-top: -5rem;*/
 }
@@ -658,10 +658,6 @@ button.w3ls-cart.pw3ls-cart .fa{
     background: rgba(232, 232, 232, 0.46);
     padding: 30px;
 }
-.test-inner{
-	padding:30px;
-	border:2px solid #fff;
-}
 /*-- wmuslider --*/
 .wmuSlider {
 	position: relative;
@@ -675,7 +671,7 @@ button.w3ls-cart.pw3ls-cart .fa{
 	z-index: 2;
     position: absolute;
     left: 44%;
-    bottom: 6%;
+    bottom: 35px;
 }
 ul.wmuSliderPagination {
 	padding:0;
@@ -1750,10 +1746,14 @@ p.single-price-text {
     position: absolute;
     top: 25%;
 <<<<<<< HEAD
+<<<<<<< HEAD
     left: 38%;
 =======
     left: 33.33%;
 >>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
+=======
+    left: 33.33%;
+>>>>>>> pys
 }
 .key {
     background: #fff;
@@ -3258,7 +3258,7 @@ p.w3-agile{
     display: grid;
     margin: 0;
     padding: 0;
-    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(9%, 1fr));
     grid-gap: 2px;
 
 }
@@ -3269,9 +3269,28 @@ p.w3-agile{
 .overscale{
     overflow: hidden;
     border-radius: 20px;
-
-    border-radius: 20px;
     height: 150px;
+}
+
+figure figcaption{
+
+        width: 10%; height: 150px;
+        background-color: rgba(0,0,0,0.7);
+
+        position: absolute; /* 이미지와 겹치게 처리 */
+
+
+        color: #fff; text-align: center;
+        line-height: 200px;
+
+        opacity: 0; /* 처음엔 안보이고 */
+
+        transition: 0.3s;
+
+}
+.gallery a:hover figcaption, .gallery a:focus figcaption{
+    /* 마우스를 올리면 보이게 처리 */
+    opacity: 1;
 }
 .overscale:hover img{
     transform: scale(1.2);
@@ -3366,16 +3385,21 @@ button{
     background: url("../banner/banner.jpg")   ;
     background-position: 40% 35%;
     height: 550px;
+    background-repeat: no-repeat;
 }
 #banner1{
     background: url("../banner/banner1.jpg")   ;
+    background-size: cover;
 
     height: 550px;
+    background-repeat: no-repeat;
 }
 #banner2{
     background: url("../banner/banner2.jpeg")   ;
+    background-size: cover;
 
     height: 550px;
+    background-repeat: no-repeat;
 }
 .banner-name{
     position: relative;
@@ -3420,6 +3444,7 @@ button{
     transition-timimg-function: ease;
     transition: 0.5s;
 }
+
 #menubar{
     position: absolute;
     text-align:center;
@@ -3464,5 +3489,86 @@ button{
 .tab span{
     font-weight: bold;
 }
+.top-products{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.meritbox{
+    height: 300px;
+}
+.merit h2 {
+    font-family: 'inter Sans', sans-serif;
+    text-align: left;
+    font-weight: 600;
+    font-size: 50px;
+    color: white;
+}
+.fandt{
+    padding: 20px;
+    height: 350px;
 
+}
+.meritmar{
+    margin-top: 30px;
+}
+.ftext h4{
+    color: #1e1e1e;
+}
+.ftext p{
+    color: #c0c0c0;
+}
+.testimonials{
+    width: 700px;
+    height: 300px;
+}
+footer{
+    position: absolute;
+    padding: 0 !important;
+    bottom: 0;
+}
+.footer{
+    position: absolute;
+    padding: 0;
+    bottom: 0;
+    background-color: #bbb8b8;
+}
+.footerbox{
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+}
+.grey{
 
+}
+.greyimg{
+    align-items: center;
+    height:300px;
+}
+.testimonials{
+    position: relative;
+}
+.testimonials p {
+    position: absolute;
+    text-align: center;
+    bottom: 85px;
+}
+.testimonials h4{
+    position: absolute;
+    left: 45%;
+    text-align: center;
+    bottom: 80px;
+}
+.slide{
+    bottom: 160px;
+}
+html{
+    margin: 0;
+    padding: 0;
+}
+.boody{
+    top: 0px;
+    margin-bottom: 80px;
+}
+.itemsearchbox{
+    height: 100px;
+}

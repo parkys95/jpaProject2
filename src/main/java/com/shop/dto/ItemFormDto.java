@@ -30,6 +30,10 @@ public class ItemFormDto {
     @NotNull(message = "재고는 필수 입력 값입니다.")
     private Integer stockNumber;
 
+    private String hashtag;
+
+    private List<String>  hashtagList = new ArrayList<>();
+
     private ItemSellStatus itemSellStatus;
 
     private ItemCategory category;
@@ -47,5 +51,7 @@ public class ItemFormDto {
     public static ItemFormDto of(Item item){
         return modelMapper.map(item,ItemFormDto.class);
     }
+
+
 
 }

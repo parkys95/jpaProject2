@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.Optional;
@@ -26,7 +27,7 @@ public class IndexController {
     public String index(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 45);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 50);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable,"");
 
 

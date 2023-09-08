@@ -8,12 +8,19 @@ import com.shop.repository.MemberRepository;
 import com.shop.service.MailService;
 import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+
+import javax.servlet.http.HttpSession;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -114,4 +121,36 @@ public class MemberController {
     }
 
 
+    @GetMapping("/delete")
+    public String deleteMemberPage() {
+        return "member/delete"; // 회원 탈퇴 페이지로 리턴
+    }
+
+    // 회원 탈퇴 처리 (POST)
+    @PostMapping("/delete")
+    public String deleteMember(Model model) {
+        // 현재 인증된 사용자 정보를 가져옵니다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            String loginId = authentication.getName();
+
+            // 여기서 탈퇴 처리 로직을 추가합니다.
+            // 탈퇴 처리는 memberService에서 처리하도록 합니다.
+            try {
+                memberService.deleteMember(loginId);
+            } catch (RuntimeException e) {
+                // 탈퇴 중에 예외 발생 시 처리 (예: 로그 찍기 등)
+                model.addAttribute("errorMessage", e.getMessage());
+                return "member/myPage"; // 실패한 경우 다시 사용자의 마이페이지로 리다이렉트
+            }
+
+            // 성공한 경우 로그아웃 처리하고 로그인 페이지로 리다이렉트
+            SecurityContextHolder.clearContext(); // 로그아웃
+            return "redirect:/members/login";
+        } else {
+            // 로그인되지 않은 사용자는 처리하지 않음
+            return "redirect:/members/login";
+        }
+    }
 }

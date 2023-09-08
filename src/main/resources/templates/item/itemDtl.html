@@ -10,6 +10,48 @@
 
 <!-- 사용자 스크립트 추가 -->
 <th:block layout:fragment="script">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script>
+        var IMP = window.IMP;
+        IMP.init("imp76874631");
+
+        var today = new Date();
+        var hours = today.getHours(); // 시
+        var minutes = today.getMinutes();  // 분
+        var seconds = today.getSeconds();  // 초
+        var milliseconds = today.getMilliseconds();
+        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
+
+        function requestPay() {
+            IMP.request_pay({
+                pg : 'kcp.A52CY',
+                pay_method : 'card',
+                merchant_uid: "IMP"+makeMerchantUid,
+                name : '당근 10kg',
+                amount : 100,
+                buyer_email : 'Iamport@chai.finance',
+                buyer_name : '아임포트 기술지원팀',
+                buyer_tel : '010-1234-5678',
+                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_postcode : '123-456'
+
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    console.log(rsp);
+                } else {
+                    console.log(rsp);
+                }
+            });
+
+
+        }
+    </script>
+
     <script th:inline="javascript">
         $(document).ready(function(){
 
@@ -27,88 +69,94 @@
             $("#totalPrice").html(totalPrice + '원');
         }
 
-        function order(){
+        function order() {
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
             var url = "/order";
             var paramData = {
-                itemId : $("#itemId").val(),
-                count : $("#count").val()
+                itemId: $("#itemId").val(),
+                count: $("#count").val()
             };
 
             var param = JSON.stringify(paramData);
 
             $.ajax({
-                url      : url,
-                type     : "POST",
-                contentType : "application/json",
-                data     : param,
-                beforeSend : function(xhr){
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                beforeSend: function (xhr) {
                     /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
                     xhr.setRequestHeader(header, token);
                 },
-                dataType : "json",
-                cache   : false,
-                success  : function(result, status){
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
                     alert("주문이 완료 되었습니다.");
-                    location.href='/index';
+                    location.href = '/index';
                 },
-                error : function(jqXHR, status, error){
+                error: function (jqXHR, status, error) {
 
-                    if(jqXHR.status == '401'){
+                    if (jqXHR.status == '401') {
                         alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
-                    } else{
-                        alert(jqXHR.responseText);
+                        location.href = '/members/login';
+                    } else {
+                        // alert(jqXHR.responseText);
                     }
 
                 }
             });
-        }
 
-        function addCart(){
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
 
-            var url = "/cart";
-            var paramData = {
-                itemId : $("#itemId").val(),
-                count : $("#count").val()
-            };
+            function addCart() {
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
 
-            var param = JSON.stringify(paramData);
+                var url = "/cart";
+                var paramData = {
+                    itemId: $("#itemId").val(),
+                    count: $("#count").val()
+                };
 
-            $.ajax({
-                url      : url,
-                type     : "POST",
-                contentType : "application/json",
-                data     : param,
-                beforeSend : function(xhr){
-                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
-                    xhr.setRequestHeader(header, token);
-                },
-                dataType : "json",
-                cache   : false,
-                success  : function(result, status){
-                    alert("상품을 장바구니에 담았습니다.");
-                    location.href='/index';
-                },
-                error : function(jqXHR, status, error){
+                var param = JSON.stringify(paramData);
 
-                    if(jqXHR.status == '401'){
-                        alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
-                    } else{
-                        alert(jqXHR.responseText);
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    contentType: "application/json",
+                    data: param,
+                    beforeSend: function (xhr) {
+                        /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                        xhr.setRequestHeader(header, token);
+                    },
+                    dataType: "json",
+                    cache: false,
+                    success: function (result, status) {
+                        alert("상품을 장바구니에 담았습니다.");
+                        location.href = '/index';
+                    },
+                    error: function (jqXHR, status, error) {
+
+                        if (jqXHR.status == '401') {
+                            alert('로그인 후 이용해주세요');
+                            location.href = '/members/login';
+                        } else {
+                            alert(jqXHR.responseText);
+                        }
+
                     }
 
-                }
-            });
+                });
+
+
+            }
         }
 
     </script>
 </th:block>
+
+
 
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
@@ -200,12 +248,17 @@
                                 <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                             </form>
                             <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
-                            <button class="w3ls-cart w3ls-cart-like" onclick="order()">
-                                <a th:href="@{'/download/' + ${item.itemImgDtoList[0].id}}" download="image.jpg">
+
+
+                            <button class="w3ls-cart w3ls-cart-like" onclick="requestPay()">
+<!--                                <a th:href="@{'/download/' + ${item.itemImgDtoList[0].id}}" download="image.jpg">-->
+<!--                                    <a href="/payment/payment.html">-->
                                 <i class="fa fa-heart-o" aria-hidden="true"></i>
                                 다운로드 하기
-                                </a>
+<!--                                </a>-->
                             </button>
+
+
                         </div>
                         <div class="clearfix"> </div>
                     </div>

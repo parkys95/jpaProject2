@@ -57,7 +57,7 @@ public class ItemController {
             return "item/itemForm";
         }
 
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping(value = "/admin/item/{itemId}")
@@ -94,7 +94,7 @@ public class ItemController {
             return "item/itemForm";
         }
 
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
@@ -116,5 +116,12 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }
+
+    @GetMapping(value = "/item_pay")
+    public String itemDtl_pay(Model model){
+        model.addAttribute("item");
+        return "item/itemDtl_pay";
+    }
+
 
 }

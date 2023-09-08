@@ -25,4 +25,8 @@ public class MemberUpdateFormDto {
     private String address;
 
     private Role role;
+
+
+    private boolean social;
+
 }

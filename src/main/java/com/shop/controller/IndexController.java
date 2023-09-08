@@ -77,6 +77,21 @@ public class IndexController {
         return "/category/index_photo";
     }
 
+    @GetMapping(value = "/index_pay")
+    public String indexPay(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 45);
+        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable,"");
+
+
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
+
+        return "index_pay";
+    }
+
 
 
 

@@ -28,6 +28,7 @@
 
         List<Item> findByHashtag(String hashtag);
 
+        List<Item> findByHashtagOrItemNm(String itemNm,String hashtag);
 
         @Query("select i from Item i where i.itemDetail like " +
                 "%:itemDetail% order by i.price desc")
@@ -36,6 +37,9 @@
         @Query(value="select * from item i where i.item_detail like " +
                 "%:itemDetail% order by i.price desc", nativeQuery = true)
         List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
+
+
+
 
 
 

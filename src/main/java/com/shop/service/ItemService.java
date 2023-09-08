@@ -101,4 +101,6 @@ public class ItemService {
     public List<ItemDto> findByCategory(String category){
         return  itemRepository.findByCategory(category);
     }
+
+
 }

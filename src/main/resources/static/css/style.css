@@ -3375,16 +3375,21 @@ button{
     background: url("../banner/banner.jpg")   ;
     background-position: 40% 35%;
     height: 550px;
+    background-repeat: no-repeat;
 }
 #banner1{
     background: url("../banner/banner1.jpg")   ;
+    background-size: cover;
 
     height: 550px;
+    background-repeat: no-repeat;
 }
 #banner2{
     background: url("../banner/banner2.jpeg")   ;
+    background-size: cover;
 
     height: 550px;
+    background-repeat: no-repeat;
 }
 .banner-name{
     position: relative;

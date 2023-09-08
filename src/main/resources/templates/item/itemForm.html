@@ -70,7 +70,7 @@
             if(hashtag.length > 0){
                 item = getHashtagItem(hashtag);
                 $("#hashList").append(item);
-                $("#addHashtag").val("");
+                $("#hashtagData").val("");
 
                 //해시태그 리스트 저장
                 // let form = $("#uploadForm")[0];
@@ -188,7 +188,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">해쉬태그</span>
             </div>
-            <input type="text"  class="form-control" placeholder="상품의 해쉬태그를 입력해주세요" id="hashtagData" name="hashtagData">
+            <input type="text"  class="form-control" placeholder="상품의 해쉬태그를 입력해주세요" id="hashtagData"
+                   name="hashtagData">
             <button type="button" class="cta blue" onclick="addHashtag()">추가</button>
 
             <div class="hashList" id="hashList">

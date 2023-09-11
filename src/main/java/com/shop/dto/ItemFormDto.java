@@ -46,6 +46,9 @@ public class ItemFormDto {
 
     private int view;
 
+    private int heart;
+
+
     public Item createItem(){
         return modelMapper.map(this, Item.class);
     }

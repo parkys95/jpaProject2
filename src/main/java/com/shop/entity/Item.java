@@ -46,6 +46,11 @@ public class Item extends BaseEntity {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private int view;
 
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int heart;
+
+
+
 
     public void updateItem(ItemFormDto itemFormDto){
         this.itemNm = itemFormDto.getItemNm();

@@ -435,6 +435,7 @@ button.w3view-cart:focus{
 	color:#999;
 	padding:7px 15px;
 	border:1px solid #999;
+    border-radius: 30px;
 }
 
 .resp-tab-active {
@@ -3633,6 +3634,7 @@ html{
 }
 .pagin{
     position: relative;
+    bottom: 8px;
 }
 .justify-content-center{
     position: absolute;
@@ -3658,8 +3660,18 @@ html{
     opacity: 60%;
 }
 .testimonials{
-    right: -50px;
+    right: 20px;
     width: 1000px;
+}
+.searchbody{
+    margin-bottom: 180px ;
+}
+.banner-wrap img{
+    overflow: hidden;
+    object-fit: cover;
+}
+.heartButton{
+
 }
 @media{
 

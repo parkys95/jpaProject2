@@ -151,8 +151,51 @@
             });
 
         }
+        function likeButton(){
+            if($("#likeButton").data("toggle") == 0){
+                $("#likeButton").data("toggle", 1);
+
+            }else if($("#likeButton").data("toggle") == 1) {
+                $("#likeButton").data("toggle", 0);
+            }
+            console.log($("#likeButton").data("toggle"));
+
+            $.ajax({
+                url: "/like",
+                type: "GET",
+                contentType: "TEXT",
+                data: {
+                    itemId: "[[${item.id}]]",
+                    heart: $("#likeButton").data("toggle")
+
+                },
+                success: function (result, status) {
+
+                  if(result == 0){
+                      alert("게시물 추천을 취소하였습니다.");
+                      $(".heartButton").attr("src","/banner/like empty.svg")
+                  }else if(result == 1){
+                      alert("게시물을 추천하였습니다.");
+                      $(".heartButton").attr("src","/banner/like.svg")
+
+                  }
+                },
+                error: function (jqXHR, status, error) {
+
+                    if (jqXHR.status == '401') {
+                        alert('로그인 후 이용해주세요');
+                        location.href = '/members/login';
+                    } else {
+                        // alert(jqXHR.responseText);
+                    }
+
+                }
+            });
+        }
+
 
     </script>
+
 </th:block>
 
 
@@ -175,28 +218,6 @@
             padding-left: 3rem;
         }
 
-        /*.mgb-15{*/
-        /*    margin-bottom:15px;*/
-        /*}*/
-        /*.mgt-30{*/
-        /*    margin-top:30px;*/
-        /*}*/
-        /*.mgt-50{*/
-        /*    margin-top:50px;*/
-        /*}*/
-        /*.repImgDiv{*/
-        /*    margin-right:15px;*/
-        /*    height:auto;*/
-        /*    width:50%;*/
-        /*}*/
-        /*.repImg{*/
-        /*    width:100%;*/
-        /*    height:400px;*/
-        /*}*/
-        /*.wd50{*/
-        /*    height:auto;*/
-        /*    width:50%;*/
-        /*}*/
     </style>
 </th:block>
 
@@ -264,18 +285,7 @@
             <div class="collpse tabs">
                 <h3 class="w3ls-title">About this image</h3>
                 <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
-                    <!--               <div class="panel panel-default">-->
-                    <!--                  <div class="panel-heading" role="tab" id="headingOne">-->
-                    <!--                     <h4 class="panel-title">-->
-                    <!--                        <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                    <!--                           <i class="fa fa-file-text-o fa-icon" aria-hidden="true"></i> Description <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>-->
-                    <!--                        </a>-->
-                    <!--                     </h4>-->
-                    <!--                  </div>-->
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <!--                     <div class="panel-body">-->
-                        <!--                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
-                        <!--                     </div>-->
+
                     </div>
                     <!--               </div>-->
                     <div class="panel panel-default">
@@ -287,7 +297,15 @@
                             </h4>
                         </div>
                         <div>
+
+                            <button id="likeButton" data-toggle=0 onclick="likeButton()">
+                                <img class="heartButton" src="/banner/like empty.svg">
+                                <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" >좋아요</i>
+                            </button>
+                            <span th:text="${item.heart}"></span>
+
                             <a>
+
                                 <span th:text="${item.view +1}"></span>
                                 <span th:text="${item.hashtag}"></span>
                             </a>

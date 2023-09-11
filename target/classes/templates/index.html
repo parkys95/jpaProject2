@@ -82,19 +82,6 @@
 					</div>
 				</div>
 			</div>
-			<div>
-
-<!--				<div>-->
-<!--					<div>-->
-<!--						<th:block th:each="item, status: ${items.getContent(4)}">-->
-<!--							<a th:href="'/item/' +${item.id}" >-->
-<!--								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >-->
-<!--								<p th:text="${item.itemNm}"></p>-->
-<!--							</a>-->
-<!--						</th:block>-->
-<!--					</div>-->
-<!--				</div>-->
-			</div>
 
 
 
@@ -104,12 +91,15 @@
 					<h3><img src="/banner/BEST IMAGE.svg" alt=" " style="width: auto"></h3>
 					<div class="sap_tabs">
 						<div id="horizontalTab">
-							<ul class="resp-tabs-list">
-								<li class="resp-tab-item tab" ><span>PICTURE</span></li>
-								<li class="resp-tab-item tab" ><span>ILLUSTRATION</span></li>
-								<li class="resp-tab-item tab" ><span>ICON</span></li>
+							<div class="resp-tabs-list">
+								<span class="resp-tab-item tab"
+									   >조회수 순</span>
+								<span class="resp-tab-item tab"
+									   >좋아요 순</span>
+								<span class="resp-tab-item tab"
+									   >최신 순</span>
+							</div>
 
-							</ul>
 							<div class="clearfix"> </div>
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content">
@@ -236,7 +226,7 @@
 								<div class="greyimg">
 									<article>
 										<div class="banner-wrap">
-											<a href="/illust/ILLUST"><img src="banner/banner.jpg" class="img-responsive" alt=""
+											<a href="/illust/ILLUST"><img src="banner/downbanner1.jpg" class="img-responsive" alt=""
 																		  style="height: 240px !important;"></a>
 											<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem
 												sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
@@ -245,7 +235,7 @@
 									</article>
 									<article style="position: absolute; width: 100%; opacity: 0;">
 										<div class="banner-wrap">
-											<a href="/icon/ICON"><img src="banner/banner.jpg" class="img-responsive" alt=""
+											<a href="/icon/ICON"><img src="banner/downbanner2.jpg" class="img-responsive" alt=""
 																	  style="height: 240px !important;"></a>
 											<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan
 												risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
@@ -254,7 +244,7 @@
 									</article>
 									<article style="position: absolute; width: 100%; opacity: 0;">
 										<div class="banner-wrap">
-											<a href="/photo/PHOTO"><img src="banner/banner.jpg" class="img-responsive" alt=""
+											<a href="/photo/PHOTO"><img src="banner/downbanner3.jpg" class="img-responsive" alt=""
 																		style="height: 240px !important;"></a>
 											<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed,
 												sagittis id nisl. Pellentesque celerisque eget ullamcorper vehicula. </p>

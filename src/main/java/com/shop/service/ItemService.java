@@ -109,6 +109,14 @@ public class ItemService {
     public int updateView(Long id) {
         return itemRepository.updateView(id);
     }
+
+    @Transactional
+    public int updateHeart(long itemId,int heart){
+        return itemRepository.updateHeart(itemId,heart);
+    }
+
+
+
 }
 
 

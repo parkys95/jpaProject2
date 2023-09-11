@@ -49,5 +49,14 @@
         int updateView(Long id);
 
 
+        @Modifying
+        @Query("update Item i set i.heart = :heart  where i.id = :itemId")
+        int updateHeart(Long itemId,int heart);
+
+
+
 //        Page<Item> findByCreatedByAndOtherCriteria(String loggedInUsername, ItemSearchDto itemSearchDto, Pageable pageable);
+
+//         List<Item> findTop4ByOrderByViewDesc();
+
     }

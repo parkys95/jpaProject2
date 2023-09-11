@@ -3256,7 +3256,7 @@ p.w3-agile{
 .gallery {
     justify-content: center;
     align-content: center;
-    background-color: black;
+    background-color: rgba(156, 156, 156, 0.19);
     padding: 20px;
 }
 
@@ -3267,8 +3267,20 @@ p.w3-agile{
     margin: 0;
     padding: 0;
     grid-template-columns: repeat(auto-fit, minmax(9%, 1fr));
-    grid-gap: 2px;
-
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 4px;
+}
+.grid1:nth-child(1) {
+    /* 1번 라인에서 2칸 */
+    grid-column: 1 / span 4;
+    /* 1번 라인에서 3칸 */
+    grid-row: 1 / span 6;
+    width: 100%;
+    height: 816px;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 .gallery >.row:before{
     content:none;
@@ -3276,40 +3288,48 @@ p.w3-agile{
 }
 .overscale{
     overflow: hidden;
-    border-radius: 20px;
     height: 150px;
+    border-radius: 30px;
+}
+.overscale2{
+    overflow: hidden;
+    height: 200px;
+    border-radius: 30px;
 }
 
-figure figcaption{
-
-        width: 10%; height: 150px;
-        background-color: rgba(0,0,0,0.7);
-
+.gallery a{
+    position: relative;
+}
+.galleryName{
         position: absolute; /* 이미지와 겹치게 처리 */
-
-
-        color: #fff; text-align: center;
-        line-height: 200px;
-
+        text-align: center;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% ,-50%);
+        font-family: 'inter Sans', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
         opacity: 0; /* 처음엔 안보이고 */
-
         transition: 0.3s;
 
 }
-.gallery a:hover figcaption, .gallery a:focus figcaption{
+.overscale:hover .galleryName , .overscale2:hover .galleryName  {
+
     /* 마우스를 올리면 보이게 처리 */
     opacity: 1;
 }
-.overscale:hover img{
+.overscale:hover img ,.overscale2:hover img {
     transform: scale(1.2);
-    width:100%;
-    height: 150px;
-    border-radius: 20px;
-    filter: grayscale(50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    filter: grayscale(80%);
+    filter: brightness(50%);
 }
 .row img{
     width:100%;
-    height: 150px;
+    height: 100%;
     background-color: white;
     transition-timimg-function: ease;
     object-fit: cover;
@@ -3320,11 +3340,23 @@ figure figcaption{
 .search-mode {
     position: relative;
     width: 100%;
-    height: 30px;
-    margin: 10px auto;
+    height: 100%;
+    top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.search-mode2{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151521;
+    top: 0px;
 }
 
 .search-mode input {
@@ -3332,7 +3364,18 @@ figure figcaption{
     border-radius: 50px;
     width: 1200px;
     height: 70px;
-    margin-top: 65px;
+    margin-top: 5px;
+    padding-left: 30px;
+    font-size: 20px;
+    outline: none;
+}
+
+.search-mode2 input {
+    border: 5px solid #F1F1F1;
+    border-radius: 50px;
+    width: 1200px;
+    height: 50px;
+    margin-top: 5px;
     padding-left: 30px;
     font-size: 20px;
     outline: none;
@@ -3342,7 +3385,6 @@ button{
 }
 
 .search-mode #search2 {
-
     display: flex;
     position: relative;
     top: 1px;
@@ -3355,12 +3397,20 @@ button{
 #search2 img {
     position: absolute;
     width: 47px;
-    top: 9px;
+    top: -21px;
     right: 40px;
     margin: 0;
     filter: invert(61%) sepia(92%) saturate(489%) hue-rotate(102deg) brightness(94%) contrast(101%)
 }
 
+.search-mode2 #search2 img {
+    position: absolute;
+    width: 35px;
+    top: -16px;
+    right: 28px;
+    margin: 0;
+    filter: invert(61%) sepia(92%) saturate(489%) hue-rotate(102deg) brightness(94%) contrast(101%)
+}
 .searchbox{
     height: 120px;
     width: 100%;
@@ -3369,10 +3419,6 @@ button{
     background-size: cover;
     background: url("../img/searchbox2.jpg")  center ;
     background-color: black;
-
-
-;
-
 }
 
 .hover:hover{
@@ -3393,7 +3439,7 @@ button{
     background: url("../banner/banner.jpg")   ;
     background-position: 40% 35%;
     height: 550px;
-<<<<<<< HEAD
+
     background-repeat: no-repeat;
 }
 #banner1{
@@ -3403,25 +3449,12 @@ button{
     height: 550px;
     background-repeat: no-repeat;
 }
-#banner2{
-    background: url("../banner/banner2.jpeg")   ;
+#banner2 {
+    background: url("../banner/banner2.jpeg");
     background-size: cover;
 
     height: 550px;
     background-repeat: no-repeat;
-=======
-    background-size: cover;
-}
-#banner1{
-    background: url("../banner/banner1.jpg")   ;
-    height: 550px;
-    background-size: cover;
-}
-#banner2{
-    background: url("../banner/banner2.jpeg")   ;
-    height: 550px;
-    background-size: cover;
->>>>>>> c99d004b325bd4c4112d69bd30168fcec05ab565
 }
 .banner-name{
     position: relative;
@@ -3547,12 +3580,13 @@ footer{
     position: absolute;
     padding: 0 !important;
     bottom: 0;
+    height: 100px;
 }
 .footer{
     position: absolute;
     padding: 0;
     bottom: 0;
-    background-color: #bbb8b8;
+    background-color: #151521;
 }
 .footerbox{
     width: 100%;
@@ -3593,4 +3627,33 @@ html{
 }
 .itemsearchbox{
     height: 100px;
+}
+.pagin{
+    position: relative;
+}
+.justify-content-center{
+    position: absolute;
+    left: 44%;
+}
+.pagin{
+    position: relative;
+    margin-top: 20px;
+    bottom: 20px;
+}
+.justify-content-center{
+    position: absolute;
+    left: 44%;
+}
+
+.footerMenu li{
+    display: inline-block;
+    color: white;
+    opacity: 80%;
+}
+.footer ul li a{
+    color: white;
+    opacity: 60%;
+}
+.testimonials{
+    right: -50px;
 }

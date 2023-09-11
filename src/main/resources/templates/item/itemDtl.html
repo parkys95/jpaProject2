@@ -214,7 +214,9 @@
                                     <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
+
                             <p class="single-price-text" th:text="${item.itemDetail}"></p>
+
                             <form action="#" method="post">
                                 <input type="hidden" name="count" id="count" class="form-control" value="1" min="1">
                                 <input type="hidden" name="cmd" value="_cart" />
@@ -223,6 +225,7 @@
                                 <input type="hidden" name="amount" value="540.00" />
                                 <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                             </form>
+
                             <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
 
                             <button class="w3ls-cart w3ls-cart-like" onclick="requestPay()">

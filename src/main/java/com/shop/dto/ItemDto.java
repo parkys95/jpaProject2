@@ -14,6 +14,8 @@ public class ItemDto {
 
     private ItemCategory category;
 
+    private String hashtag;
+
     private String itemNm;
 
     private Integer price;
@@ -21,6 +23,7 @@ public class ItemDto {
     private String itemDetail;
 
     private String sellStatCd;
+
 
     private LocalDateTime regTime;
 

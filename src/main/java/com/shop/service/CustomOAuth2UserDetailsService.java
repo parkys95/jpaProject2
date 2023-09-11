@@ -76,7 +76,6 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
     private String getKakaoEmail(Map<String, Object> paramMap) {
         log.info("kakao-------------------");
-
         Map<String, Object> accountMap = (Map<String, Object>) paramMap.get("kakao_account");
 
         String email = (String) accountMap.get("email");

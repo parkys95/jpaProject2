@@ -26,7 +26,6 @@ public class MemberUpdateFormDto {
 
     private Role role;
 
-
     private boolean social;
 
 }

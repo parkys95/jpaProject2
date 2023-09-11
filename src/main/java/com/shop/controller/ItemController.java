@@ -110,6 +110,22 @@ public class ItemController {
         return "item/itemMng";
     }
 
+//    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+//    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String loggedInUsername = authentication.getName();
+//
+//        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+//        Page<Item> items = itemService.getItemsCreatedByUser(loggedInUsername, itemSearchDto, pageable);
+//
+//        model.addAttribute("items", items);
+//        model.addAttribute("itemSearchDto", itemSearchDto);
+//        model.addAttribute("maxPage", 5);
+//
+//        return "item/itemMng";
+//    }
+
+
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
@@ -117,11 +133,17 @@ public class ItemController {
         return "item/itemDtl";
     }
 
-    @GetMapping(value = "/item_pay")
-    public String itemDtl_pay(Model model){
-        model.addAttribute("item");
-        return "item/itemDtl_pay";
+    @GetMapping(value = "/item/pay/{itemId}")
+    public String payDown(Model model, @PathVariable("itemId") Long itemId){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "pay/payDown";
     }
+
+
+
+
+
 
 
 }

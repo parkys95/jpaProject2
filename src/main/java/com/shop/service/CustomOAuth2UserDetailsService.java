@@ -1,7 +1,7 @@
 package com.shop.service;
 
 import com.shop.constant.Role;
-import com.shop.dto.MemberSecurityDTO;
+import com.shop.dto.MemberSecurityDto;
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
 import lombok.AllArgsConstructor;
@@ -80,12 +80,13 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
         String email = (String) accountMap.get("email");
 
+
         log.info("email : " + email);
 
         return email;
     }
 
-    private MemberSecurityDTO generateDTO(String email, Map<String, Object> paramMap) {
+    private MemberSecurityDto generateDTO(String email, Map<String, Object> paramMap) {
         Optional<Member> result = Optional.ofNullable(memberRepository.findByEmail(email));
 
         // DB에 해당 이메일의 사용자가 없다면 자동으로 회원 가입 처리
@@ -103,7 +104,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             // DB에 회원 정보 저장(회원 가입 처리)
             memberRepository.save(member);
 
-            MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(email,
+            MemberSecurityDto memberSecurityDTO = new MemberSecurityDto(email,
                     "1111", email, true,
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             memberSecurityDTO.setAttr(paramMap);
@@ -111,7 +112,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             return memberSecurityDTO;
         } else {    // 이미 가입된 회원은 기존 정보를 반환
             Member member = result.get();
-            MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(
+            MemberSecurityDto memberSecurityDTO = new MemberSecurityDto(
                     member.getName(), member.getPassword(), member.getEmail(),
                     member.isSocial(),
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_" + member.getRole())));

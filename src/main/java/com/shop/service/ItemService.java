@@ -17,6 +17,7 @@ import com.shop.dto.ItemImgDto;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,15 +42,18 @@ public class ItemService {
 
         //이미지 등록
         for(int i=0;i<itemImgFileList.size();i++){
-            ItemImg itemImg = new ItemImg();
-            itemImg.setItem(item);
+            if(itemImgFileList.get(i).getOriginalFilename() != null && !itemImgFileList.get(i).getOriginalFilename().isEmpty()){
+                ItemImg itemImg = new ItemImg();
+                itemImg.setItem(item);
 
-            if(i == 0)
-                itemImg.setRepimgYn("Y");
-            else
-                itemImg.setRepimgYn("N");
+                if(i == 0)
+                    itemImg.setRepimgYn("Y");
+                else
+                    itemImg.setRepimgYn("N");
 
-            itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
+                itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
+            }
+
         }
 
         return item.getId();
@@ -97,12 +101,34 @@ public class ItemService {
         return itemRepository.getMainItemPage(itemSearchDto, pageable, category);
     }
 
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPageOr(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getMainItemPageOr(itemSearchDto, pageable);
+    }
+
 
     public List<ItemDto> findByCategory(String category){
         return  itemRepository.findByCategory(category);
     }
 
-//    public Page<Item> getItemsCreatedByUser(String loggedInUsername, ItemSearchDto itemSearchDto, Pageable pageable) {
-//        return itemRepository.findByCreatedByAndOtherCriteria(loggedInUsername, itemSearchDto, pageable);
-//    }
+
+
+    public void deleteItem(Long itemId) throws Exception {
+        // 상품을 데이터베이스에서 조회합니다.
+        Optional<Item> itemOptional = itemRepository.findById(itemId);
+
+        // 만약 상품이 존재한다면 삭제합니다.
+        if (itemOptional.isPresent()) {
+            Item item = itemOptional.get();
+
+            // 관련된 이미지들도 함께 삭제합니다. (이 부분은 itemRepository에 정의된 메서드를 활용하거나 직접 구현해야 합니다)
+            itemImgService.deleteItemImagesByItemId(itemId);
+
+            // 상품을 삭제합니다.
+            itemRepository.delete(item);
+        } else {
+            throw new EntityNotFoundException("상품을 찾을 수 없습니다.");
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.shop.repository;
 
+import com.shop.entity.Cart;
 import com.shop.entity.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -21,4 +22,10 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             )
     List<CartDetailDto> findCartDetailDtoList(Long cartId);
 
+    List<CartItem> findByCart(Cart cart);
+
+
+    List<CartItem> findByCartMemberId(String memberId);
+
+    List<CartItem> findByItemId(Long itemId);
 }

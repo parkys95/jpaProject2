@@ -1,6 +1,6 @@
 package com.shop.handler;
 
-import com.shop.dto.MemberSecurityDTO;
+import com.shop.dto.MemberSecurityDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
@@ -21,8 +21,8 @@ public class CustomSocialLoginSuccessHandler implements AuthenticationSuccessHan
         log.info("-------------------------------------------");
         log.info(authentication.getPrincipal());
 
-        MemberSecurityDTO memberSecurityDTO =
-                (MemberSecurityDTO) authentication.getPrincipal();
+        MemberSecurityDto memberSecurityDTO =
+                (MemberSecurityDto) authentication.getPrincipal();
 
         String encodePassword = memberSecurityDTO.getPassword();
 

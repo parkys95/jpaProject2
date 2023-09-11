@@ -18,8 +18,6 @@ import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityManager;
 
-import javax.validation.constraints.Null;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -83,8 +81,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 .where(regDtsAfter(itemSearchDto.getSearchDateType()),
                         searchSellStatusEq(itemSearchDto.getSearchSellStatus()),
                         searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery()))
-                .fetchOne()
-                ;
+                .fetchOne();
 
         return new PageImpl<>(content, pageable, total);
     }
@@ -116,6 +113,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                         itemNmLike(itemSearchDto.getSearchQuery()),
                         eqCategory(menuCategory)
                         )
+
 //                .where(item.category.eq(itemCategory))
                 .orderBy(item.id.desc())
                 .offset(pageable.getOffset())
@@ -130,6 +128,38 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 .join(itemImg.item, item)
                 .where(itemImg.repimgYn.eq("Y"))
                 .where(itemNmLike(itemSearchDto.getSearchQuery()))
+                .fetchOne()
+                ;
+
+        return new PageImpl<>(content, pageable, total);
+    }
+
+    @Override
+    public Page<MainItemDto> getMainItemPageOr(ItemSearchDto itemSearchDto, Pageable pageable) {
+        List<MainItemDto> content = queryFactory
+                .select(
+                        new QMainItemDto(
+                                item.id,
+                                item.itemNm,
+                                item.itemDetail,
+                                itemImg.imgUrl,
+                                item.price)
+                )
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(searchAll(itemSearchDto.getSearchQuery()))
+                .orderBy(item.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+
+
+        long total = queryFactory
+                .select(Wildcard.count)
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(searchAll(itemSearchDto.getSearchQuery()))
                 .fetchOne()
                 ;
 
@@ -153,6 +183,13 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             return null;
         }
         return item.category.eq(itemCategory);
+    }
+
+    private BooleanExpression searchAll(String searchText){
+        if(StringUtils.isEmpty(searchText)){
+            return null;
+        }
+        return item.hashtag.like("%" + searchText + "%" ).or(item.itemNm.like("%" + searchText + "%"));
     }
 
 }

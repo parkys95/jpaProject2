@@ -1,5 +1,6 @@
 package com.shop.repository;
 
+import com.shop.entity.Member;
 import com.shop.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -21,4 +22,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "where o.member.email = :email"
     )
     Long countOrder(@Param("email") String email);
+
+    List<Order> findByMember(Member member);
+
+    List<Order> findByMemberId(String memberId);
 }

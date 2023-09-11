@@ -135,4 +135,11 @@ public class ItemController {
         return "item/itemDtl";
     }
 
+    @GetMapping(value = "/item_pay")
+    public String itemDtl_pay(Model model){
+        model.addAttribute("item");
+        return "item/itemDtl_pay";
+    }
+
+
 }

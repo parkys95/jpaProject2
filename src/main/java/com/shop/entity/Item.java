@@ -11,6 +11,8 @@ import javax.persistence.*;
 import com.shop.dto.ItemFormDto;
 import com.shop.exception.OutOfStockException;
 
+import java.util.List;
+
 @Entity
 @Table(name="item")
 @Getter
@@ -28,6 +30,8 @@ public class Item extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ItemCategory category;    //카테고리
+    @Column(name="hashtag")
+    private String hashtag;
 
     @Column(name="price", nullable = false)
     private int price; //가격
@@ -42,12 +46,22 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //상품 판매 상태
 
+
     public void updateItem(ItemFormDto itemFormDto){
         this.itemNm = itemFormDto.getItemNm();
         this.price = itemFormDto.getPrice();
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+//        String str = "";
+//        for (int i = 0;i<itemFormDto.getHashtagList().size();i++){
+//            if(i == itemFormDto.getHashtagList().size()-1){
+//                str += itemFormDto.getHashtagList().get(i);
+//            }else if (i < itemFormDto.getHashtagList().size()){
+//                str += itemFormDto.getHashtagList().get(i) + ",";
+//            }
+//        }
+        this.hashtag = itemFormDto.getHashtag();
     }
 
     public void removeStock(int stockNumber){
@@ -61,5 +75,7 @@ public class Item extends BaseEntity {
     public void addStock(int stockNumber){
         this.stockNumber += stockNumber;
     }
+
+
 
 }

@@ -14,7 +14,7 @@ import java.util.Map;
 @Getter
 @Setter
 @ToString
-public class MemberSecurityDTO extends User implements OAuth2User {
+public class MemberSecurityDto extends User implements OAuth2User {
     private String id;
     private String email;
     private String password;
@@ -22,7 +22,7 @@ public class MemberSecurityDTO extends User implements OAuth2User {
     private boolean social;
     private Role role;
     private Map<String, Object> attr;   // 소설 로그인 정보
-    public MemberSecurityDTO(String username, String password, String email,
+    public MemberSecurityDto(String username, String password, String email,
                              boolean social,
                              Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);

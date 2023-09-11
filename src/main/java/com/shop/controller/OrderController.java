@@ -68,7 +68,7 @@ public class OrderController {
         model.addAttribute("page", pageable.getPageNumber());
         model.addAttribute("maxPage", 5);
 
-        return "order/orderHist";
+        return "/order/orderHist";
     }
 
     @PostMapping("/order/{orderId}/cancel")
@@ -81,5 +81,7 @@ public class OrderController {
         orderService.cancelOrder(orderId);
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
+
+
 
 }

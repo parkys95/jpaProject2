@@ -1,9 +1,19 @@
 package com.shop.service;
 
+import com.shop.dto.MemberSearchDto;
 import com.shop.dto.MemberUpdateFormDto;
+import com.shop.entity.Cart;
+import com.shop.entity.CartItem;
 import com.shop.entity.Member;
+import com.shop.entity.Order;
+import com.shop.repository.CartItemRepository;
+import com.shop.repository.CartRepository;
 import com.shop.repository.MemberRepository;
+import com.shop.repository.OrderRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +25,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,6 +33,9 @@ import javax.validation.Valid;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
+    private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
+    private final OrderRepository orderRepository;
     private final PasswordEncoder passwordEncoder;
 
     public Member saveMember(Member member) {
@@ -82,7 +96,6 @@ public class MemberService implements UserDetailsService {
         // 회원 정보를 저장합니다.
         memberRepository.save(member);
     }
-
     @Transactional
     public void deleteMember(String loginId) {
         // loginId를 사용하여 회원을 조회합니다.
@@ -92,8 +105,40 @@ public class MemberService implements UserDetailsService {
             throw new UsernameNotFoundException("회원을 찾을 수 없습니다.");
         }
 
-        // 회원을 삭제합니다.
+        // 1. 회원과 관련된 주문을 삭제합니다.
+        List<Order> orders = orderRepository.findByMember(member);
+        for (Order order : orders) {
+            orderRepository.delete(order);
+        }
+
+        // 2. 회원과 관련된 카트를 삭제하고 연관된 CartItem도 삭제합니다.
+        Cart cart = cartRepository.findByMember(member);
+        if (cart != null) {
+            List<CartItem> cartItems = cartItemRepository.findByCart(cart);
+            for (CartItem cartItem : cartItems) {
+                cartItemRepository.delete(cartItem);
+            }
+            cartRepository.delete(cart);
+        }
+
+        // 3. 회원을 삭제합니다.
         memberRepository.delete(member);
     }
 
+    public Page<Member> getMembersByName(String keyword, Pageable pageable) {
+        return memberRepository.findByNameContainingIgnoreCase(keyword, pageable);
+    }
+
+    public Page<Member> getMembersByEmail(String keyword, Pageable pageable) {
+        return memberRepository.findByEmailContainingIgnoreCase(keyword, pageable);
+    }
+
+    public Page<Member> getAllMembers(Pageable pageable) {
+        return memberRepository.findAll(pageable);
+    }
+
+//    @Transactional(readOnly = true)
+//    public Page<Member> getMemberPage(MemberSearchDto memberSearchDto, Pageable pageable){
+//        return memberRepository.getMemberPage(pageable);
+//    }
 }

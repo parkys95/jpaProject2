@@ -42,7 +42,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <img src="/banner/IMAGE FARM (1).svg" alt=" " style="width: 200px"/></a>
         </div>
         <div>
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg" >
+
                 <div class="container-fluid" id="menubar">
                     <a class="navbar-brand menu" href="/photo/PHOTO">PICTURE</a>
                     <a class="navbar-brand menu" href="/illust/ILLUST">ILLUSTRATION</a>
@@ -50,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <ul class="navbar-nav ml-auto jang">
                     <li class="loginhead" sec:authorize="hasAnyAuthority('ROLE_SUPERVISOR')">
-                        <a class="nav-link" href="/supervisor">관리자</a>
+                        <a class="nav-link" href="/supervisor/page">관리자</a>
                     </li>
                     <li class="loginhead" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                         <a class="nav-link" href="/admin/item/new">상품 등록</a>
@@ -64,12 +65,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             마이팜
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
                             <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/cart">장바구니</a>
                             </li>
                             <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/orders">구매이력</a>
                             </li>
-                            <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/members/myPage">내
-                                정보</a></li>
+                            <li><a class="dropdown-item" sec:authorize="isAuthenticated()" href="/members/myPage">내 정보</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -88,7 +89,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     });
                 </script>
                 <div>
+
                     <div class="loginbutton">
+
                         <div class=" loginhead loginbox" sec:authorize="isAnonymous()" style="margin-top: 10px">
                             <a href="/members/login">로그인</a>
                         </div>
@@ -97,6 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
+
                 <div class="header-bottom-w3ls">
                 </div>
             </nav>
@@ -105,5 +109,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </th:block>
 
 </html>
-
-

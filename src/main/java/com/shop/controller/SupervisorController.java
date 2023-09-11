@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +34,7 @@ import java.util.Optional;
 public class SupervisorController {
 
     private final MemberRepository memberRepository;
-    private final MailService mailService;
     private final MemberService memberService;
-    private final PasswordEncoder passwordEncoder;
     private final ItemService itemService;
 
     private final CartRepository cartRepository;
@@ -126,25 +125,63 @@ public class SupervisorController {
 
 
 
-    @DeleteMapping("/{memberId}")
-    public ResponseEntity<String> deleteMember(@PathVariable String memberId) {
+    @DeleteMapping("/members/{memberId}")
+    @Transactional
+    public ResponseEntity<String> deleteMember(@PathVariable Long memberId) {
         try {
             // 1. 회원과 관련된 주문을 삭제합니다.
             List<Order> orders = orderRepository.findByMemberId(memberId);
-            orderRepository.deleteAll(orders);
+
+            // 1-1. 주문과 관련된 주문 항목(orderItem)을 먼저 삭제합니다.
+            for (Order order : orders) {
+                List<OrderItem> orderItems = orderItemRepository.getByOrderId(order.getId());
+                if(orderItems.size() > 0) {
+                    orderItemRepository.deleteOrderItems(order.getId());
+                }
+            }
+            // 1-2. 주문을 삭제합니다.
+            orderRepository.deleteOrder(memberId);
+            // 2. 회원과 관련된 카트 아이템을 삭제합니다.
+            List<Cart> carts = cartRepository.getByMemberId(memberId);
+            for (Cart cart : carts) {
+                List<CartItem> cartItems = cartItemRepository.getByCartId(cart.getId());
+                if(cartItems.size() > 0) {
+                    cartItemRepository.deleteCartItems(cart.getId());
+                }
+            }
+            // 3. 회원과 관련된 카트를 삭제합니다.
+            cartRepository.deleteCart(memberId);
+
+
+//            for (Order order : orders) {
+//                // 1-1. 주문과 관련된 주문 항목을 먼저 삭제합니다.
+//                List<OrderItem> orderItems = orderItemRepository.getByOrderId(order.getId());
+////                orderItemRepository.deleteAll(orderItems);
+//                for(OrderItem item : orderItems) {
+//                    orderItemRepository.deleteById(item.getId());
+//                }
+////                if(orderItems.size() > 0) {
+////                    orderItemRepository.deleteById(item.getId());
+////                }
+//
+//                // 1-2. 주문을 삭제합니다.
+//                orderRepository.deleteById(order.getId());
+//            }
 
             // 2. 회원과 관련된 카트 아이템을 삭제합니다.
-            List<CartItem> cartItems = cartItemRepository.findByCartMemberId(memberId);
-            cartItemRepository.deleteAll(cartItems);
+            //List<CartItem> cartItems = cartItemRepository.findByCartMemberId(memberId);
+//            cartItemRepository.deleteAll(cartItems);
 
+            // 2. 회원과 관련된 카트 아이템을 삭제합니다.
             // 3. 회원과 관련된 카트를 삭제합니다.
-            Cart cart = cartRepository.findByMemberId(Long.valueOf(memberId));
-            if (cart != null) {
-                cartRepository.delete(cart);
-            }
+//            Cart cart = cartRepository.findByMemberId(memberId);
+//            if (cart != null) {
+//                cartItemRepository.deleteCartItems(cart.getId());
+//                cartRepository.deleteById(cart.getId());
+//            }
 
             // 4. 회원을 삭제합니다.
-            memberService.deleteMember(memberId);
+            memberRepository.deleteById(memberId);
 
             return new ResponseEntity<String>("사용자 아이디가 삭제되었습니다.", HttpStatus.OK);
         } catch (Exception e) {

@@ -5,6 +5,7 @@ import com.shop.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -25,5 +26,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findByMember(Member member);
 
-    List<Order> findByMemberId(String memberId);
+    List<Order> findByMemberId(Long memberId);
+
+    @Modifying
+    @Query("delete from Order o where o.member.id = :memberId")
+    void deleteOrder(Long memberId);
 }

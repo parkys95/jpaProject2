@@ -21,6 +21,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Page<Member> findByEmailContainingIgnoreCase(String keyword, Pageable pageable);
 
+//    void deleteMember(Long memberId);
+
 //    Page<Member> getMemberPage(Pageable pageable);
 
 }

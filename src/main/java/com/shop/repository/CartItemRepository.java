@@ -2,9 +2,11 @@ package com.shop.repository;
 
 import com.shop.entity.Cart;
 import com.shop.entity.CartItem;
+import com.shop.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.shop.dto.CartDetailDto;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
@@ -25,7 +27,14 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     List<CartItem> findByCart(Cart cart);
 
 
-    List<CartItem> findByCartMemberId(String memberId);
+    List<CartItem> findByCartMemberId(Long memberId);
 
     List<CartItem> findByItemId(Long itemId);
+
+    @Query("select c from CartItem c where c.cart.id = :id")
+    List<CartItem> getByCartId(Long id);
+
+    @Modifying
+    @Query("delete from CartItem c where c.cart.id = :cartId")
+    void deleteCartItems(Long cartId);
 }

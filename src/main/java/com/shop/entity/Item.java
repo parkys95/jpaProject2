@@ -2,16 +2,13 @@ package com.shop.entity;
 
 import com.shop.constant.ItemCategory;
 import com.shop.constant.ItemSellStatus;
-import jdk.jfr.Category;
+import com.shop.dto.ItemFormDto;
+import com.shop.exception.OutOfStockException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import com.shop.dto.ItemFormDto;
-import com.shop.exception.OutOfStockException;
-
-import java.util.List;
 
 @Entity
 @Table(name="item")
@@ -45,6 +42,9 @@ public class Item extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //상품 판매 상태
+
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int view;
 
 
     public void updateItem(ItemFormDto itemFormDto){

@@ -1,30 +1,25 @@
 package com.shop.controller;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.ui.Model;
 import com.shop.dto.ItemFormDto;
-
-import com.shop.service.ItemService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import javax.validation.Valid;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import java.util.List;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import javax.persistence.EntityNotFoundException;
-
 import com.shop.dto.ItemSearchDto;
 import com.shop.entity.Item;
+import com.shop.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -131,6 +126,7 @@ public class ItemController {
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        itemService.updateView(itemId);
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }

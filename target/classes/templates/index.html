@@ -75,18 +75,26 @@
 						<th:block th:each="item, status: ${items.getContent()}">
 
 							<a th:href="'/item/' +${item.id}" class="overscale">
-
-
 								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >
 								<p class="galleryName" th:text="${item.itemNm}"></p>
 							</a>
-
-
 						</th:block>
 					</div>
 				</div>
 			</div>
+			<div>
 
+<!--				<div>-->
+<!--					<div>-->
+<!--						<th:block th:each="item, status: ${items.getContent(4)}">-->
+<!--							<a th:href="'/item/' +${item.id}" >-->
+<!--								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >-->
+<!--								<p th:text="${item.itemNm}"></p>-->
+<!--							</a>-->
+<!--						</th:block>-->
+<!--					</div>-->
+<!--				</div>-->
+			</div>
 
 
 
@@ -197,7 +205,7 @@
 			<div class="grey" style="background-color: lightgrey">
 				<div class="fandt" style="background-color: grey">
 					<div class="meritbox">
-						<div class="col-md-6 features merit">
+						<div class="col-md-6 features merit" style="left: 70px">
 							<h2>IMAGE FARM의 장점</h2>
 							<div class="meritmar">
 								<div class="support">

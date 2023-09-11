@@ -110,8 +110,9 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 .join(itemImg.item, item)
                 .where(itemImg.repimgYn.eq("Y"))
                 .where(
-                        itemNmLike(itemSearchDto.getSearchQuery()),
-                        eqCategory(menuCategory)
+
+                        eqCategory(menuCategory),
+                        searchAll(itemSearchDto.getSearchQuery())
                         )
 
 //                .where(item.category.eq(itemCategory))

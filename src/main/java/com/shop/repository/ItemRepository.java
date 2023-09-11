@@ -1,6 +1,5 @@
     package com.shop.repository;
 
-    import com.shop.constant.ItemCategory;
     import com.shop.dto.ItemDto;
     import com.shop.dto.ItemSearchDto;
     import com.shop.dto.MainItemDto;
@@ -8,13 +7,12 @@
     import org.springframework.data.domain.Page;
     import org.springframework.data.domain.Pageable;
     import org.springframework.data.jpa.repository.JpaRepository;
-
-    import java.util.List;
-
+    import org.springframework.data.jpa.repository.Modifying;
     import org.springframework.data.jpa.repository.Query;
+    import org.springframework.data.querydsl.QuerydslPredicateExecutor;
     import org.springframework.data.repository.query.Param;
 
-    import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+    import java.util.List;
 
     public interface ItemRepository extends JpaRepository<Item, Long>,
             QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
@@ -46,7 +44,9 @@
         Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable,String hashtag);
 
 
-
+        @Modifying
+        @Query("update Item i set i.view = i.view + 1 where i.id = :id")
+        int updateView(Long id);
 
 
 //        Page<Item> findByCreatedByAndOtherCriteria(String loggedInUsername, ItemSearchDto itemSearchDto, Pageable pageable);

@@ -6,20 +6,15 @@ import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import com.shop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-
-
-import com.shop.dto.ItemImgDto;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 @Service
 @Transactional
@@ -110,4 +105,10 @@ public class ItemService {
         return  itemRepository.findByCategory(category);
     }
 
+    @Transactional
+    public int updateView(Long id) {
+        return itemRepository.updateView(id);
+    }
 }
+
+

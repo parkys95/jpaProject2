@@ -2488,7 +2488,9 @@ p.w3-agile{
 	}
 	.features{
 		margin-bottom:40px;
+
 	}
+
 	.ficon {
 		width: 12%;
 		float: left;
@@ -3276,6 +3278,7 @@ p.w3-agile{
     /* 1번 라인에서 3칸 */
     grid-row: 1 / span 6;
     width: 100%;
+    max-width: 935px;
     height: 816px;
     object-fit: cover;
     align-items: center;
@@ -3417,8 +3420,8 @@ button{
     margin-top: 5px;
     margin-bottom: 5px;
     background-size: cover;
-    background: url("../img/searchbox2.jpg")  center ;
-    background-color: black;
+    background:linear-gradient( to right, #151521, #66a6ff,#00e58b );
+
 }
 
 .hover:hover{
@@ -3606,7 +3609,7 @@ footer{
 .testimonials p {
     position: absolute;
     text-align: center;
-    bottom: 85px;
+    bottom: 45px;
 }
 .testimonials h4{
     position: absolute;
@@ -3656,4 +3659,8 @@ html{
 }
 .testimonials{
     right: -50px;
+    width: 1000px;
+}
+@media{
+
 }

@@ -102,7 +102,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                         new QMainItemDto(
                                 item.id,
                                 item.itemNm,
-                                item.itemDetail,
+                                item.hashtag,
                                 itemImg.imgUrl,
                                 item.price)
                 )
@@ -142,7 +142,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                         new QMainItemDto(
                                 item.id,
                                 item.itemNm,
-                                item.itemDetail,
+                                item.hashtag,
                                 itemImg.imgUrl,
                                 item.price)
                 )

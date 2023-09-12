@@ -17,10 +17,10 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/paymentServer")
-public class paymentController {
+public class PaymentController {
     private final IamportClient IamportClient;
 
-    public paymentController(){
+    public PaymentController(){
         this.IamportClient = new IamportClient("6128576401217345", "hy0qnhwwfw3n3iAoznA4q4FYsC8a9vGu1ZQUGUWfGeN110EXINLvRGMU55jMm3yqEXao8I5E0lEHUmV6");
     }
 

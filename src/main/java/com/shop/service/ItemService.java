@@ -109,6 +109,16 @@ public class ItemService {
         return  itemRepository.findByCategory(category);
     }
 
+    public List<ItemJoinInterface> getByILLUSTView(){
+        return  itemRepository.getByILLUSTView();
+    }
+    public List<ItemJoinInterface> getByICONView(){
+        return  itemRepository.getByICONView();
+    }
+    public List<ItemJoinInterface> getByPHOTOView(){
+        return  itemRepository.getByPHOTOView();
+    }
+
 
     public void deleteItem(Long itemId) throws Exception {
         // 상품을 데이터베이스에서 조회합니다.

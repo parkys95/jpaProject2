@@ -59,7 +59,7 @@ public class SupervisorController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-        return "/supervisor/svItemMng";
+        return "supervisor/svItemMng";
     }
 
     @DeleteMapping("/items/{itemId}")
@@ -106,7 +106,7 @@ public class SupervisorController {
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
 
-        return "supervisor/svMembersMng"; // 렌더링할 Thymeleaf 템플릿 경로
+        return "/supervisor/svMembersMng"; // 렌더링할 Thymeleaf 템플릿 경로
     }
 
 

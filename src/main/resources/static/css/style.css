@@ -8,7 +8,6 @@
 /*-- Reset Code --*/
 body {
     padding: 0;
-    margin: 0;
 
     background: #FFF;
     font-family: 'open Sans', sans-serif;
@@ -1741,7 +1740,7 @@ p.single-price-text {
 .main-agileits {
     width: 24%;
     min-height: 30%;
-    max-height: 50%;
+    max-height: 55%;
     margin: 0em auto;
     box-shadow: 0px 0px 15px 0px #D6D6D6;
     -o-box-shadow: 0px 0px 15px 0px #D6D6D6;
@@ -3247,8 +3246,18 @@ p.w3-agile{
 .gallery {
     justify-content: center;
     align-content: center;
-    background-color: rgba(156, 156, 156, 0.19);
+    background-color: #9C9C9C30;
     padding: 20px;
+}
+
+.gallery2 {
+    justify-content: center;
+    align-content: center;
+    background-color: #9C9C9C30;
+    padding: 20px;
+    width: 100%;
+
+    margin:0 auto;
 }
 
 .row {
@@ -3258,23 +3267,27 @@ p.w3-agile{
     margin: 0;
     padding: 0;
     grid-template-columns: repeat(auto-fit, minmax(9%, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(130px, 1fr));
     grid-gap: 4px;
 }
 .grid1:nth-child(1) {
     /* 1번 라인에서 2칸 */
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 10;
     /* 1번 라인에서 3칸 */
     grid-row: 1 / span 6;
-    width: 100%;
-    max-width: 935px;
-    height: 816px;
+    width: 800px;
+    height: 800px;
     object-fit: cover;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    margin-bottom: 20px;
+    text-align: center;
+    left: 28.5%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
-.gallery >.row:before{
+.gallery >.row:before,.gallery2>.row:before{
     content:none;
     overflow: hidden;
 }
@@ -3282,14 +3295,18 @@ p.w3-agile{
     overflow: hidden;
     height: 150px;
     border-radius: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 .overscale2{
     overflow: hidden;
-    height: 200px;
+    height: 180px;
     border-radius: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-.gallery a{
+.gallery a,.gallery2 a{
     position: relative;
 }
 .galleryName{
@@ -3318,6 +3335,7 @@ p.w3-agile{
     border-radius: 30px;
     filter: grayscale(80%);
     filter: brightness(50%);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .row img{
     width:100%;
@@ -3333,7 +3351,7 @@ p.w3-agile{
     position: relative;
     width: 100%;
     height: 100%;
-    top: 10px;
+    top: -4px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -3404,7 +3422,7 @@ button{
     filter: invert(61%) sepia(92%) saturate(489%) hue-rotate(102deg) brightness(94%) contrast(101%)
 }
 .searchbox{
-    height: 120px;
+    height: 90px;
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -3430,7 +3448,7 @@ button{
 #banner0{
     background: url("../banner/banner.jpg")   ;
     background-position: 40% 35%;
-    height: 550px;
+    height: 450px;
 
     background-repeat: no-repeat;
 }
@@ -3438,14 +3456,14 @@ button{
     background: url("../banner/banner1.jpg")   ;
     background-size: cover;
 
-    height: 550px;
+    height: 450px;
     background-repeat: no-repeat;
 }
 #banner2 {
     background: url("../banner/banner2.jpeg");
     background-size: cover;
 
-    height: 550px;
+    height: 450px;
     background-repeat: no-repeat;
 }
 .banner-name{
@@ -3453,7 +3471,7 @@ button{
 }
 .banner-name .banner-name2{
     position: absolute;
-    top: 420px;
+    top: 180px;
     left: 240px;
 }
 .banner-name h1{
@@ -3471,6 +3489,7 @@ button{
 #header{
     background-color: #151521;
     height: 60px;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.24);
 }
 .menu{
     font-family: 'Roboto', sans-serif;
@@ -3602,9 +3621,11 @@ footer{
 }
 .testimonials h4{
     position: absolute;
-    left: 45%;
+    top: 6px;
+    left: 15px;
     text-align: center;
     bottom: 80px;
+    font-size: 40px
 }
 .slide{
     bottom: 160px;
@@ -3615,27 +3636,27 @@ html{
 }
 .boody{
     top: 0px;
-    margin-bottom: 80px;
+    margin-bottom: 35px;
 }
 .itemsearchbox{
-    height: 100px;
+    height: 80px;
 }
 .pagin{
     position: relative;
     bottom: 8px;
+    align-items: center;
 }
 .justify-content-center{
-    position: absolute;
-    left: 44%;
+
+    margin: 50px auto;
+    margin-top: 30px;
+
 }
 .pagin{
-    position: relative;
+
     margin-top: 20px;
     bottom: 20px;
-}
-.justify-content-center{
-    position: absolute;
-    left: 44%;
+    text-align: center;
 }
 
 .footerMenu li{
@@ -3652,7 +3673,7 @@ html{
     width: 1000px;
 }
 .searchbody{
-    margin-bottom: 180px ;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.24);
 }
 .banner-wrap img{
     overflow: hidden;
@@ -3661,6 +3682,10 @@ html{
 .heartButton{
 
 }
+.plusMargin{
+    margin: 0 auto;
+}
+
 @media{
 
 }

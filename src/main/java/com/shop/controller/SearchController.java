@@ -21,7 +21,7 @@ public class SearchController {
     @GetMapping("/search")
     public String search(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 25);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 21);
         Page<MainItemDto> items;
         if(itemSearchDto.getSearchBy()==null || itemSearchDto.getSearchBy().isEmpty()){
             items = itemService.getMainItemPageOr(itemSearchDto, pageable);

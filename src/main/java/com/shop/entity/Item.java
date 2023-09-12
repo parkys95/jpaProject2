@@ -1,5 +1,6 @@
 package com.shop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shop.constant.ItemCategory;
 import com.shop.constant.ItemSellStatus;
 import com.shop.dto.ItemFormDto;
@@ -9,12 +10,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="item")
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties({"item"})
 public class Item extends BaseEntity {
 
     @Id
@@ -27,6 +30,7 @@ public class Item extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ItemCategory category;    //카테고리
+
     @Column(name="hashtag")
     private String hashtag;
 
@@ -49,7 +53,8 @@ public class Item extends BaseEntity {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private int heart;
 
-
+    @OneToMany(mappedBy = "item", fetch = FetchType.EAGER)
+    private List<Reply> replyList;
 
 
     public void updateItem(ItemFormDto itemFormDto){

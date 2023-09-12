@@ -1,6 +1,7 @@
     package com.shop.repository;
 
     import com.shop.dto.ItemDto;
+    import com.shop.dto.ItemJoinInterface;
     import com.shop.dto.ItemSearchDto;
     import com.shop.dto.MainItemDto;
     import com.shop.entity.Item;
@@ -63,8 +64,8 @@
         @Query("update Item i set i.view = i.view + 1 where i.id = :id")
         int updateView(Long id);
 
-        @Query("SELECT i FROM Item i ORDER BY i.view DESC")
-        Page<Item> findAllOrderByViewDesc(Pageable pageable);
+//        @Query("SELECT i FROM Item i ORDER BY i.view DESC")
+//        Page<Item> findAllOrderByViewDesc(Pageable pageable);
 
         @Modifying
         @Query("update Item i set i.heart = :heart  where i.id = :itemId")
@@ -72,4 +73,21 @@
 
 
 
+        @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
+                       "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
+                        "where i.category = 'ILLUST'"+
+                       " ORDER BY i.view DESC limit 5",nativeQuery = true)
+        List<ItemJoinInterface> getByILLUSTView();
+
+        @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
+                "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
+                "where i.category = 'ICON'"+
+                " ORDER BY i.view DESC limit 5",nativeQuery = true)
+        List<ItemJoinInterface> getByICONView();
+
+        @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
+                "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
+                "where i.category = 'PHOTO'"+
+                " ORDER BY i.view DESC limit 5",nativeQuery = true)
+        List<ItemJoinInterface> getByPHOTOView();
     }

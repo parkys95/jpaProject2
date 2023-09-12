@@ -14,14 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-=======
 import java.util.List;
->>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 
 @Service
 @Transactional
@@ -112,10 +109,6 @@ public class ItemService {
         return  itemRepository.findByCategory(category);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 
     public void deleteItem(Long itemId) throws Exception {
         // 상품을 데이터베이스에서 조회합니다.
@@ -135,13 +128,6 @@ public class ItemService {
         }
     }
 
-=======
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
-=======
-
->>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
-}
-=======
     @Transactional
     public int updateView(Long id) {
         return itemRepository.updateView(id);
@@ -155,6 +141,3 @@ public class ItemService {
 
 
 }
-
-
->>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e

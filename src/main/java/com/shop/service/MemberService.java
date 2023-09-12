@@ -101,19 +101,10 @@ public class MemberService implements UserDetailsService {
         // loginId를 사용하여 회원을 조회합니다.
         Member member = memberRepository.findByEmail(loginId);
 
-<<<<<<< HEAD
-=======
-    @Transactional
-    public void deleteMember(String loginId) {
-        // loginId를 사용하여 회원을 조회합니다.
-        Member member = memberRepository.findByEmail(loginId);
-
->>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
         if (member == null) {
             throw new UsernameNotFoundException("회원을 찾을 수 없습니다.");
         }
 
-<<<<<<< HEAD
         // 1. 회원과 관련된 주문을 삭제합니다.
         List<Order> orders = orderRepository.findByMember(member);
         for (Order order : orders) {
@@ -146,14 +137,4 @@ public class MemberService implements UserDetailsService {
         return memberRepository.findAll(pageable);
     }
 
-//    @Transactional(readOnly = true)
-//    public Page<Member> getMemberPage(MemberSearchDto memberSearchDto, Pageable pageable){
-//        return memberRepository.getMemberPage(pageable);
-//    }
-=======
-        // 회원을 삭제합니다.
-        memberRepository.delete(member);
-    }
-
->>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 }

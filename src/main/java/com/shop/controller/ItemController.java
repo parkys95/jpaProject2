@@ -127,17 +127,14 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }
+//    @GetMapping(value = "/item_pay")
+//    public String itemDtl_pay(Model model) {
+//        model.addAttribute("item");
+//        return "item/itemDtl_pay";
+//    }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
-    @GetMapping(value = "/item_pay")
-    public String itemDtl_pay(Model model) {
-        model.addAttribute("item");
-        return "item/itemDtl_pay";
-    }
+
 
 //    @GetMapping("{itemId}")
 //    public String findById(@PathVariable("itemId") Long itemId, Model model){
@@ -165,7 +162,6 @@ public class ItemController {
     }
 
 
-=======
     @GetMapping(value = "/item/pay/{itemId}")
     public String payDown(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
@@ -174,10 +170,4 @@ public class ItemController {
     }
 
 
-
-
-
-
-
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }

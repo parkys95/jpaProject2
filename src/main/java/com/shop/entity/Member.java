@@ -20,6 +20,7 @@ public class Member extends BaseEntity {
     @Id
     @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -59,18 +60,6 @@ public class Member extends BaseEntity {
             e.printStackTrace(); // 혹은 로깅
         }
     }
-
-
-    /**
-     * 회원수정 메소드
-     */
-//    public void updateUsername(String name) {
-//        this.name = name;
-//    }
-//
-//    public void updateAddress(String address) {
-//        this.address = address;
-//    }
 
 
 }

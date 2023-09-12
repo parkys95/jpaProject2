@@ -2,8 +2,6 @@ package com.shop.config;
 
 import com.shop.handler.CustomFormLoginSuccessHandler;
 import com.shop.handler.CustomSocialLoginSuccessHandler;
-import com.shop.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,18 +44,10 @@ public class SecurityConfig {
         ;
 
         http.authorizeRequests()
-
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
-
-
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/supervisor/**","/payDown").permitAll()
-
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**","/payDown").permitAll()
-
-
-
+                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/supervisor/**",
+                        "/payDown", "/download/**" ,"/index_pay").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .mvcMatchers("/supervisor/**").hasRole("SUPERVISOR")
                 .anyRequest().authenticated()

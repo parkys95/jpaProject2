@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ready(function(){
+            $("#searchBtn").on("click",function(e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDateType").val();
+            var searchSellStatus = $("#searchSellStatus").val();
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href="/supervisor/members/" + page + "?searchDateType=" + searchDateType
+            + "&searchSellStatus=" + searchSellStatus
+            + "&searchBy=" + searchBy
+            + "&searchQuery=" + searchQuery;
+        }
+
+        function deleteMember(memberId) {
+
+            if (confirm("사용자 아이디를 삭제하시겠습니까?")) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "/supervisor/members/" + memberId,
+                    beforeSend : function(xhr){
+                        /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function (response, status) {
+                        console.log(response);
+                        if (status == "success") {
+                            // 성공적으로 삭제되었을 때 수행할 작업을 추가하세요.
+                            alert("사용자 아이디가 성공적으로 삭제되었습니다.");
+                            location.reload(); // 페이지 새로고침 또는 필요한 업데이트 작업 수행
+                        } else {
+                            alert("사용자 아이디 삭제에 실패했습니다.");
+                        }
+                    },
+                    error: function () {
+                        alert("사용자 아이디 삭제 중 오류가 발생했습니다.");
+                    }
+                });
+            }
+        }
+
+    </script>
+</th:block>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        select{
+            margin-right:10px;
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+
+        <!-- 유저 정보를 표시하는 테이블 추가 -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>사용자 번호</th>
+                <th>사용자 이름</th>
+                <th>사용자 역할</th>
+                <th>가입일</th>
+                <th>이메일</th>
+                <th>주소</th>
+                <th>소셜 로그인 여부</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 유저 정보를 Thymeleaf 반복문을 사용하여 표시 -->
+            <tr th:each="member, status: ${members.getContent()}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+                <td th:text="${member.role}"></td>
+                <td th:text="${member.regTime}"></td>
+                <td th:text="${member.email}"></td>
+                <td th:text="${member.address}"></td>
+                <td th:text="${member.social} ? 'Yes' : 'No'"></td>
+                <td>
+                    <button class="btn btn-danger" th:onclick="'javascript:deleteMember(' + ${member.id} + ')'">삭제</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    <!-- 페이징 및 페이지 내비게이션 -->
+    <div th:if="${members.totalPages > 1}" class="pagination justify-content-center">
+        <ul class="pagination">
+<!--            <li th:class="${members.first} ? 'disabled' : ''" class="page-item">-->
+<!--                <a th:if="${not members.first}" th:href="@{/supervisor/members(page=0, size=${members.size})}" class="page-link" aria-label="First">-->
+<!--                    <span aria-hidden="true">&laquo;&laquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+            <li th:class="${members.first} ? 'disabled'" class="page-item">
+                <a th:if="${not members.first}" th:href="@{/supervisor/members(page=${members.number - 1}, size=${members.size})}" class="page-link" aria-label="Previous">
+                    <span aria-hidden='true'>Previous</span>
+                </a>
+            </li>
+            <li th:each="pageNumber : ${#numbers.sequence(0, members.totalPages - 1)}" th:class="${members.number == pageNumber} ? 'active' : ''" class="page-item">
+                <a th:href="@{/supervisor/members(page=${pageNumber}, size=${members.size})}" class="page-link" th:text="${pageNumber + 1}"></a>
+            </li>
+
+            <li th:class="${members.last} ? 'disabled' " class="page-item">
+                <a th:if="${not members.last}" th:href="@{/supervisor/members(page=${members.number + 1}, size=${members.size})}" class="page-link" aria-label="Next">
+                    <span aria-hidden='true'>Next</span>
+                </a>
+            </li>
+<!--            <li th:class="${members.last} ? 'disabled' : ''" class="page-item">-->
+<!--                <a th:if="${not members.last}" th:href="@{/supervisor/members(page=${members.totalPages - 1}, size=${members.size})}" class="page-link" aria-label="Last">-->
+<!--                    <span aria-hidden="true">&raquo;&raquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+    </div>
+
+
+    <!--        <div th:with="start=${(members.number/maxPage)*maxPage + 1}, end=(${(members.totalPages == 0) ? 1 : (start + (maxPage - 1) < members.totalPages ? start + (maxPage - 1) : members.totalPages)})" >-->
+<!--            <ul class="pagination justify-content-center">-->
+
+<!--                <li class="page-item" th:classappend="${members.first}?'disabled'">-->
+<!--                    <a th:onclick="'javascript:page(' + ${members.number - 1} + ')'" aria-label='Previous' class="page-link">-->
+<!--                        <span aria-hidden='true'>Previous</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+
+<!--                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${members.number eq 'page-1'}?'active':''">-->
+<!--                    <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>-->
+<!--                </li>-->
+
+<!--                <li class="page-item" th:classappend="${members.last}?'disabled'">-->
+<!--                    <a th:onclick="'javascript:page(' + ${members.number + 1} + ')'" aria-label='Next' class="page-link">-->
+<!--                        <span aria-hidden='true'>Next</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+
+<!--            </ul>-->
+<!--        </div>-->
+
+
+
+<!--    <div class="form-inline justify-content-center" th:object="${memberSearchDto}">-->
+<!--        <select th:field="*{searchDateType}" class="form-control" style="width:auto;">-->
+<!--            <option value="all">전체기간</option>-->
+<!--            <option value="1d">1일</option>-->
+<!--            <option value="1w">1주</option>-->
+<!--            <option value="1m">1개월</option>-->
+<!--            <option value="6m">6개월</option>-->
+<!--        </select>-->
+<!--        <select th:field="*{role}" class="form-control" style="width:auto;">-->
+<!--            <option value="">회원 상태(전체)</option>-->
+<!--            <option value="ADMIN">판매자</option>-->
+<!--            <option value="USER">일반 회원</option>-->
+<!--        </select>-->
+<!--        <select th:field="*{searchBy}" class="form-control" style="width:auto;">-->
+<!--            <option value="itemNm">상품명</option>-->
+<!--            <option value="createdBy">등록자</option>-->
+
+<!--        </select>-->
+<!--        <input th:field="*{searchQuery}" type="text" class="form-control" placeholder="검색어를 입력해주세요">-->
+<!--        <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>-->
+<!--    </div>-->
+</div>
+
+</html>

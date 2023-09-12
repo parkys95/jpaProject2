@@ -117,14 +117,14 @@
 
         <div class="d-flex mb-3 align-self-center">
             <h3 th:text="${order.orderDate} + ' 주문'"></h3>
-            <div class="ml-3">
-                <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <button type="button" class="btn btn-danger" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
-                </th:block>
-                <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <h3>(취소 완료)</h3>
-                </th:block>
-            </div>
+<!--            <div class="ml-3">-->
+<!--                <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">-->
+<!--                    <button type="button" class="btn btn-danger" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>-->
+<!--                </th:block>-->
+<!--                <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">-->
+<!--                    <h3>(취소 완료)</h3>-->
+<!--                </th:block>-->
+<!--            </div>-->
         </div>
         <div class="card d-flex">
             <div th:each="orderItem : ${order.orderItemDtoList}" class="d-flex mb-3">
@@ -139,6 +139,11 @@
                         <span th:text="${orderItem.count} +'개'"></span>
                         <br>
                         <span th:text="${orderItem.count}*${orderItem.orderPrice} + '원'"></span>
+
+                        <a th:href="${orderItem.imgUrl}" download="image.jpg">다운로드</a>
+
+
+
 
                     </div>
                 </div>
@@ -165,6 +170,8 @@
                     <span aria-hidden='true'>Next</span>
                 </a>
             </li>
+
+
 
         </ul>
     </div>

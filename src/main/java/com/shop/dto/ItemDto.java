@@ -12,8 +12,6 @@ public class ItemDto {
 
     private Long id;
 
-    private ItemCategory category;
-
     private String hashtag;
 
     private String itemNm;

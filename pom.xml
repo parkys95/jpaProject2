@@ -123,30 +123,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-core</artifactId>
-			<version>5.7.10</version>
-		</dependency>
-
-<<<<<<< HEAD
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-client</artifactId>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-client</artifactId>
 			<version>2.7.1</version>
 		</dependency>
-<<<<<<< HEAD
 
-=======
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
-
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -158,12 +141,6 @@
 			<version>0.2.23</version>
 		</dependency>
 	</dependencies>
-=======
-=======
-
->>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
-    </dependencies>
->>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 
 	<repositories>
 		<repository>
@@ -171,8 +148,6 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-
-
 
 
 	<build>

@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -94,7 +96,8 @@ public class ItemController {
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
+        itemSearchDto.setUserName(getLoggedInUsername());
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
@@ -102,6 +105,14 @@ public class ItemController {
         model.addAttribute("maxPage", 5);
 
         return "item/itemMng";
+    }
+
+    private String getLoggedInUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            return authentication.getName(); // 현재 로그인한 사용자의 이름을 반환
+        }
+        return null;
     }
 
 //    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
@@ -127,17 +138,14 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }
+//    @GetMapping(value = "/item_pay")
+//    public String itemDtl_pay(Model model) {
+//        model.addAttribute("item");
+//        return "item/itemDtl_pay";
+//    }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
-    @GetMapping(value = "/item_pay")
-    public String itemDtl_pay(Model model) {
-        model.addAttribute("item");
-        return "item/itemDtl_pay";
-    }
+
 
 //    @GetMapping("{itemId}")
 //    public String findById(@PathVariable("itemId") Long itemId, Model model){
@@ -165,7 +173,6 @@ public class ItemController {
     }
 
 
-=======
     @GetMapping(value = "/item/pay/{itemId}")
     public String payDown(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
@@ -174,10 +181,4 @@ public class ItemController {
     }
 
 
-
-
-
-
-
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }

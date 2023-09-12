@@ -13,7 +13,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.shop.dto.OrderHistDto;
+import com.shop.dto.OrderListDto;
 import com.shop.dto.OrderItemDto;
 import com.shop.repository.ItemImgRepository;
 import org.springframework.data.domain.Page;
@@ -52,28 +52,28 @@ public class OrderService {
     }
 
     @Transactional(readOnly = true)
-    public Page<OrderHistDto> getOrderList(String email, Pageable pageable) {
+    public Page<OrderListDto> getOrderList(String email, Pageable pageable) {
 
         List<Order> orders = orderRepository.findOrders(email, pageable);
         Long totalCount = orderRepository.countOrder(email);
 
-        List<OrderHistDto> orderHistDtos = new ArrayList<>();
+        List<OrderListDto> orderListDtos = new ArrayList<>();
 
         for (Order order : orders) {
-            OrderHistDto orderHistDto = new OrderHistDto(order);
+            OrderListDto orderListDto = new OrderListDto(order);
             List<OrderItem> orderItems = order.getOrderItems();
             for (OrderItem orderItem : orderItems) {
                 ItemImg itemImg = itemImgRepository.findByItemIdAndRepimgYn
                         (orderItem.getItem().getId(), "Y");
                 OrderItemDto orderItemDto =
                         new OrderItemDto(orderItem, itemImg.getImgUrl());
-                orderHistDto.addOrderItemDto(orderItemDto);
+                orderListDto.addOrderItemDto(orderItemDto);
             }
 
-            orderHistDtos.add(orderHistDto);
+            orderListDtos.add(orderListDto);
         }
 
-        return new PageImpl<OrderHistDto>(orderHistDtos, pageable, totalCount);
+        return new PageImpl<OrderListDto>(orderListDtos, pageable, totalCount);
     }
 
     @Transactional(readOnly = true)
@@ -115,4 +115,8 @@ public class OrderService {
         return order.getId();
     }
 
+    // 모든 구매 목록을 페이지별로 가져오는 메서드
+    public Page<Order> getAllOrders(Pageable pageable) {
+        return orderRepository.findAll(pageable);
+    }
 }

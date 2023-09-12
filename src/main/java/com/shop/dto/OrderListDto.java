@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
-public class OrderHistDto {
+public class OrderListDto {
 
-    public OrderHistDto(Order order){
+    public OrderListDto(Order order){
         this.orderId = order.getId();
         this.orderDate = order.getOrderDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.orderStatus = order.getOrderStatus();

@@ -44,41 +44,10 @@ public class SecurityConfig {
         ;
 
         http.authorizeRequests()
-<<<<<<< HEAD
-<<<<<<< HEAD
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
-<<<<<<< HEAD
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**",
-                        "/download/**" ,"/index_pay").permitAll()
-=======
-
-
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/supervisor/**","/payDown").permitAll()
-
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**","/payDown").permitAll()
-=======
-
-                .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**","/search/**").permitAll()
-
-
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
-                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/index_pay","/supervisor/**").permitAll()
-
->>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
-
-
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
-
-=======
-
-                .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**" ).permitAll()
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**", "/sendEmail/**","/photo/**","/icon/**","/illust/**").permitAll()
-
-
->>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
+                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/supervisor/**",
+                        "/payDown", "/download/**" ,"/index_pay").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .mvcMatchers("/supervisor/**").hasRole("SUPERVISOR")
                 .anyRequest().authenticated()

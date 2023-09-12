@@ -1,24 +1,18 @@
 package com.shop.controller;
 
 import com.shop.dto.ItemSearchDto;
-<<<<<<< HEAD
 import com.shop.dto.MemberSearchDto;
 import com.shop.dto.MemberUpdateFormDto;
 import com.shop.entity.*;
 import com.shop.repository.*;
-=======
-import com.shop.dto.MainItemDto;
-import com.shop.entity.Item;
-import com.shop.repository.MemberRepository;
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 import com.shop.service.ItemService;
 import com.shop.service.MailService;
 import com.shop.service.MemberService;
+import com.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-<<<<<<< HEAD
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -33,15 +27,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-=======
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 import java.util.Optional;
 
 @RequestMapping("/supervisor")
@@ -50,14 +35,16 @@ import java.util.Optional;
 public class SupervisorController {
 
     private final MemberRepository memberRepository;
-<<<<<<< HEAD
     private final MemberService memberService;
     private final ItemService itemService;
+    private final OrderService orderService;
 
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private final ItemRepository itemRepository;
+    private final ItemImgRepository itemImgRepository;
 
 
     @GetMapping("/page")
@@ -70,38 +57,12 @@ public class SupervisorController {
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
-=======
-    private final MailService mailService;
-    private final MemberService memberService;
-    private final PasswordEncoder passwordEncoder;
-    private final ItemService itemService;
-
-    @GetMapping(value = "/supervisorPage")
-    public String supervisorForm(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
-
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 45);
-        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable,"");
-
-
-        model.addAttribute("items", items);
-        model.addAttribute("itemSearchDto", itemSearchDto);
-        model.addAttribute("maxPage", 5);
-
-        return "member/supervisor";
-    }
-
-    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
-    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
-
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-<<<<<<< HEAD
         return "/supervisor/svItemMng";
     }
 
@@ -128,20 +89,6 @@ public class SupervisorController {
 
 
 
-
-//    @GetMapping(value = {"/members", "/members/{page}"})
-//    public String membersManage(MemberSearchDto memberSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
-//
-//        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
-//        Page<Member> members = memberService.getMemberPage(memberSearchDto, pageable);
-//
-//        model.addAttribute("members", members);
-//        model.addAttribute("memberSearchDto", memberSearchDto);
-//        model.addAttribute("maxPage", 5);
-//
-//        return "supervisor/svMembersMng";
-//    }
-
     @GetMapping("/members")
     public String listMembers(Model model,
                               @RequestParam(defaultValue = "") String searchType,
@@ -163,7 +110,7 @@ public class SupervisorController {
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
 
-        return "supervisor/svMembersMng"; // 렌더링할 Thymeleaf 템플릿 경로
+        return "/supervisor/svMembersMng"; // 렌더링할 Thymeleaf 템플릿 경로
     }
 
 
@@ -196,32 +143,20 @@ public class SupervisorController {
             cartRepository.deleteCart(memberId);
 
 
-//            for (Order order : orders) {
-//                // 1-1. 주문과 관련된 주문 항목을 먼저 삭제합니다.
-//                List<OrderItem> orderItems = orderItemRepository.getByOrderId(order.getId());
-////                orderItemRepository.deleteAll(orderItems);
-//                for(OrderItem item : orderItems) {
-//                    orderItemRepository.deleteById(item.getId());
-//                }
-////                if(orderItems.size() > 0) {
-////                    orderItemRepository.deleteById(item.getId());
-////                }
-//
-//                // 1-2. 주문을 삭제합니다.
-//                orderRepository.deleteById(order.getId());
-//            }
+            List<Item> itemsList = itemRepository.getByCreatedBy(memberRepository.findById(memberId).get().getEmail());
+            for (Item item : itemsList) {
+                List<ItemImg> itemImgs = itemImgRepository.getByItemId(item.getId());
+                if(itemImgs.size() > 0) {
+                    itemImgRepository.deleteItemImgs(item.getId());
+                }
+            }
 
-            // 2. 회원과 관련된 카트 아이템을 삭제합니다.
-            //List<CartItem> cartItems = cartItemRepository.findByCartMemberId(memberId);
-//            cartItemRepository.deleteAll(cartItems);
-
-            // 2. 회원과 관련된 카트 아이템을 삭제합니다.
-            // 3. 회원과 관련된 카트를 삭제합니다.
-//            Cart cart = cartRepository.findByMemberId(memberId);
-//            if (cart != null) {
-//                cartItemRepository.deleteCartItems(cart.getId());
-//                cartRepository.deleteById(cart.getId());
-//            }
+            for (Item item : itemsList) {
+                if(itemsList.size() > 0) {
+                    itemRepository.deleteById(item.getId());
+                }
+            }
+//            itemRepository.allDeleteItems(memberRepository.findById(memberId).get().getEmail());
 
             // 4. 회원을 삭제합니다.
             memberRepository.deleteById(memberId);
@@ -233,8 +168,16 @@ public class SupervisorController {
     }
 
 
-=======
-        return "member/supervisor";
+    @GetMapping("/orders")
+    public String listOrders(Model model,
+                             @RequestParam(defaultValue = "") String searchType,
+                             @RequestParam(defaultValue = "") String keyword,
+                             @PageableDefault(size = 5, sort = "id",
+                                     direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Order> orders = orderService.getAllOrders(pageable); // orderService를 통해 구매 목록을 가져옵니다.
+
+        model.addAttribute("orders", orders); // 구매 목록을 모델에 추가합니다.
+
+        return "/supervisor/svOrdersMng"; // 렌더링할 Thymeleaf 템플릿 경로
     }
->>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }

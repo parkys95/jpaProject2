@@ -59,10 +59,10 @@ public class CartController {
     }
 
     @GetMapping(value = "/cart")
-    public String orderHist(Principal principal, Model model){
+    public String orderList(Principal principal, Model model){
         List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
         model.addAttribute("cartItems", cartDetailList);
-        return "cart/cartList";
+        return "/cart/cartList";
     }
 
     @PatchMapping(value = "/cartItem/{cartItemId}")

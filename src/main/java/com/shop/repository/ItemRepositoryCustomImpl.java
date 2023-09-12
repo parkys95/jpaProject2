@@ -63,6 +63,10 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return null;
     }
 
+    private BooleanExpression itemNmLike(String searchQuery){
+        return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
+    }
+
     @Override
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
 
@@ -71,7 +75,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 .where(regDtsAfter(itemSearchDto.getSearchDateType()),
                         searchSellStatusEq(itemSearchDto.getSearchSellStatus()),
                         searchByLike(itemSearchDto.getSearchBy(),
-                                itemSearchDto.getSearchQuery()))
+                                itemSearchDto.getSearchQuery()),
+                        searchUserName(itemSearchDto.getUserName()))
                 .orderBy(QItem.item.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -80,14 +85,11 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         long total = queryFactory.select(Wildcard.count).from(QItem.item)
                 .where(regDtsAfter(itemSearchDto.getSearchDateType()),
                         searchSellStatusEq(itemSearchDto.getSearchSellStatus()),
-                        searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery()))
+                        searchByLike(itemSearchDto.getSearchBy(), itemSearchDto.getSearchQuery()),
+                        searchUserName(itemSearchDto.getUserName()))
                 .fetchOne();
 
         return new PageImpl<>(content, pageable, total);
-    }
-
-    private BooleanExpression itemNmLike(String searchQuery){
-        return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
     }
 
     QItem item = QItem.item;
@@ -191,6 +193,13 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             return null;
         }
         return item.hashtag.like("%" + searchText + "%" ).or(item.itemNm.like("%" + searchText + "%"));
+    }
+
+    private BooleanExpression searchUserName(String searchText){
+        if(StringUtils.isEmpty(searchText)){
+            return null;
+        }
+        return item.createdBy.eq(searchText);
     }
 
 }

@@ -17,4 +17,6 @@ public class ItemSearchDto {
 
     private String hashtag;
 
+    private String userName;
+
 }

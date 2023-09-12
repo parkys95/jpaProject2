@@ -5,7 +5,10 @@
     import com.shop.dto.ItemSearchDto;
     import com.shop.dto.MainItemDto;
     import com.shop.entity.Item;
+<<<<<<< HEAD
     import com.shop.service.ItemService;
+=======
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
     import org.springframework.data.domain.Page;
     import org.springframework.data.domain.Pageable;
     import org.springframework.data.jpa.repository.JpaRepository;

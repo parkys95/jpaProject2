@@ -135,6 +135,7 @@ public class ItemController {
         return "item/itemDtl";
     }
 
+<<<<<<< HEAD
     @GetMapping(value = "/item_pay")
     public String itemDtl_pay(Model model){
         model.addAttribute("item");
@@ -142,4 +143,19 @@ public class ItemController {
     }
 
 
+=======
+    @GetMapping(value = "/item/pay/{itemId}")
+    public String payDown(Model model, @PathVariable("itemId") Long itemId){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "pay/payDown";
+    }
+
+
+
+
+
+
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }

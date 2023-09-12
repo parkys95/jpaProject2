@@ -129,10 +129,30 @@
 			<artifactId>spring-boot-admin-starter-client</artifactId>
 			<version>2.7.1</version>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.iamport</groupId>
+			<artifactId>iamport-rest-client-java</artifactId>
+			<version>0.2.23</version>
+		</dependency>
+	</dependencies>
 
-    </dependencies>
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 
 
 	<build>

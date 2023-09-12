@@ -1,10 +1,16 @@
 package com.shop.controller;
 
 import com.shop.dto.ItemSearchDto;
+<<<<<<< HEAD
 import com.shop.dto.MemberSearchDto;
 import com.shop.dto.MemberUpdateFormDto;
 import com.shop.entity.*;
 import com.shop.repository.*;
+=======
+import com.shop.dto.MainItemDto;
+import com.shop.entity.Item;
+import com.shop.repository.MemberRepository;
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 import com.shop.service.ItemService;
 import com.shop.service.MailService;
 import com.shop.service.MemberService;
@@ -12,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+<<<<<<< HEAD
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -26,6 +33,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+=======
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 import java.util.Optional;
 
 @RequestMapping("/supervisor")
@@ -34,6 +50,7 @@ import java.util.Optional;
 public class SupervisorController {
 
     private final MemberRepository memberRepository;
+<<<<<<< HEAD
     private final MemberService memberService;
     private final ItemService itemService;
 
@@ -53,12 +70,38 @@ public class SupervisorController {
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
+=======
+    private final MailService mailService;
+    private final MemberService memberService;
+    private final PasswordEncoder passwordEncoder;
+    private final ItemService itemService;
+
+    @GetMapping(value = "/supervisorPage")
+    public String supervisorForm(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 45);
+        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable,"");
+
+
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
+
+        return "member/supervisor";
+    }
+
+    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
+<<<<<<< HEAD
         return "/supervisor/svItemMng";
     }
 
@@ -190,4 +233,8 @@ public class SupervisorController {
     }
 
 
+=======
+        return "member/supervisor";
+    }
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }

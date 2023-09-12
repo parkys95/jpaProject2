@@ -111,6 +111,7 @@ public class ItemService {
         return  itemRepository.findByCategory(category);
     }
 
+<<<<<<< HEAD
 
 
     public void deleteItem(Long itemId) throws Exception {
@@ -131,4 +132,6 @@ public class ItemService {
         }
     }
 
+=======
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }

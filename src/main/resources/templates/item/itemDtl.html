@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/layout2}">
 
 <!--<head>-->
@@ -9,12 +10,17 @@
 <!--</head>-->
 
 <!-- 사용자 스크립트 추가 -->
+
 <th:block layout:fragment="script">
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
     <script>
         var IMP = window.IMP;
         IMP.init("imp76874631");
@@ -27,6 +33,7 @@
         var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
 
+<<<<<<< HEAD
         function requestPay() {
             IMP.request_pay({
                 pg : 'kcp.A52CY',
@@ -39,17 +46,45 @@
                 buyer_tel : '010-1234-5678',
                 buyer_addr : '서울특별시 강남구 삼성동',
                 buyer_postcode : '123-456'
+=======
+
+
+        function requestPay() {
+
+            IMP.request_pay({
+                pg: 'kcp.A52CY',
+                pay_method: 'card',
+                merchant_uid: "IMP" + makeMerchantUid,
+                name: `[[${item.itemNm}]]`,
+                amount: `[[${item.price}]]`,
+                buyer_email: '[[${#authentication.name}]]',
+                buyer_name: '[[${#authentication.name}]]'
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 
             }, function (rsp) { // callback
                 if (rsp.success) {
                     console.log(rsp);
+<<<<<<< HEAD
+=======
+                    window.location.href = "/item/pay/{itemId}";
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
                 } else {
                     console.log(rsp);
                 }
             });
 
+<<<<<<< HEAD
 
         }
+=======
+        }
+
+
+
+
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
     </script>
 
     <script th:inline="javascript">
@@ -69,7 +104,11 @@
             $("#totalPrice").html(totalPrice + '원');
         }
 
+<<<<<<< HEAD
         function order() {
+=======
+        function order_pay() {
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
@@ -93,10 +132,16 @@
                 dataType: "json",
                 cache: false,
                 success: function (result, status) {
+<<<<<<< HEAD
                     alert("주문이 완료 되었습니다.");
 
                     location.href = '/index';
 
+=======
+                    requestPay();
+                    location.href = '/index';
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
                 },
                 error: function (jqXHR, status, error) {
 
@@ -109,6 +154,7 @@
 
                 }
             });
+<<<<<<< HEAD
 
         }
             function addCart() {
@@ -150,6 +196,18 @@
                     }
                 });
 
+=======
+
+            $(document).ready(function() {
+                $('#ajaxButton').click(function() {
+                    order_pay();
+                });
+
+
+
+        });
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
         }
 
     </script>
@@ -237,7 +295,9 @@
                                     <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
+
                             <p class="single-price-text" th:text="${item.itemDetail}"></p>
+
                             <form action="#" method="post">
                                 <input type="hidden" name="count" id="count" class="form-control" value="1" min="1">
                                 <input type="hidden" name="cmd" value="_cart" />
@@ -246,11 +306,21 @@
                                 <input type="hidden" name="amount" value="540.00" />
                                 <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i>장바구니</button>
                             </form>
+<<<<<<< HEAD
+=======
+
+                            <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
                             <button class="w3ls-cart w3ls-cart-like" onclick="requestPay()">
 <!--                                <a th:href="@{'/download/' + ${item.itemImgDtoList[0].id}}" download="image.jpg">-->
 <!--                                    <a href="/payment/payment.html">-->
                                 <i class="fa fa-heart-o" aria-hidden="true"></i>
+<<<<<<< HEAD
                                 다운로드
+=======
+                                다운로드 하기
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 <!--                                </a>-->
                             </button>
                         </div>
@@ -284,7 +354,17 @@
                                     </a>
                                 </h4>
                             </div>
+<<<<<<< HEAD
 
+=======
+                            <div>
+
+                                <a>
+                                <span th:text="${item.hashtag}"></span>
+                                </a>
+
+                            </div>
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
                             <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body">
                                     <a>

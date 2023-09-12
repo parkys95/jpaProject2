@@ -1749,8 +1749,24 @@ p.single-price-text {
     padding: 3em;
     position: absolute;
     top: 25%;
+<<<<<<< HEAD
     left: 38%;
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    left: 38%;
+=======
+    left: 33.33%;
+>>>>>>> f4606a3bc4ab0d9f9c75e328c690296c78097ab0
+=======
+    left: 33.33%;
+>>>>>>> pys
+=======
+    left: 38%;
+>>>>>>> c99d004b325bd4c4112d69bd30168fcec05ab565
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 }
 .key {
     background: #fff;

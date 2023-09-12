@@ -47,9 +47,21 @@ public class SecurityConfig {
 
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
+<<<<<<< HEAD
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
                         "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**",
                         "/download/**" ,"/index_pay").permitAll()
+=======
+
+
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
+                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/supervisor/**","/payDown").permitAll()
+
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
+                        "/sendEmail/**", "/category/**","/payDown").permitAll()
+
+
+>>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .mvcMatchers("/supervisor/**").hasRole("SUPERVISOR")

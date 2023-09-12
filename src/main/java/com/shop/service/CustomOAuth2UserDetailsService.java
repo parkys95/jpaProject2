@@ -86,10 +86,13 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         String email = (String) accountMap.get("email");
 
 
+<<<<<<< HEAD
 =======
 
         String email = (String) paramMap.get("email");
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
+=======
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
         log.info("email : " + email);
 
         return email;

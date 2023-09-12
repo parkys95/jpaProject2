@@ -6,21 +6,22 @@ import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import com.shop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-
-
-import com.shop.dto.ItemImgDto;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+=======
+import java.util.List;
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 
 @Service
 @Transactional
@@ -113,6 +114,7 @@ public class ItemService {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     public void deleteItem(Long itemId) throws Exception {
@@ -139,3 +141,20 @@ public class ItemService {
 
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 }
+=======
+    @Transactional
+    public int updateView(Long id) {
+        return itemRepository.updateView(id);
+    }
+
+    @Transactional
+    public int updateHeart(long itemId,int heart){
+        return itemRepository.updateHeart(itemId,heart);
+    }
+
+
+
+}
+
+
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e

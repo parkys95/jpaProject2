@@ -1,6 +1,5 @@
     package com.shop.repository;
 
-    import com.shop.constant.ItemCategory;
     import com.shop.dto.ItemDto;
     import com.shop.dto.ItemSearchDto;
     import com.shop.dto.MainItemDto;
@@ -15,6 +14,7 @@
     import org.springframework.data.domain.Page;
     import org.springframework.data.domain.Pageable;
     import org.springframework.data.jpa.repository.JpaRepository;
+<<<<<<< HEAD
 
     import java.util.List;
 
@@ -22,10 +22,14 @@
     import org.springframework.data.jpa.repository.Modifying;
 =======
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
+=======
+    import org.springframework.data.jpa.repository.Modifying;
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
     import org.springframework.data.jpa.repository.Query;
+    import org.springframework.data.querydsl.QuerydslPredicateExecutor;
     import org.springframework.data.repository.query.Param;
 
-    import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+    import java.util.List;
 
 <<<<<<< HEAD
     import javax.transaction.Transactional;
@@ -74,6 +78,7 @@
         List<Item> findByHashtagByNative(@Param("hashtag") String hashtag);
 
         Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable,String hashtag);
+<<<<<<< HEAD
 
 
 
@@ -89,4 +94,22 @@
 
 
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
+=======
+
+
+        @Modifying
+        @Query("update Item i set i.view = i.view + 1 where i.id = :id")
+        int updateView(Long id);
+
+        @Query("SELECT i FROM Item i ORDER BY i.view DESC")
+        Page<Item> findAllOrderByViewDesc(Pageable pageable);
+
+        @Modifying
+        @Query("update Item i set i.heart = :heart  where i.id = :itemId")
+        int updateHeart(Long itemId,int heart);
+
+
+
+
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
     }

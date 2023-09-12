@@ -22,9 +22,13 @@
 
 							<p>다양하고 멋진 고해상도 배경화면을 만나보세요! </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 							<a href="about.html">Read More</a>
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
+=======
+							<a href="/photo/PHOTO">Read More</a>
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 						</ul>
 					</div>
 				</div>
@@ -35,9 +39,13 @@
 
 							<p>삽화용 일러스트를 다운 받아보세요! </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 							<a href="about.html">Read More</a>
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
+=======
+							<a href="/illust/ILLUST">Read More</a>
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 						</ul>
 					</div>
 				</div>
@@ -47,6 +55,7 @@
 							<h1>SIMPLE ICON</h1>
 							<p>간단하면서 강렬한 아이콘를 적용해보세요! </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 							<a href="about.html">Read More</a>
 >>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
@@ -55,6 +64,11 @@
 				</div>
 				<div class="banner-name">
 
+=======
+							<a href="/icon/ICON">Read More</a>
+						</ul>
+					</div>
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 				</div>
 
 				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -70,8 +84,8 @@
 
 				<form class="form-inline my-2 my-lg-0" th:action="@{/search}" th:object="${itemSearchDto}"  method="get">
 					<div class="search-mode">
-						<input type="text" th:field="*{searchQuery}" placeholder="찾고 싶은 이미지를 검색해보세요!" class="hover">
-						<button type="submit" id="search2" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" ></button>
+						<input type="text" th:field="*{searchQuery}" placeholder="찾고 싶은 이미지를 검색해보세요!" class="hover" style="margin-top: 14px">
+						<button type="submit" id="search2" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" style="margin-top: 5px"></button>
 					</div>
 				</form>
 			</div>
@@ -84,35 +98,38 @@
 						<th:block th:each="item, status: ${items.getContent()}">
 
 							<a th:href="'/item/' +${item.id}" class="overscale">
-								<figure>
-									<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >
-
-									<figcaption th:text="${item.itemNm}" ></figcaption>
-								</figure>
+								<img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >
+								<p class="galleryName" th:text="${item.itemNm}"></p>
 							</a>
-
-
 						</th:block>
 					</div>
 				</div>
 			</div>
-
-
-
-
 			<div class="top-products">
 				<div class="container">
-
 					<h3><img src="/banner/BEST IMAGE.svg" alt=" " style="width: auto"></h3>
 					<div class="sap_tabs">
 						<div id="horizontalTab">
-							<ul class="resp-tabs-list">
-								<li class="resp-tab-item tab" ><span>PICTURE</span></li>
-								<li class="resp-tab-item tab" ><span>ILLUSTRATION</span></li>
-								<li class="resp-tab-item tab" ><span>ICON</span></li>
+							<div class="resp-tabs-list">
+								<ul class="resp-tabs-list">
+									<li class="resp-tab-item tab" ><span>PICTURE</span></li>
+									<li class="resp-tab-item tab" ><span>ILLUSTRATION</span></li>
+									<li class="resp-tab-item tab" ><span>ICON</span></li>
 
+								</ul>
+
+<<<<<<< HEAD
 							</ul>
+=======
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 							<div class="clearfix"> </div>
+								<div class="row">
+									<th:block th:each="item : ${items.content}">
+										<a th:href="'/item/' + ${item.id}" class="overscale">
+											<img th:src="${item.imgUrl}" th:alt="${item.itemNm}">
+										</a>
+									</th:block>
+								</div>
 							<div class="resp-tabs-container">
 								<div class="tab-1 resp-tab-content">
 
@@ -207,7 +224,7 @@
 			<div class="grey" style="background-color: lightgrey">
 				<div class="fandt" style="background-color: grey">
 					<div class="meritbox">
-						<div class="col-md-6 features merit">
+						<div class="col-md-6 features merit" style="left: 70px">
 							<h2>IMAGE FARM의 장점</h2>
 							<div class="meritmar">
 								<div class="support">
@@ -238,7 +255,7 @@
 								<div class="greyimg">
 									<article>
 										<div class="banner-wrap">
-											<a href="/illust/ILLUST"><img src="banner/banner.jpg" class="img-responsive" alt=""
+											<a href="/illust/ILLUST"><img src="banner/downbanner1.jpg" class="img-responsive" alt=""
 																		  style="height: 240px !important;"></a>
 											<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem
 												sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>
@@ -247,7 +264,7 @@
 									</article>
 									<article style="position: absolute; width: 100%; opacity: 0;">
 										<div class="banner-wrap">
-											<a href="/icon/ICON"><img src="banner/banner.jpg" class="img-responsive" alt=""
+											<a href="/icon/ICON"><img src="banner/downbanner2.jpg" class="img-responsive" alt=""
 																	  style="height: 240px !important;"></a>
 											<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan
 												risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>
@@ -256,7 +273,7 @@
 									</article>
 									<article style="position: absolute; width: 100%; opacity: 0;">
 										<div class="banner-wrap">
-											<a href="/photo/PHOTO"><img src="banner/banner.jpg" class="img-responsive" alt=""
+											<a href="/photo/PHOTO"><img src="banner/downbanner3.jpg" class="img-responsive" alt=""
 																		style="height: 240px !important;"></a>
 											<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed,
 												sagittis id nisl. Pellentesque celerisque eget ullamcorper vehicula. </p>

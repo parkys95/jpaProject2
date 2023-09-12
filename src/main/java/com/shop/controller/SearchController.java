@@ -1,6 +1,5 @@
 package com.shop.controller;
 
-import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.MainItemDto;
 import com.shop.service.ItemService;
@@ -11,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
 
@@ -24,7 +21,7 @@ public class SearchController {
     @GetMapping("/search")
     public String search(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
 
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 30);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 25);
         Page<MainItemDto> items;
         if(itemSearchDto.getSearchBy()==null || itemSearchDto.getSearchBy().isEmpty()){
             items = itemService.getMainItemPageOr(itemSearchDto, pageable);

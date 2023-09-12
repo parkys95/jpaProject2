@@ -2,8 +2,6 @@ package com.shop.config;
 
 import com.shop.handler.CustomFormLoginSuccessHandler;
 import com.shop.handler.CustomSocialLoginSuccessHandler;
-import com.shop.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -47,6 +45,7 @@ public class SecurityConfig {
 
         http.authorizeRequests()
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
 <<<<<<< HEAD
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
@@ -60,6 +59,15 @@ public class SecurityConfig {
 
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
                         "/sendEmail/**", "/category/**","/payDown").permitAll()
+=======
+
+                .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**","/search/**").permitAll()
+
+
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
+                        "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/index_pay","/supervisor/**").permitAll()
+
+>>>>>>> 174ade2fa8f7c515dfc0926c1ae368815580fd9e
 
 
 >>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2

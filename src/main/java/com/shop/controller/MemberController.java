@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -118,7 +120,6 @@ public class MemberController {
     public String deleteMemberPage() {
         return "member/delete"; // 회원 탈퇴 페이지로 리턴
     }
-       // 회원 탈퇴 처리 (POST)
 
     @PostMapping("/delete")
     public String deleteMember(Model model) {

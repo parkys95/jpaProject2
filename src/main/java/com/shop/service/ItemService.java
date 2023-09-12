@@ -6,20 +6,19 @@ import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import com.shop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-
-
-import com.shop.dto.ItemImgDto;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 @Service
 @Transactional
@@ -109,5 +108,36 @@ public class ItemService {
     public List<ItemDto> findByCategory(String category){
         return  itemRepository.findByCategory(category);
     }
+
+
+    public void deleteItem(Long itemId) throws Exception {
+        // 상품을 데이터베이스에서 조회합니다.
+        Optional<Item> itemOptional = itemRepository.findById(itemId);
+
+        // 만약 상품이 존재한다면 삭제합니다.
+        if (itemOptional.isPresent()) {
+            Item item = itemOptional.get();
+
+            // 관련된 이미지들도 함께 삭제합니다. (이 부분은 itemRepository에 정의된 메서드를 활용하거나 직접 구현해야 합니다)
+            itemImgService.deleteItemImagesByItemId(itemId);
+
+            // 상품을 삭제합니다.
+            itemRepository.delete(item);
+        } else {
+            throw new EntityNotFoundException("상품을 찾을 수 없습니다.");
+        }
+    }
+
+    @Transactional
+    public int updateView(Long id) {
+        return itemRepository.updateView(id);
+    }
+
+    @Transactional
+    public int updateHeart(long itemId,int heart){
+        return itemRepository.updateHeart(itemId,heart);
+    }
+
+
 
 }

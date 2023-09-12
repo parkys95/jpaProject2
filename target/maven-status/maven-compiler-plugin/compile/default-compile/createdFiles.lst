@@ -2,12 +2,25 @@ com\shop\config\CustomAuthenticationEntryPoint.class
 com\shop\config\WebMvcConfig.class
 com\shop\service\CartService.class
 com\shop\service\OrderService.class
+<<<<<<< HEAD
+com\shop\controller\ImageController.class
+com\shop\service\FileService.class
+com\shop\handler\CustomSocialLoginSuccessHandler.class
+com\shop\dto\ItemDto.class
+com\shop\entity\Cart.class
+com\shop\service\CustomOAuth2UserDetailsService.class
+com\shop\dto\OrderItemDto.class
+com\shop\service\ItemImgService.class
+com\shop\dto\MemberFormDto.class
+com\shop\dto\FormMemberDto.class
+=======
 com\shop\service\FileService.class
 com\shop\dto\ItemDto.class
 com\shop\entity\Cart.class
 com\shop\dto\OrderItemDto.class
 com\shop\service\ItemImgService.class
 com\shop\dto\MemberFormDto.class
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 com\shop\service\MailService.class
 com\shop\repository\CartItemRepository.class
 com\shop\dto\OrderDto.class
@@ -21,6 +34,10 @@ com\shop\dto\MailDto.class
 com\shop\entity\QBaseTimeEntity.class
 com\shop\controller\MemberController.class
 com\shop\entity\CartItem.class
+<<<<<<< HEAD
+com\shop\dto\AuthMemberFormDto.class
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 com\shop\entity\QMember.class
 com\shop\controller\OrderController.class
 com\shop\dto\ItemFormDto.class
@@ -34,17 +51,30 @@ com\shop\config\AuditConfig.class
 com\shop\entity\QBaseEntity.class
 com\shop\controller\ItemRestController.class
 com\shop\service\ItemService.class
+<<<<<<< HEAD
+com\shop\dto\Amount.class
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 com\shop\controller\ItemController.class
 com\shop\controller\ThymeleafExController.class
 com\shop\service\MemberService.class
 com\shop\dto\MemberUpdateFormDto.class
 com\shop\repository\OrderRepository.class
 com\shop\dto\ItemImgDto.class
+<<<<<<< HEAD
+com\shop\controller\SearchController.class
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 com\shop\entity\QCart.class
 com\shop\dto\OrderHistDto.class
 com\shop\entity\QItem.class
 com\shop\controller\MainController.class
 com\shop\entity\BaseTimeEntity.class
+<<<<<<< HEAD
+com\shop\dto\MemberSecurityDTO.class
+com\shop\entity\Member$MemberBuilder.class
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 com\shop\repository\ItemImgRepository.class
 com\shop\repository\MemberRepository.class
 com\shop\entity\OrderItem.class
@@ -62,8 +92,16 @@ com\shop\dto\CartItemDto.class
 com\shop\entity\QOrderItem.class
 com\shop\entity\Order.class
 com\shop\entity\BaseEntity.class
+<<<<<<< HEAD
+com\shop\controller\SupervisorController.class
 com\shop\entity\Member.class
 com\shop\config\AuditorAwareImpl.class
 com\shop\repository\ItemRepositoryCustomImpl.class
+com\shop\handler\CustomFormLoginSuccessHandler.class
+=======
+com\shop\entity\Member.class
+com\shop\config\AuditorAwareImpl.class
+com\shop\repository\ItemRepositoryCustomImpl.class
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 com\shop\repository\CartRepository.class
 com\shop\dto\ItemSearchDto.class

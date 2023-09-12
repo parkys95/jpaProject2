@@ -30,84 +30,55 @@
         });
 
     </script>
+    <div class="itemsearchbox" >
+        <form class="form-inline my-2 my-lg-0" th:object="${itemSearchDto}" method="get">
+            <div class="search-mode search-mode2">
+                <label >
+                    <input type="text" th:field="*{searchQuery}" placeholder="찾고 싶은 이미지를 검색해보세요!" class="hover">
+                </label>
+                <button type="submit" id="search2"  ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"  alt=""></button>
+            </div>
+        </form>
+    </div>
+    <div class="banner-bootom-w3-agileits" >
 
-    <div class="banner-bootom-w3-agileits">
-
-        <div id="resultContainer" class="gallery">
-            <div class="row">
+        <div class="gallery">
+            <div class="row" >
                 <th:block th:each="item, status: ${items.getContent()}">
-                    <div>
-                        <a th:href="'/item/' +${item.id}">
-                            <img th:src="${item.imgUrl}" th:alt="${item.itemNm}">
-                        </a>
-                    </div>
+                    <a th:href="'/item/' +${item.id}" class="overscale">
+                        <img th:src="${item.imgUrl}"  th:alt="${item.itemNm}" >
+                        <p class="galleryName" th:text="${item.itemNm}"></p>
+                    </a>
                 </th:block>
             </div>
         </div>
     </div>
-</div>
-
-<div class="clearfix"></div>
-
-<script src="/js/jquery.wmuSlider.js"></script>
-<script>
-    $('.example1').wmuSlider();
-</script>
 
 
-<!-- top-brands -->
-<div class="top-brands">
-    <div class="container">
-        <h3>Top Brands</h3>
-        <div class="sliderfig">
-            <ul id="flexiselDemo1">
-                <li>
-                    <img src="/images/4.png" alt=" " class="img-responsive"/>
-                </li>
-                <li>
-                    <img src="/images/5.png" alt=" " class="img-responsive"/>
-                </li>
-                <li>
-                    <img src="/images/6.png" alt=" " class="img-responsive"/>
-                </li>
-                <li>
-                    <img src="/images/7.png" alt=" " class="img-responsive"/>
-                </li>
-                <li>
-                    <img src="/images/46.jpg" alt=" " class="img-responsive"/>
-                </li>
-            </ul>
-        </div>
-        <script type="text/javascript">
-            $(window).load(function () {
-                $("#flexiselDemo1").flexisel({
-                    visibleItems: 4,
-                    animationSpeed: 1000,
-                    autoPlay: false,
-                    autoPlaySpeed: 3000,
-                    pauseOnHover: true,
-                    enableResponsiveBreakpoints: true,
-                    responsiveBreakpoints: {
-                        portrait: {
-                            changePoint: 480,
-                            visibleItems: 1
-                        },
-                        landscape: {
-                            changePoint: 640,
-                            visibleItems: 2
-                        },
-                        tablet: {
-                            changePoint: 768,
-                            visibleItems: 3
-                        }
-                    }
-                });
 
-            });
-        </script>
-        <script type="text/javascript" src="/js/jquery.flexisel.js"></script>
+    <div class="pagin" th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+        <ul class="pagination justify-content-center">
+
+            <li class="page-item " th:classappend="${items.first}?'disabled'" >
+                <a th:onclick="'javascript:page(' + ${items.number - 1} + ')'" aria-label='Previous' class="page-link">
+                    <span aria-hidden='true'>Previous</span>
+                </a>
+            </li>
+
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq 'page-1'}?'active':''">
+                <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+            </li>
+
+            <li class="page-item" th:classappend="${items.last}?'disabled'">
+                <a th:onclick="'javascript:page(' + ${items.number + 1} + ')'" aria-label='Next' class="page-link">
+                    <span aria-hidden='true'>Next</span>
+                </a>
+            </li>
+
+        </ul>
     </div>
 </div>
+
 
 <!-- cart-js -->
 <script src="/js/minicart.js"></script>
@@ -127,6 +98,5 @@
         }
     });
 </script>
-<!-- //cart-js -->
 
 </html>

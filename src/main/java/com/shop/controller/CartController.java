@@ -1,6 +1,7 @@
 package com.shop.controller;
 import com.shop.dto.CartItemDto;
 import com.shop.service.CartService;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import com.shop.dto.CartOrderDto;
 
 @Controller
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CartController {
 
-    private final CartService cartService;
+    private CartService cartService;
 
     @PostMapping(value = "/cart")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid CartItemDto cartItemDto, BindingResult bindingResult, Principal principal){
@@ -58,10 +59,10 @@ public class CartController {
     }
 
     @GetMapping(value = "/cart")
-    public String orderHist(Principal principal, Model model){
+    public String orderList(Principal principal, Model model){
         List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
         model.addAttribute("cartItems", cartDetailList);
-        return "cart/cartList";
+        return "/cart/cartList";
     }
 
     @PatchMapping(value = "/cartItem/{cartItemId}")

@@ -16,6 +16,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Transactional
     @Query("UPDATE Member m SET m.password = :password WHERE m.email = :email")
     void updatePassword(String password, String email);
+<<<<<<< HEAD
 
     Page<Member> findByNameContainingIgnoreCase(String keyword, Pageable pageable);
 
@@ -25,4 +26,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
 //    Page<Member> getMemberPage(Pageable pageable);
 
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 }

@@ -46,6 +46,7 @@ public class SecurityConfig {
         ;
 
         http.authorizeRequests()
+<<<<<<< HEAD
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
 <<<<<<< HEAD
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
@@ -63,6 +64,13 @@ public class SecurityConfig {
 
 >>>>>>> 4ef5c850f1cef9ff4ddc626d17f877efc3253ad2
 
+=======
+
+                .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**" ).permitAll()
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**", "/sendEmail/**","/photo/**","/icon/**","/illust/**").permitAll()
+
+
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .mvcMatchers("/supervisor/**").hasRole("SUPERVISOR")
                 .anyRequest().authenticated()

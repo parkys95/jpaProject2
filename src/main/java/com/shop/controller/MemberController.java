@@ -16,6 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+<<<<<<< HEAD
+=======
+
+import javax.servlet.http.HttpSession;
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -118,8 +123,13 @@ public class MemberController {
     public String deleteMemberPage() {
         return "member/delete"; // 회원 탈퇴 페이지로 리턴
     }
+<<<<<<< HEAD
        // 회원 탈퇴 처리 (POST)
 
+=======
+
+    // 회원 탈퇴 처리 (POST)
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
     @PostMapping("/delete")
     public String deleteMember(Model model) {
         // 현재 인증된 사용자 정보를 가져옵니다.

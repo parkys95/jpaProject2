@@ -1,7 +1,11 @@
 package com.shop.service;
 
 import com.shop.constant.Role;
+<<<<<<< HEAD
 import com.shop.dto.MemberSecurityDto;
+=======
+import com.shop.dto.MemberSecurityDTO;
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 import com.shop.entity.Member;
 import com.shop.repository.MemberRepository;
 import lombok.AllArgsConstructor;
@@ -76,17 +80,26 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
 
     private String getKakaoEmail(Map<String, Object> paramMap) {
         log.info("kakao-------------------");
+<<<<<<< HEAD
         Map<String, Object> accountMap = (Map<String, Object>) paramMap.get("kakao_account");
 
         String email = (String) accountMap.get("email");
 
 
+=======
+
+        String email = (String) paramMap.get("email");
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
         log.info("email : " + email);
 
         return email;
     }
 
+<<<<<<< HEAD
     private MemberSecurityDto generateDTO(String email, Map<String, Object> paramMap) {
+=======
+    private MemberSecurityDTO generateDTO(String email, Map<String, Object> paramMap) {
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
         Optional<Member> result = Optional.ofNullable(memberRepository.findByEmail(email));
 
         // DB에 해당 이메일의 사용자가 없다면 자동으로 회원 가입 처리
@@ -104,7 +117,11 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             // DB에 회원 정보 저장(회원 가입 처리)
             memberRepository.save(member);
 
+<<<<<<< HEAD
             MemberSecurityDto memberSecurityDTO = new MemberSecurityDto(email,
+=======
+            MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(email,
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
                     "1111", email, true,
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             memberSecurityDTO.setAttr(paramMap);
@@ -112,7 +129,11 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             return memberSecurityDTO;
         } else {    // 이미 가입된 회원은 기존 정보를 반환
             Member member = result.get();
+<<<<<<< HEAD
             MemberSecurityDto memberSecurityDTO = new MemberSecurityDto(
+=======
+            MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
                     member.getName(), member.getPassword(), member.getEmail(),
                     member.isSocial(),
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_" + member.getRole())));

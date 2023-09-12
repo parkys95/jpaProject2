@@ -94,6 +94,12 @@
                 cache: false,
                 success: function (result, status) {
                     alert("주문이 완료 되었습니다.");
+<<<<<<< HEAD
+=======
+                    location.href='/index';
+                },
+                error : function(jqXHR, status, error){
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 
                     location.href = '/index';
 
@@ -140,12 +146,31 @@
                     },
                     error: function (jqXHR, status, error) {
 
+<<<<<<< HEAD
                         if (jqXHR.status == '401') {
                             alert('로그인 후 이용해주세요');
                             location.href = '/members/login';
                         } else {
                             alert(jqXHR.responseText);
                         }
+=======
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                beforeSend : function(xhr){
+                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType : "json",
+                cache   : false,
+                success  : function(result, status){
+                    alert("상품을 장바구니에 담았습니다.");
+                    location.href='/index';
+                },
+                error : function(jqXHR, status, error){
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 
                     }
                 });
@@ -244,6 +269,7 @@
                                 <input type="hidden" name="add" value="1" />
                                 <input type="hidden" name="w3ls1_item" value="Handbag" />
                                 <input type="hidden" name="amount" value="540.00" />
+<<<<<<< HEAD
                                 <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i>장바구니</button>
                             </form>
                             <button class="w3ls-cart w3ls-cart-like" onclick="requestPay()">
@@ -253,6 +279,12 @@
                                 다운로드
 <!--                                </a>-->
                             </button>
+=======
+                                <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                            </form>
+                            <button class="w3ls-cart w3ls-cart-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+                            <button class="w3ls-cart w3ls-cart-like" onclick="order()"><i class="fa fa-heart-o" aria-hidden="true"></i> 다운로드 하기</button>
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -284,7 +316,17 @@
                                     </a>
                                 </h4>
                             </div>
+<<<<<<< HEAD
 
+=======
+                            <div>
+
+                                <a>
+                                <span th:text="${item.hashtag}"></span>
+                                </a>
+
+                            </div>
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
                             <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body">
                                     <a>

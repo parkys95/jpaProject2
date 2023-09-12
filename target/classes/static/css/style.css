@@ -226,9 +226,12 @@ button.w3view-cart:focus{
 }
 .my-banner3{
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> c99d004b325bd4c4112d69bd30168fcec05ab565
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 	background:url(img/menbanner.jpg) no-repeat 0px 0px;
 
 
@@ -1749,8 +1752,12 @@ p.single-price-text {
     padding: 3em;
     position: absolute;
     top: 25%;
+<<<<<<< HEAD
     left: 38%;
 
+=======
+    left: 33.33%;
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 }
 .key {
     background: #fff;
@@ -3383,6 +3390,9 @@ button{
     background-position: 40% 35%;
     height: 550px;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
     background-repeat: no-repeat;
 }
 #banner1{
@@ -3398,6 +3408,7 @@ button{
 
     height: 550px;
     background-repeat: no-repeat;
+<<<<<<< HEAD
 =======
     background-size: cover;
 }
@@ -3411,6 +3422,8 @@ button{
     height: 550px;
     background-size: cover;
 >>>>>>> c99d004b325bd4c4112d69bd30168fcec05ab565
+=======
+>>>>>>> ae5dfb45d6fe8b4c40c1ed855fad6400cbac2ae8
 }
 .banner-name{
     position: relative;

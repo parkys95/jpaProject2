@@ -151,7 +151,26 @@
             });
 
         }
+
+        $(document).ready(function () {
+            /* 페이지 로딩 시 실행되는 코드 */
+            var initialHeartValue = /*[[${item.heart}]]*/ 0; // 초기 heart 값 가져오기
+            setHeartImage(initialHeartValue); // 초기 이미지 설정
+
+               });
+
+        function setHeartImage(heartValue) {
+            var likeImg = $("#likeButton img");
+            if (heartValue === 1) {
+                likeImg.attr("src", "/banner/like.svg");
+            } else {
+                likeImg.attr("src", "/banner/like empty.svg");
+            }
+        }
+
         function likeButton(){
+
+
             if($("#likeButton").data("toggle") == 0){
                 $("#likeButton").data("toggle", 1);
 
@@ -298,8 +317,8 @@
                         </div>
                         <div>
 
-                            <button id="likeButton" data-toggle=0 onclick="likeButton()">
-                                <img class="heartButton" src="/banner/like empty.svg">
+                            <button id="likeButton" th:attr="data-toggle=${item.heart}"  onclick="likeButton()">
+                                <img class="heartButton " >
                                 <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" >좋아요</i>
                             </button>
                             <span th:text="${item.heart}"></span>

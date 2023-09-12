@@ -48,6 +48,8 @@
         @Query("update Item i set i.view = i.view + 1 where i.id = :id")
         int updateView(Long id);
 
+        @Query("SELECT i FROM Item i ORDER BY i.view DESC")
+        Page<Item> findAllOrderByViewDesc(Pageable pageable);
 
         @Modifying
         @Query("update Item i set i.heart = :heart  where i.id = :itemId")
@@ -55,8 +57,5 @@
 
 
 
-//        Page<Item> findByCreatedByAndOtherCriteria(String loggedInUsername, ItemSearchDto itemSearchDto, Pageable pageable);
-
-//         List<Item> findTop4ByOrderByViewDesc();
 
     }

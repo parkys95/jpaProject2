@@ -2,6 +2,8 @@ package com.shop.controller;
 
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.MainItemDto;
+import com.shop.entity.Item;
+import com.shop.repository.ItemRepository;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class IndexController {
 
     private final ItemService itemService;
+    private final ItemRepository itemRepository;
 
     @GetMapping(value = "/index")
     public String index(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
@@ -92,10 +95,17 @@ public class IndexController {
 
         return "index_pay";
     }
+    @GetMapping("/popular-items")
+    public String getPopularItems(Model model) {
+        // 조회수가 높은 순으로 첫 번째 페이지의 아이템 목록을 가져옴
+        PageRequest pageRequest = PageRequest.of(0, 4);
+        Page<Item> items = itemRepository.findAllOrderByViewDesc(pageRequest);
+
+        model.addAttribute("items", items);
+
+        return "items";
 
 
-
-
-
+    }
 
 }

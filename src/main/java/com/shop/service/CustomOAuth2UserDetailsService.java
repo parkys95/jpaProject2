@@ -47,10 +47,9 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             email = getGoogleEmail(paramMap);
         } else if(clientName.equals("naver")) {
             email = getNaverEmail(paramMap);
+        } else if(clientName.equals("kakao")) {
+            email = getKakaoEmail(paramMap);
         }
-//        else if(clientName.equals("kakao")) {
-//            email = getKakaoEmail(paramMap);
-//        }
         log.info("email: " + email);
 
         return generateDTO(email, paramMap);
@@ -75,7 +74,6 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         return email;
     }
 
-<<<<<<< HEAD
     private String getKakaoEmail(Map<String, Object> paramMap) {
         log.info("kakao-------------------");
         Map<String, Object> accountMap = (Map<String, Object>) paramMap.get("kakao_account");
@@ -87,7 +85,6 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         return email;
     }
 
-=======
 //    private String getKakaoEmail(Map<String, Object> paramMap) {
 //        log.info("kakao-------------------");
 //        Map<String, Object> accountMap = (Map<String, Object>) paramMap.get("kakao_account");
@@ -101,7 +98,6 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
 //        return email;
 //    }
 
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
     private MemberSecurityDTO generateDTO(String email, Map<String, Object> paramMap) {
         Optional<Member> result = Optional.ofNullable(memberRepository.findByEmail(email));
 

@@ -86,9 +86,6 @@
         @Query("delete from Item i where i.createdBy = :createdBy")
         void allDeleteItems(String createdBy);
 
-<<<<<<< HEAD
-    }
-=======
 
         @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
                        "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
@@ -108,4 +105,3 @@
                 " ORDER BY i.view DESC limit 5",nativeQuery = true)
         List<ItemJoinInterface> getByPHOTOView();
     }
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997

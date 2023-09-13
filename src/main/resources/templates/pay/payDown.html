@@ -13,19 +13,19 @@
 <th:block layout:fragment="script">
 
     <script th:inline="javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
 
             calculateToalPrice();
 
-            $("#count").change( function(){
+            $("#count").change(function () {
                 calculateToalPrice();
             });
         });
 
-        function calculateToalPrice(){
+        function calculateToalPrice() {
             var count = $("#count").val();
             var price = $("#price").val();
-            var totalPrice = price*count;
+            var totalPrice = price * count;
             $("#totalPrice").html(totalPrice + '원');
         }
 
@@ -69,11 +69,10 @@
                 }
             });
 
-            $(document).ready(function() {
-                $('#ajaxButton').click(function() {
+            $(document).ready(function () {
+                $('#ajaxButton').click(function () {
                     order_pay();
                 });
-
 
 
             });
@@ -84,12 +83,11 @@
 </th:block>
 
 
-
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
     <style>
 
-        .products-down{
+        .products-down {
             width: 30%;
             display: block;
             margin: auto;
@@ -98,12 +96,12 @@
 
         }
 
-        .contain{
+        .contain {
             object-fit: fill;
-            box-shadow:0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .btn_div{
+        .btn_div {
             margin-top: 3rem;
             margin-bottom: 3rem;
 
@@ -135,14 +133,8 @@
 </th:block>
 
 <div layout:fragment="content">
-
-
-
-
     <div class="products-down">
         <img th:src="${item.itemImgDtoList[0].imgUrl}" th:alt="${item.itemNm}" class="contain">
-
-
         <div class="btn_div">
             <button class="single-top-rigt w3ls-cart" style="display: block; margin: auto;">
                 <a th:href="@{'/download/' + ${item.itemImgDtoList[0].id}}" download="image.jpg">
@@ -150,21 +142,8 @@
                     다운로드 하기
                 </a></button>
         </div>
-
     </div>
-
-
-
-
-
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <div class="clearfix"></div>
 </div>
-</div>
-</body>
 
 </html>

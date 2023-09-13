@@ -8,10 +8,6 @@
 /*-- Reset Code --*/
 body {
     padding: 0;
-<<<<<<< HEAD
-    margin: 0;
-=======
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 
     background: #FFF;
     font-family: 'open Sans', sans-serif;
@@ -1742,13 +1738,9 @@ p.single-price-text {
 
 /*-- login --*/
 .main-agileits {
-    width: 30%;
+    width: 24%;
     min-height: 30%;
-<<<<<<< HEAD
-    max-height: 70%;
-=======
     max-height: 55%;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
     margin: 0em auto;
     box-shadow: 0px 0px 15px 0px #D6D6D6;
     -o-box-shadow: 0px 0px 15px 0px #D6D6D6;
@@ -1756,16 +1748,8 @@ p.single-price-text {
     -webkit-box-shadow: 0px 0px 15px 0px #D6D6D6;
     padding: 3em;
     position: absolute;
-<<<<<<< HEAD
-    top: 15%;
-    left: 35%;
-=======
     top: 25%;
-left: 38%;
-<<<<<<< HEAD
->>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
-=======
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
+    left: 38%;
 }
 .key {
     background: #fff;
@@ -3283,11 +3267,7 @@ p.w3-agile{
     margin: 0;
     padding: 0;
     grid-template-columns: repeat(auto-fit, minmax(9%, 1fr));
-<<<<<<< HEAD
-    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
-=======
     grid-template-rows: repeat(auto-fit, minmax(130px, 1fr));
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
     grid-gap: 4px;
 }
 .grid1:nth-child(1) {
@@ -3301,14 +3281,11 @@ p.w3-agile{
     align-items: center;
     justify-content: center;
     overflow: hidden;
-<<<<<<< HEAD
-=======
     margin-bottom: 20px;
     text-align: center;
     left: 28.5%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 }
 .gallery >.row:before,.gallery2>.row:before{
     content:none;
@@ -3471,11 +3448,7 @@ button{
 #banner0{
     background: url("../banner/banner.jpg")   ;
     background-position: 40% 35%;
-<<<<<<< HEAD
-    height: 550px;
-=======
     height: 450px;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 
     background-repeat: no-repeat;
 }
@@ -3666,11 +3639,7 @@ html{
     margin-bottom: 35px;
 }
 .itemsearchbox{
-<<<<<<< HEAD
-    height: 100px;
-=======
     height: 80px;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 }
 .pagin{
     position: relative;

@@ -1,31 +1,21 @@
 package com.shop.controller;
 
-import com.shop.dto.CartOrderDto;
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.OrderDto;
-import com.shop.entity.CartItem;
 import com.shop.entity.Item;
 import com.shop.entity.Member;
 import com.shop.service.ItemService;
 import com.shop.service.LikeService;
 import com.shop.service.MemberService;
-import lombok.RequiredArgsConstructor;
-<<<<<<< HEAD
 import com.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
-=======
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-<<<<<<< HEAD
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-=======
-import org.springframework.http.MediaType;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,17 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-<<<<<<< HEAD
 import java.security.Principal;
 import java.util.ArrayList;
-=======
-import java.nio.file.ClosedFileSystemException;
-import java.security.Principal;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import java.util.List;
 import java.util.Optional;
-
-import static com.shop.entity.QItem.item;
 
 @Controller
 @RequiredArgsConstructor
@@ -52,12 +35,9 @@ import static com.shop.entity.QItem.item;
 public class ItemController {
 
     private final ItemService itemService;
-<<<<<<< HEAD
     private final OrderService orderService;
-=======
     private final LikeService likeService;
     private final MemberService memberService;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 
     @GetMapping(value = "/admin/item/new")
     public String itemForm(Model model) {
@@ -164,20 +144,22 @@ public class ItemController {
 
 
     @GetMapping(value = "/item/{itemId}")
-    public String itemDtl(Model model, @PathVariable("itemId") Long itemId,Principal principal) {
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId, Principal principal) {
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         itemService.updateView(itemId);
 
-<<<<<<< HEAD
         String loggedInUsername = getLoggedInUsername(); // 현재 로그인한 사용자의 이름을 가져옵니다.
         model.addAttribute("loggedIn", loggedInUsername);
-=======
         Item item = new Item();
-        Member member = memberService.getMemberInfo(principal.getName());
         item.setId(itemId);
-        boolean islike = likeService.isNotAlreadyLike(member, item);
+        Member member = new Member();
+        boolean islike = false;
+        if(principal != null){
+            member = memberService.getMemberInfo(principal.getName());
+            islike = likeService.isNotAlreadyLike(member, item);
+        }
+
         log.info("~~~~~~~ isLike = " + islike);
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
         model.addAttribute("item", itemFormDto);
         model.addAttribute("heartCnt", islike ? 0 : 1);
         return "item/itemDtl";
@@ -221,9 +203,6 @@ public class ItemController {
     }
 
 
-<<<<<<< HEAD
-=======
-
 //    @GetMapping("/likeCount")
 //    @ResponseBody
 //    public String likeCount(long itemId, int heartCount) {
@@ -234,7 +213,6 @@ public class ItemController {
 //    }
 
 
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
     @GetMapping(value = "/item/pay/{itemId}")
     public String payDown(Model model, @PathVariable("itemId") Long itemId, Principal principal){
 

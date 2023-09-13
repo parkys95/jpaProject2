@@ -1,11 +1,8 @@
 package com.shop.controller;
 
-import com.shop.dto.ItemDto;
 import com.shop.dto.ItemJoinInterface;
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.MainItemDto;
-import com.shop.entity.Item;
-import com.shop.repository.ItemRepository;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,12 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import java.util.Optional;
 
 @Controller
@@ -92,7 +85,6 @@ public class IndexController {
     }
 
 
-<<<<<<< HEAD
 //    @GetMapping("/popular-items")
 //    public String getPopularItems(Model model) {
 //        // 조회수가 높은 순으로 첫 번째 페이지의 아이템 목록을 가져옴
@@ -102,7 +94,6 @@ public class IndexController {
 //        model.addAttribute("items", items);
 //
 //        return "items";
-=======
 
 
 //    @GetMapping("/index")
@@ -114,7 +105,6 @@ public class IndexController {
 //        model.addAttribute("getPopularItems", PopularItems);
 //
 //        return "index";
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 //
 //
 //    }

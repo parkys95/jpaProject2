@@ -1,11 +1,6 @@
 package com.shop.controller;
 
 import com.shop.dto.ItemSearchDto;
-<<<<<<< HEAD
-=======
-import com.shop.dto.MemberSearchDto;
-import com.shop.dto.MemberUpdateFormDto;
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import com.shop.entity.*;
 import com.shop.repository.*;
 import com.shop.service.ItemService;
@@ -61,11 +56,7 @@ public class SupervisorController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-<<<<<<< HEAD
         return "/supervisor/svItemMng";
-=======
-        return "supervisor/svItemMng";
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
     }
 
     @DeleteMapping("/items/{itemId}")
@@ -145,7 +136,6 @@ public class SupervisorController {
             cartRepository.deleteCart(memberId);
 
 
-<<<<<<< HEAD
             List<Item> itemsList = itemRepository.getByCreatedBy(memberRepository.findById(memberId).get().getEmail());
             for (Item item : itemsList) {
                 List<ItemImg> itemImgs = itemImgRepository.getByItemId(item.getId());
@@ -161,8 +151,6 @@ public class SupervisorController {
             }
 //            itemRepository.allDeleteItems(memberRepository.findById(memberId).get().getEmail());
 
-=======
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
             // 4. 회원을 삭제합니다.
             memberRepository.deleteById(memberId);
 
@@ -173,7 +161,6 @@ public class SupervisorController {
     }
 
 
-<<<<<<< HEAD
     @GetMapping("/orders")
     public String listOrders(Model model,
                              @RequestParam(defaultValue = "") String searchType,
@@ -186,6 +173,4 @@ public class SupervisorController {
 
         return "/supervisor/svOrdersMng"; // 렌더링할 Thymeleaf 템플릿 경로
     }
-=======
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 }

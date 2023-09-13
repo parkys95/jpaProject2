@@ -103,20 +103,12 @@
     <!-- 페이징 및 페이지 내비게이션 -->
     <div th:if="${members.totalPages > 1}" class="pagination justify-content-center">
         <ul class="pagination">
-<<<<<<< HEAD
             <li th:class="${members.first} ? 'disabled' : ''" class="page-item">
                 <a th:if="${not members.first}" th:href="@{/supervisor/members(page=0, size=${members.size})}"
                    class="page-link" aria-label="First">
                     <span aria-hidden="true">First</span>
                 </a>
             </li>
-=======
-                        <li th:class="${members.first} ? 'disabled' : ''" class="page-item">
-                            <a th:if="${not members.first}" th:href="@{/supervisor/members(page=0, size=${members.size})}" class="page-link" aria-label="First">
-                                <span aria-hidden="true">First</span>
-                            </a>
-                        </li>
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
             <li th:class="${members.first} ? 'disabled'" class="page-item">
                 <a th:if="${not members.first}"
                    th:href="@{/supervisor/members(page=${members.number - 1}, size=${members.size})}" class="page-link"
@@ -137,7 +129,6 @@
                     <span aria-hidden='true'>Next</span>
                 </a>
             </li>
-<<<<<<< HEAD
             <li th:class="${members.last} ? 'disabled' : ''" class="page-item">
                 <a th:if="${not members.last}"
                    th:href="@{/supervisor/members(page=${members.totalPages - 1}, size=${members.size})}"
@@ -145,14 +136,6 @@
                     <span aria-hidden="true">Last</span>
                 </a>
             </li>
-        </ul>
-    </div>
-=======
-                        <li th:class="${members.last} ? 'disabled' : ''" class="page-item">
-                            <a th:if="${not members.last}" th:href="@{/supervisor/members(page=${members.totalPages - 1}, size=${members.size})}" class="page-link" aria-label="Last">
-                                <span aria-hidden="true">Last</span>
-                            </a>
-                        </li>
         </ul>
     </div>
 
@@ -201,7 +184,6 @@
     <!--    </script>-->
 
 
->>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 </div>
 
 </html>

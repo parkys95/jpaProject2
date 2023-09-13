@@ -1,22 +1,16 @@
 package com.shop.controller;
 
-<<<<<<< HEAD
-=======
 import com.shop.dto.CartOrderDto;
->>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.OrderDto;
 import com.shop.entity.CartItem;
 import com.shop.entity.Item;
 import com.shop.service.ItemService;
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
-=======
 import com.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
->>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -30,11 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-<<<<<<< HEAD
-=======
 import java.security.Principal;
 import java.util.ArrayList;
->>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 import java.util.List;
 import java.util.Optional;
 
@@ -154,6 +145,9 @@ public class ItemController {
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         itemService.updateView(itemId);
+
+        String loggedInUsername = getLoggedInUsername(); // 현재 로그인한 사용자의 이름을 가져옵니다.
+        model.addAttribute("loggedIn", loggedInUsername);
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }

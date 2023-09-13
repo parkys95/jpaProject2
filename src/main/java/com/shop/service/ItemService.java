@@ -142,8 +142,4 @@ public class ItemService {
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 }

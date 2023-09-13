@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .mvcMatchers("/css/**", "/js/**", "/img/**","/banner/**").permitAll()
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/index", "/member/**", "/mail/**",
                         "/sendEmail/**", "/category/**", "/icon/**", "/illust/**", "/photo/**","/supervisor/**",
-                        "/payDown", "/download/**" ,"/index_pay").permitAll()
+                        "/payDown", "/download/**" ,"/index_pay","/search/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .mvcMatchers("/supervisor/**").hasRole("SUPERVISOR")
                 .anyRequest().authenticated()

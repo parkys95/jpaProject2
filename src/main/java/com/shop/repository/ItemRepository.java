@@ -71,15 +71,11 @@
         @Query("update Item i set i.heart = :heart  where i.id = :itemId")
         int updateHeart(Long itemId,int heart);
 
-<<<<<<< HEAD
         @Query("select i from Item i where i.createdBy = :createdBy")
         List<Item> getByCreatedBy(String createdBy);
 
         @Modifying
         @Query("delete from Item i where i.createdBy = :createdBy")
         void allDeleteItems(String createdBy);
-=======
-
->>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 
     }

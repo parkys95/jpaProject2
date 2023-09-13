@@ -1,13 +1,20 @@
 package com.shop.controller;
 
+import com.shop.dto.CartOrderDto;
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
+import com.shop.dto.OrderDto;
+import com.shop.entity.CartItem;
 import com.shop.entity.Item;
 import com.shop.service.ItemService;
+import com.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,14 +23,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class ItemController {
 
     private final ItemService itemService;
+    private final OrderService orderService;
 
     @GetMapping(value = "/admin/item/new")
     public String itemForm(Model model) {
@@ -163,8 +174,28 @@ public class ItemController {
 
 
     @GetMapping(value = "/item/pay/{itemId}")
-    public String payDown(Model model, @PathVariable("itemId") Long itemId){
+    public String payDown(Model model, @PathVariable("itemId") Long itemId, Principal principal){
+
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null) {
+                return authentication.getName(); // 현재 로그인한 사용자의 이름을 반환
+            }
+
+
+        // 주문(Order) 저장
+        List<OrderDto> orderDtoList = new ArrayList<>();
+        OrderDto orderDto = new OrderDto();
+        orderDto.setItemId(itemId);
+        orderDto.setCount(1);
+        orderDtoList.add(orderDto);
+        Long orderId = orderService.orders(orderDtoList, principal.getName());
+
+
+        log.info("!!!! email - " + principal.getName());
+        // item 상세 정보 가져옴
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+
         model.addAttribute("item", itemFormDto);
         return "pay/payDown";
     }

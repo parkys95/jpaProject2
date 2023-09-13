@@ -1739,9 +1739,9 @@ p.single-price-text {
 
 /*-- login --*/
 .main-agileits {
-    width: 24%;
+    width: 30%;
     min-height: 30%;
-    max-height: 55%;
+    max-height: 70%;
     margin: 0em auto;
     box-shadow: 0px 0px 15px 0px #D6D6D6;
     -o-box-shadow: 0px 0px 15px 0px #D6D6D6;
@@ -1749,8 +1749,8 @@ p.single-price-text {
     -webkit-box-shadow: 0px 0px 15px 0px #D6D6D6;
     padding: 3em;
     position: absolute;
-    top: 25%;
-left: 38%;
+    top: 15%;
+    left: 35%;
 }
 .key {
     background: #fff;

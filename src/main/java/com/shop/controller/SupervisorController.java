@@ -1,12 +1,9 @@
 package com.shop.controller;
 
 import com.shop.dto.ItemSearchDto;
-import com.shop.dto.MemberSearchDto;
-import com.shop.dto.MemberUpdateFormDto;
 import com.shop.entity.*;
 import com.shop.repository.*;
 import com.shop.service.ItemService;
-import com.shop.service.MailService;
 import com.shop.service.MemberService;
 import com.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -17,15 +14,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 

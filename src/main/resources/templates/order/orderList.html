@@ -114,18 +114,6 @@
     </h2>
 
     <div th:each="order : ${orders.getContent()}">
-
-        <div class="d-flex mb-3 align-self-center">
-            <h3 th:text="${order.orderDate} + ' 주문'"></h3>
-            <div class="ml-3">
-                <th:block th:if="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <button type="button" class="btn btn-danger" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
-                </th:block>
-                <th:block th:unless="${order.orderStatus == T(com.shop.constant.OrderStatus).ORDER}">
-                    <h3>(취소 완료)</h3>
-                </th:block>
-            </div>
-        </div>
         <div class="card d-flex">
             <div th:each="orderItem : ${order.orderItemDtoList}" class="d-flex mb-3">
                 <div class="repImgDiv">

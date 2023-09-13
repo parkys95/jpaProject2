@@ -29,9 +29,6 @@
         var milliseconds = today.getMilliseconds();
         var makeMerchantUid = hours +  minutes + seconds + milliseconds;
 
-
-
-
         function requestPay() {
 
             IMP.request_pay({
@@ -54,11 +51,6 @@
             });
 
         }
-
-
-
-
-
     </script>
 
     <script th:inline="javascript">
@@ -296,22 +288,14 @@
 
                         <p class="single-price-text" th:text="${item.itemDetail}"></p>
 
-                        <form action="#" method="post">
                             <input type="hidden" name="count" id="count" class="form-control" value="1" min="1">
-                            <input type="hidden" name="cmd" value="_cart" />
-                            <input type="hidden" name="add" value="1" />
-                            <input type="hidden" name="w3ls1_item" value="Handbag" />
-                            <input type="hidden" name="amount" value="540.00" />
+<!--                            <input type="hidden" name="cmd" value="_cart" />-->
+<!--                            <input type="hidden" name="add" value="1" />-->
                             <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i>장바구니</button>
-                        </form>
-
 
                         <button class="w3ls-cart w3ls-cart-like" onclick="requestPay()">
-                            <!--                                <a th:href="@{'/download/' + ${item.itemImgDtoList[0].id}}" download="image.jpg">-->
-                            <!--                                    <a href="/payment/payment.html">-->
                             <i class="fa fa-heart-o" aria-hidden="true"></i>
                             다운로드
-                            <!--                                </a>-->
                         </button>
                     </div>
                     <div class="clearfix"> </div>
@@ -344,59 +328,31 @@
                                 </a>
                             </h4>
                             <button id="likeButton" th:attr="data-toggle=${item.heart}"  onclick="likeButton()">
-                                <img class="heartButton " >
-                                <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" >좋아요</i>
+                                <img class="heartButton" style="width: 100%; height: 50px;">
+                                <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" ></i>
                             </button>
-                            <span th:text="${item.heart}"></span>
-
-                            <a>
-
-                                <span th:text="${item.view +1}"></span>
-                                <span th:text="${item.hashtag}"></span>
-                            </a>
+                            좋아요<span th:text="${item.heart}"></span>
+                            조회수<span th:text="${item.view +1}"></span>
                         </div>
-                        <div>
 
-                            <a>
-                                <span th:text="${item.hashtag}"></span>
-                            </a>
-
-                        </div>
                         <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
                             <div class="panel-body">
-                                귀여운, 캐릭터, 일러스트
+                                태그
+                                <div>
+                                    <a>
+                                        <span th:text="${item.hashtag}"></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <i class="fa fa-check-square-o fa-icon" aria-hidden="true"></i> reviews (5) <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">
-                                리뷰 및 댓글
-                            </div>
-                            <div class="panel-body">
-                                리뷰 및 댓글
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="margin: 5px 0;">
                         <div class="panel-heading" role="tab" id="headingFour">
                             <h4 class="panel-title">
                                 <a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     <i class="fa fa-question-circle fa-icon" aria-hidden="true"></i> help <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
                                 </a>
                             </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                            <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -405,7 +361,5 @@
         </div>
     </div>
 </div>
-</div>
-</body>
 
 </html>

@@ -1,6 +1,8 @@
 package com.shop.entity;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -17,21 +19,22 @@ public class LikeEntity extends BaseEntity {
     @Column(name = "like_id")
     private Long id;
 
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Item item;
 
-    public static LikeEntity toLikeEntity(Member member, Item item){
-        LikeEntity likeEntity = new LikeEntity();
-        likeEntity.setMember(member);
-        likeEntity.setItem(item);
-
-        return likeEntity;
+    public LikeEntity(Item item, Member member) {
+        this.item = item;
+        this.member = member;
     }
+
+
 
 
 

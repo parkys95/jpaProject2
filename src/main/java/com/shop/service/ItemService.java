@@ -3,8 +3,11 @@ package com.shop.service;
 import com.shop.dto.*;
 import com.shop.entity.Item;
 import com.shop.entity.ItemImg;
+import com.shop.entity.LikeEntity;
+import com.shop.entity.Member;
 import com.shop.repository.ItemImgRepository;
 import com.shop.repository.ItemRepository;
+import com.shop.repository.LikeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,8 +19,6 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @Service
@@ -145,8 +146,23 @@ public class ItemService {
 
     @Transactional
     public int updateHeart(long itemId,int heart){
-        return itemRepository.updateHeart(itemId,heart);
+        int result = 0;
+
+        if(heart==0){
+            result = itemRepository.updateHeartMinus(itemId);
+        }else if(heart==1){
+            result =itemRepository.updateHeartPlus(itemId);
+        }
+
+        return result;
     }
+
+//    @Transactional
+//    public int updateHeartCount(long itemId,int heartCount){
+//        return itemRepository.updateHeartCount(itemId,heartCount);
+//    }
+
+
 
 
 

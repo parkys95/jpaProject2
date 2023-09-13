@@ -131,12 +131,13 @@
 
         $(document).ready(function () {
             /* 페이지 로딩 시 실행되는 코드 */
-            var initialHeartValue = /*[[${item.heart}]]*/ 0; // 초기 heart 값 가져오기
+            var initialHeartValue = [[${heartCnt}]]; // 초기 heart 값 가져오기
             setHeartImage(initialHeartValue); // 초기 이미지 설정
 
         });
 
         function setHeartImage(heartValue) {
+            console.log(heartValue)
             var likeImg = $("#likeButton img");
             if (heartValue === 1) {
                 likeImg.attr("src", "/banner/like.svg");
@@ -156,6 +157,11 @@
             }
             console.log($("#likeButton").data("toggle"));
 
+            // var toggleValue = $("#likeButton").data("toggle");
+            // toggleValue += 1;
+            // $("#likeButton").data("toggle", toggleValue);
+            // console.log($("#likeButton").data("toggle"));
+
             $.ajax({
                 url: "/like",
                 type: "GET",
@@ -167,10 +173,10 @@
                 },
                 success: function (result, status) {
 
-                    if(result == 0){
+                    if(!result){
                         alert("게시물 추천을 취소하였습니다.");
                         $(".heartButton").attr("src","/banner/like empty.svg")
-                    }else if(result == 1){
+                    }else{
                         alert("게시물을 추천하였습니다.");
                         $(".heartButton").attr("src","/banner/like.svg")
 
@@ -301,10 +307,10 @@
 
                         <form action="#" method="post">
                             <input type="hidden" name="count" id="count" class="form-control" value="1" min="1">
-                            <input type="hidden" name="cmd" value="_cart" />
-                            <input type="hidden" name="add" value="1" />
-                            <input type="hidden" name="w3ls1_item" value="Handbag" />
-                            <input type="hidden" name="amount" value="540.00" />
+<!--                            <input type="hidden" name="cmd" value="_cart" />-->
+<!--                            <input type="hidden" name="add" value="1" />-->
+<!--                            <input type="hidden" name="w3ls1_item" value="Handbag" />-->
+<!--                            <input type="hidden" name="amount" value="540.00" />-->
                             <button type="submit" class="w3ls-cart" onclick="addCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i>장바구니</button>
                         </form>
 
@@ -346,7 +352,7 @@
                                     <i class="fa fa-info-circle fa-icon" aria-hidden="true"></i> additional information <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
                                 </a>
                             </h4>
-                            <button id="likeButton" th:attr="data-toggle=${item.heart}"  onclick="likeButton()">
+                            <button id="likeButton" th:attr="data-toggle=${heartCnt}"  onclick="likeButton()">
                                 <img class="heartButton " >
                                 <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" >좋아요</i>
                             </button>
@@ -375,19 +381,6 @@
                                     <i class="fa fa-check-square-o fa-icon" aria-hidden="true"></i> reviews (5) <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
                                 </a>
                             </h4>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">댓글</div>
-                            <ul id="reply--box" class="list-group">
-                                <li id="reply--1" class="list-group-item d-flex justify-content-between">
-                                    <div>댓글 내용입니다.!</div>
-                                    <div class="d-flex">
-                                        <div class="text-monospace">작성자: ssarlength &nbsp;</div>
-                                        <button class="badge btn-warning">수정</button><span> | </span>
-                                        <button class="badge btn-danger">삭제</button>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="panel panel-default">

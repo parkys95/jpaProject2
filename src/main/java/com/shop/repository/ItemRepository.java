@@ -68,8 +68,16 @@
 //        Page<Item> findAllOrderByViewDesc(Pageable pageable);
 
         @Modifying
-        @Query("update Item i set i.heart = :heart  where i.id = :itemId")
-        int updateHeart(Long itemId,int heart);
+        @Query("update Item i set i.heart = i.heart+1 where i.id = :itemId")
+        int updateHeartPlus(Long itemId);
+
+        @Modifying
+        @Query("update Item i set i.heart = i.heart-1  where i.id = :itemId")
+        int updateHeartMinus(Long itemId);
+//        @Modifying
+//        @Query("update Item i set i.heartCount = :heartCount  where i.id = :itemId")
+//        int updateHeartCount(Long itemId,int heartCount);
+
 
 
 

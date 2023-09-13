@@ -10,7 +10,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="item")
@@ -53,8 +55,10 @@ public class Item extends BaseEntity {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private int heart;
 
-    @OneToMany(mappedBy = "item", fetch = FetchType.EAGER)
-    private List<Reply> replyList;
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    Set<LikeEntity> likes = new HashSet<>();
+
+
 
 
     public void updateItem(ItemFormDto itemFormDto){

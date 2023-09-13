@@ -39,6 +39,7 @@ public class Member extends BaseEntity {
     // 소셜 로그인 여부
     private boolean social;
 
+
     public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
         Member member = new Member();
         member.setName(memberFormDto.getName());

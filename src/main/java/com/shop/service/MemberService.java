@@ -137,4 +137,8 @@ public class MemberService implements UserDetailsService {
         return memberRepository.findAll(pageable);
     }
 
+    public Member getMemberInfo(String email){
+        return memberRepository.findByEmail(email);
+    }
+
 }

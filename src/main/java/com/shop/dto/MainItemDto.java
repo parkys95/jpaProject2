@@ -11,17 +11,17 @@ public class MainItemDto {
 
     private String itemNm;
 
-    private String itemDetail;
+    private String hashtag;
 
     private String imgUrl;
 
     private Integer price;
 
     @QueryProjection
-    public MainItemDto(Long id, String itemNm, String itemDetail, String imgUrl,Integer price){
+    public MainItemDto(Long id, String itemNm, String hashtag, String imgUrl,Integer price){
         this.id = id;
         this.itemNm = itemNm;
-        this.itemDetail = itemDetail;
+        this.hashtag = hashtag;
         this.imgUrl = imgUrl;
         this.price = price;
     }

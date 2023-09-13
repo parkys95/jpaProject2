@@ -62,13 +62,21 @@ public class OrderController {
     public String orderList(@PathVariable("page") Optional<Integer> page, Principal principal, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 4);
+<<<<<<< HEAD
         Page<OrderListDto> ordersListDtoList = orderService.getOrderList(principal.getName(), pageable);
+=======
+        Page<OrderListDto> ordersHistDtoList = orderService.getOrderList(principal.getName(), pageable);
+>>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 
         model.addAttribute("orders", ordersListDtoList);
         model.addAttribute("page", pageable.getPageNumber());
         model.addAttribute("maxPage", 5);
 
+<<<<<<< HEAD
         return "/order/orderList";
+=======
+        return "order/orderList";
+>>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
     }
 
     @PostMapping("/order/{orderId}/cancel")

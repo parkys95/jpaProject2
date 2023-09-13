@@ -1,10 +1,20 @@
 package com.shop.service;
 
 import com.shop.dto.*;
+<<<<<<< HEAD
 import com.shop.entity.*;
 import com.shop.repository.ItemImgRepository;
 import com.shop.repository.ItemRepository;
 import com.shop.repository.OrderRepository;
+=======
+import com.shop.entity.Item;
+import com.shop.entity.ItemImg;
+import com.shop.entity.LikeEntity;
+import com.shop.entity.Member;
+import com.shop.repository.ItemImgRepository;
+import com.shop.repository.ItemRepository;
+import com.shop.repository.LikeRepository;
+>>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,8 +26,11 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+<<<<<<< HEAD
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+=======
+>>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 import java.util.List;
 
 @Service
@@ -111,6 +124,19 @@ public class ItemService {
         return  itemRepository.findByCategory(category);
     }
 
+<<<<<<< HEAD
+=======
+    public List<ItemJoinInterface> getByILLUSTView(){
+        return  itemRepository.getByILLUSTView();
+    }
+    public List<ItemJoinInterface> getByICONView(){
+        return  itemRepository.getByICONView();
+    }
+    public List<ItemJoinInterface> getByPHOTOView(){
+        return  itemRepository.getByPHOTOView();
+    }
+
+>>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997
 
     public void deleteItem(Long itemId) throws Exception {
         // 상품을 데이터베이스에서 조회합니다.
@@ -137,8 +163,23 @@ public class ItemService {
 
     @Transactional
     public int updateHeart(long itemId,int heart){
-        return itemRepository.updateHeart(itemId,heart);
+        int result = 0;
+
+        if(heart==0){
+            result = itemRepository.updateHeartMinus(itemId);
+        }else if(heart==1){
+            result =itemRepository.updateHeartPlus(itemId);
+        }
+
+        return result;
     }
+
+//    @Transactional
+//    public int updateHeartCount(long itemId,int heartCount){
+//        return itemRepository.updateHeartCount(itemId,heartCount);
+//    }
+
+
 
 
 

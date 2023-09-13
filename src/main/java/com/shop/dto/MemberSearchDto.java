@@ -7,10 +7,8 @@ import lombok.Setter;
 
 @Getter @Setter
 public class MemberSearchDto {
-    private String searchDateType;
-
-    private Role role;
-
-    private String searchQuery = "";
+    private String searchType;
+    private String keyword;
+    private String role;
 
 }

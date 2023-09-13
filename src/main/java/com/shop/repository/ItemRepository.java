@@ -1,6 +1,7 @@
     package com.shop.repository;
 
     import com.shop.dto.ItemDto;
+    import com.shop.dto.ItemJoinInterface;
     import com.shop.dto.ItemSearchDto;
     import com.shop.dto.MainItemDto;
     import com.shop.entity.Cart;
@@ -64,12 +65,19 @@
         @Query("update Item i set i.view = i.view + 1 where i.id = :id")
         int updateView(Long id);
 
-        @Query("SELECT i FROM Item i ORDER BY i.view DESC")
-        Page<Item> findAllOrderByViewDesc(Pageable pageable);
+//        @Query("SELECT i FROM Item i ORDER BY i.view DESC")
+//        Page<Item> findAllOrderByViewDesc(Pageable pageable);
 
         @Modifying
-        @Query("update Item i set i.heart = :heart  where i.id = :itemId")
-        int updateHeart(Long itemId,int heart);
+        @Query("update Item i set i.heart = i.heart+1 where i.id = :itemId")
+        int updateHeartPlus(Long itemId);
+
+        @Modifying
+        @Query("update Item i set i.heart = i.heart-1  where i.id = :itemId")
+        int updateHeartMinus(Long itemId);
+//        @Modifying
+//        @Query("update Item i set i.heartCount = :heartCount  where i.id = :itemId")
+//        int updateHeartCount(Long itemId,int heartCount);
 
         @Query("select i from Item i where i.createdBy = :createdBy")
         List<Item> getByCreatedBy(String createdBy);
@@ -78,4 +86,26 @@
         @Query("delete from Item i where i.createdBy = :createdBy")
         void allDeleteItems(String createdBy);
 
+<<<<<<< HEAD
     }
+=======
+
+        @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
+                       "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
+                        "where i.category = 'ILLUST'"+
+                       " ORDER BY i.view DESC limit 5",nativeQuery = true)
+        List<ItemJoinInterface> getByILLUSTView();
+
+        @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
+                "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
+                "where i.category = 'ICON'"+
+                " ORDER BY i.view DESC limit 5",nativeQuery = true)
+        List<ItemJoinInterface> getByICONView();
+
+        @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
+                "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
+                "where i.category = 'PHOTO'"+
+                " ORDER BY i.view DESC limit 5",nativeQuery = true)
+        List<ItemJoinInterface> getByPHOTOView();
+    }
+>>>>>>> 9aed702ef7d67402c60ef3a5efbd9e4f8c4f8997

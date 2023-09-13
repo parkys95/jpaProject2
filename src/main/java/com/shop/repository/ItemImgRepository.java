@@ -15,6 +15,7 @@ public interface ItemImgRepository extends JpaRepository<ItemImg, Long> {
     ItemImg findByItemIdAndRepimgYn(Long itemId, String repimgYn);
 
     List<ItemImg> findByItemId(Long itemId);
+<<<<<<< HEAD
 
     @Query("select i from ItemImg i where i.item.id = :id")
     List<ItemImg> getByItemId(Long id);
@@ -22,4 +23,6 @@ public interface ItemImgRepository extends JpaRepository<ItemImg, Long> {
     @Modifying
     @Query("delete from ItemImg i where i.item.id = :itemId")
     void deleteItemImgs(Long itemId);
+=======
+>>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 }

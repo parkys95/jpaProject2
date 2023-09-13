@@ -105,8 +105,13 @@ public class MemberController {
         Member member = memberRepository.findByEmail(loginId);
         modelMap.addAttribute("member", member);
 
+        boolean loggedIn = (loginId != null && !loginId.isEmpty());
+        modelMap.addAttribute("loggedIn", loggedIn);
+
         return "member/myPage";
     }
+
+
 
     // 회원 정보 변경 (POST)
     @PostMapping(value = "/update")

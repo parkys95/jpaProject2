@@ -1,10 +1,10 @@
 package com.shop.service;
 
 import com.shop.dto.*;
-import com.shop.entity.Item;
-import com.shop.entity.ItemImg;
+import com.shop.entity.*;
 import com.shop.repository.ItemImgRepository;
 import com.shop.repository.ItemRepository;
+import com.shop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +30,8 @@ public class ItemService {
     private final ItemImgService itemImgService;
 
     private final ItemImgRepository itemImgRepository;
+
+    private final OrderRepository orderRepository;
 
 
     public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
@@ -140,4 +142,8 @@ public class ItemService {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 }

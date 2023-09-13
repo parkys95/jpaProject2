@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import com.shop.dto.MemberSearchDto;
 import com.shop.dto.MemberUpdateFormDto;
 import com.shop.entity.Cart;
 import com.shop.entity.CartItem;
@@ -9,6 +10,10 @@ import com.shop.repository.CartItemRepository;
 import com.shop.repository.CartRepository;
 import com.shop.repository.MemberRepository;
 import com.shop.repository.OrderRepository;
+<<<<<<< HEAD
+=======
+import lombok.AllArgsConstructor;
+>>>>>>> 8c2d8aadd5e751c34c54b0323a7f0f1909f21fd3
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

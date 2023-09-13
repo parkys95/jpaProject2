@@ -20,4 +20,7 @@ public class OrderItemDto {
     private int orderPrice; //주문 금액
     private String imgUrl; //상품 이미지 경로
 
+    public OrderItemDto() {
+
+    }
 }

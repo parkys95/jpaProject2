@@ -90,18 +90,18 @@
         @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
                        "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
                         "where i.category = 'ILLUST'"+
-                       " ORDER BY i.view DESC limit 5",nativeQuery = true)
+                       " ORDER BY i.view DESC limit 4",nativeQuery = true)
         List<ItemJoinInterface> getByILLUSTView();
 
         @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
                 "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
                 "where i.category = 'ICON'"+
-                " ORDER BY i.view DESC limit 5",nativeQuery = true)
+                " ORDER BY i.view DESC limit 4",nativeQuery = true)
         List<ItemJoinInterface> getByICONView();
 
         @Query(value = "SELECT m.img_url, i.item_id, i.item_nm, i.item_detail, i.price " +
                 "  FROM item i inner JOIN Item_Img m on m.item_id = i.item_id " +
                 "where i.category = 'PHOTO'"+
-                " ORDER BY i.view DESC limit 5",nativeQuery = true)
+                " ORDER BY i.view DESC limit 4",nativeQuery = true)
         List<ItemJoinInterface> getByPHOTOView();
     }

@@ -217,12 +217,6 @@ public class ItemController {
     public String payDown(Model model, @PathVariable("itemId") Long itemId, Principal principal){
 
 
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication != null) {
-                return authentication.getName(); // 현재 로그인한 사용자의 이름을 반환
-            }
-
-
         // 주문(Order) 저장
         List<OrderDto> orderDtoList = new ArrayList<>();
         OrderDto orderDto = new OrderDto();

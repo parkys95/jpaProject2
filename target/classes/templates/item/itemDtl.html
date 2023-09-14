@@ -266,6 +266,14 @@
             padding-left: 3rem;
         }
 
+        .imagesolidBox{
+            width: 400px;
+            height: 400px;
+            border: 2px solid #969696;
+            object-fit: contain;
+        }
+
+
     </style>
 </th:block>
 
@@ -278,9 +286,9 @@
                 <div class="single-page-row" id="detail-21">
                     <div class="col-md-6 single-top-left">
                         <div class="flexslider">
-                            <ul class="slides">
-                                <img th:src="${item.itemImgDtoList[0].imgUrl}" class = "rounded repImg" th:alt="${item.itemNm}">
-                            </ul>
+                            <section class="">
+                                <img th:src="${item.itemImgDtoList[0].imgUrl}" class = "imagesolidBox" th:alt="${item.itemNm}">
+                            </section>
                         </div>
                     </div>
                     <div class="col-md-6 single-top-right" >
@@ -319,6 +327,16 @@
                             <i class="fa fa-heart-o" aria-hidden="true"></i>
                             다운로드
                         </button>
+                        <button class="w3ls-cart w3ls-cart-like" id="LoginloadButton" sec:authorize="!isAuthenticated()">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            다운로드
+                        </button>
+                        <script>
+                            document.getElementById("LoginloadButton").addEventListener("click", function() {
+                                window.location.href = "/members/login";
+                            });
+
+                        </script>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -328,20 +346,20 @@
             <div class="collpse tabs">
                 <h3 class="w3ls-title">About this image</h3>
                 <div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
-                    <!--					<div class="panel panel-default">-->
-                    <!--						<div class="panel-heading" role="tab" id="headingOne">-->
-                    <!--							<h4 class="panel-title">-->
-                    <!--								<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-                    <!--									<i class="fa fa-file-text-o fa-icon" aria-hidden="true"></i> Description <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>-->
-                    <!--								</a>-->
-                    <!--							</h4>-->
-                    <!--						</div>-->
+                    <!--               <div class="panel panel-default">-->
+                    <!--                  <div class="panel-heading" role="tab" id="headingOne">-->
+                    <!--                     <h4 class="panel-title">-->
+                    <!--                        <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
+                    <!--                           <i class="fa fa-file-text-o fa-icon" aria-hidden="true"></i> Description <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>-->
+                    <!--                        </a>-->
+                    <!--                     </h4>-->
+                    <!--                  </div>-->
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <!--							<div class="panel-body">-->
-                        <!--								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
-                        <!--							</div>-->
+                        <!--                     <div class="panel-body">-->
+                        <!--                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.-->
+                        <!--                     </div>-->
                     </div>
-                    <!--					</div>-->
+                    <!--               </div>-->
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingTwo" style="height: 50px;">
                             <h4 class="panel-title">
@@ -349,14 +367,17 @@
                                     <i class="fa fa-info-circle fa-icon" aria-hidden="true"></i> additional information <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
                                 </a>
                             </h4>
-                            <button id="likeButton" th:attr="data-toggle=${heartCnt}"  onclick="likeButton()" style="width: 5%;">
-                                <img class="heartButton " >
-                                <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" >좋아요</i>
+                            <button id="likeButton" th:attr="data-toggle=${heartCnt}"  onclick="likeButton()" style="margin: 3px; width: 5%;">
+                                <img class="heartButton" >
+                                <!--                                <i id="likeIcon" class="fa fa-heart-o" aria-hidden="true" >좋아요</i>-->
+                                <!--                                <span th:text="${item.heart}"></span>-->
                             </button>
-                            <span th:text="${item.heart}"></span>
+
                             <a>
+                                <i>조회수</i>
                                 <span th:text="${item.view +1}"></span>
-                                <span th:text="${item.hashtag}"></span>
+                                <!--                                <i>태그</i>-->
+                                <!--                                <span th:text="${item.hashtag}"></span>-->
                             </a>
                         </div>
                         <div>
@@ -364,7 +385,8 @@
 
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
+                            <div class="panel-body" style="height: 80px;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a>
                                     <span th:text="${item.hashtag}"></span>
                                 </a>

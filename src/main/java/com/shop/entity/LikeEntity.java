@@ -22,6 +22,7 @@ public class LikeEntity extends BaseEntity {
 //    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -43,7 +43,7 @@ public class SupervisorController {
     @GetMapping("/page")
     public String supervisorPage() {
         // 관리자 페이지의 뷰 이름을 반환합니다.
-        return "supervisor/supervisorPage";
+        return "/supervisor/supervisorPage";
     }
 
     @GetMapping(value = {"/items", "/items/{page}"})
